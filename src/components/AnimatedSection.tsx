@@ -75,7 +75,6 @@ export default function AnimatedSection({
           start: "top 88%",
           once: true,
           fastScrollEnd: true,
-          invalidateOnRefresh: true,
           onEnter: (batch) => {
             gsap.fromTo(
               batch,
