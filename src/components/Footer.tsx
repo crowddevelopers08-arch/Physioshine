@@ -21,7 +21,7 @@ export default function Footer() {
           className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row"
         >
           <div>
-            <p className="font-headline text-xl font-black text-white sm:text-2xl">
+            <p className="font-headline text-xl max-[470px]:text-center font-black text-white sm:text-2xl">
               Ready to Live Pain-Free?
             </p>
             <p className="mt-1 text-sm text-white/80">

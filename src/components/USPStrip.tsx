@@ -60,9 +60,9 @@ export default function USPStrip() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div
           data-reveal-header
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center text-center lg:text-left"
+          className="grid grid-cols-1 gap-5 text-center sm:grid-cols-3 sm:gap-6 lg:grid-cols-5 lg:items-center lg:text-left"
         >
-          <div data-reveal-item className="space-y-1">
+          <div data-reveal-item className="flex flex-col items-center space-y-1 lg:items-start">
             <CounterValue
               end={1000}
               suffix="+"
@@ -73,8 +73,8 @@ export default function USPStrip() {
             </div>
           </div>
 
-          <div data-reveal-item className="space-y-1">
-            <div className="flex justify-center lg:justify-start text-secondary-fixed-dim mb-1">
+          <div data-reveal-item className="flex flex-col items-center space-y-1 lg:items-start">
+            <div className="mb-1 flex justify-center text-secondary-fixed-dim lg:justify-start">
               {[...Array(4)].map((_, i) => (
                 <span key={i} className="material-symbols-outlined text-xl" data-weight="fill">
                   star
@@ -95,7 +95,7 @@ export default function USPStrip() {
             </div>
           </div>
 
-          <div data-reveal-item className="space-y-1">
+          <div data-reveal-item className="flex flex-col items-center space-y-1 lg:items-start">
             <CounterValue
               end={5000}
               suffix="+"
@@ -106,15 +106,15 @@ export default function USPStrip() {
             </div>
           </div>
 
-          <div data-reveal-item className="col-span-2 sm:col-span-1 space-y-1">
+          <div data-reveal-item className="space-y-1 sm:col-span-3 lg:col-span-1">
             <div className="text-base sm:text-lg font-bold font-headline leading-snug text-brand-deep">
               High Quality Treatment at an Affordable Rate
             </div>
           </div>
 
-          <div data-reveal-item className="col-span-2 sm:col-span-3 lg:col-span-1 lg:text-right">
+          <div data-reveal-item className="sm:col-span-3 lg:col-span-1 lg:text-right">
             <a
-              className="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-full font-bold text-sm hover:scale-105 transition-all shadow-md"
+              className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-white shadow-md"
               href="tel:8309199733"
             >
               <span className="material-symbols-outlined text-lg">call</span>

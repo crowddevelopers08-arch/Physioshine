@@ -25,7 +25,7 @@ const steps = [
 
 export default function PathToRecovery() {
   return (
-    <AnimatedSection className="py-14 sm:py-16 bg-surface-container-low">
+    <AnimatedSection className="py-14 sm:py-16 max-[470px]:py-6 bg-surface-container-low">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div data-reveal-header className="text-center mb-10 space-y-3">
           <span className="text-primary font-black uppercase tracking-widest text-xs sm:text-sm">

@@ -49,8 +49,8 @@ export default function Navbar() {
           scrolled ? "bg-white shadow-md" : "bg-white/90 backdrop-blur-xl shadow-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="flex justify-between items-center h-16">
+        <div className="max-w-7xl mx-auto px-4 py-2 sm:px-8 sm:py-0">
+          <div className="flex min-h-[4.25rem] items-center justify-between sm:h-16">
             {/* Logo */}
             <BrandLogo
               href="/"
@@ -77,20 +77,20 @@ export default function Navbar() {
             <div className="flex items-center gap-2 sm:gap-3">
               <a
                 href="tel:8309199733"
-                className="btn-premium hidden rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-white md:flex items-center gap-2"
+                className="btn-premium btn-mobile-hidden rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-white lg:items-center lg:gap-2"
               >
                 <span className="material-symbols-outlined text-base">call</span>
                 <span className="hidden lg:inline">8309-199733</span>
               </a>
               <a
                 href="#book"
-                className="btn-premium rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:brightness-110 sm:px-5"
+                className="btn-premium btn-mobile-hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:brightness-110 lg:px-5"
               >
                 Book Appointment
               </a>
               {/* Mobile hamburger */}
               <button
-                className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface-variant"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface-variant lg:hidden"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
               >

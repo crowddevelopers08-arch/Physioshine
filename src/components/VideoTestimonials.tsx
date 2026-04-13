@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Script from "next/script";
 import AnimatedSection from "./AnimatedSection";
 
@@ -52,7 +52,7 @@ function InstagramEmbed({
         <span className="material-symbols-outlined mb-4 text-5xl text-secondary-fixed">
           smart_display
         </span>
-        <h3 className="text-lg font-bold font-headline text-white">{title}</h3>
+        <h3 className="font-headline text-lg font-bold text-white">{title}</h3>
         <p className="mt-3 text-sm leading-relaxed">
           Replace this placeholder with an Instagram Reel URL in
           <span className="mx-1 rounded bg-white/10 px-2 py-1 font-mono text-xs text-white">
@@ -79,12 +79,28 @@ function InstagramEmbed({
 }
 
 export default function VideoTestimonials() {
+  const videosCarouselRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     window.instgrm?.Embeds?.process();
   }, []);
 
+  const scrollVideos = (direction: "prev" | "next") => {
+    const container = videosCarouselRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const amount = container.clientWidth;
+    container.scrollBy({
+      left: direction === "next" ? amount : -amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <AnimatedSection className="py-16 bg-brand-deeper text-white">
+    <AnimatedSection className="bg-brand-deeper py-16 max-[470px]:py-6 text-white">
       <Script
         async
         src="https://www.instagram.com/embed.js"
@@ -92,35 +108,61 @@ export default function VideoTestimonials() {
         onLoad={() => window.instgrm?.Embeds?.process()}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div data-reveal-header className="text-center mb-10 space-y-2">
-          <span className="text-secondary-fixed font-black uppercase tracking-widest text-xs sm:text-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+        <div data-reveal-header className="mb-10 space-y-2 text-center">
+          <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
             Real Results
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black font-headline">
+          <h2 className="font-headline text-3xl font-black sm:text-4xl">
             Patient Instagram Video Testimonials
           </h2>
-          <p className="text-white/60 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-sm text-white/60 sm:text-base">
             Add your Instagram Reel links below and this section will render the
             real Instagram video embeds directly on the page.
           </p>
         </div>
 
-        <div className="sm:hidden -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {videos.map((video) => (
+        <div className="sm:hidden">
+          <div className="overflow-hidden">
             <div
-              key={video.id}
-              data-reveal-item
-              className="min-w-[88%] snap-center flex justify-center"
+              ref={videosCarouselRef}
+              className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              <InstagramEmbed permalink={video.permalink} title={video.title} />
+              {videos.map((video) => (
+                <div
+                  key={video.id}
+                  data-reveal-item
+                  className="flex min-w-full shrink-0 snap-center justify-center"
+                >
+                  <InstagramEmbed permalink={video.permalink} title={video.title} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollVideos("prev")}
+              className="btn-premium btn-icon inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm"
+              aria-label="Previous testimonial video"
+            >
+              <span className="material-symbols-outlined text-xl">chevron_left</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollVideos("next")}
+              className="btn-premium btn-icon inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm"
+              aria-label="Next testimonial video"
+            >
+              <span className="material-symbols-outlined text-xl">chevron_right</span>
+            </button>
+          </div>
         </div>
 
-        <div className="hidden sm:grid grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 items-start justify-items-center">
+        <div className="hidden items-start justify-items-center gap-5 sm:grid sm:grid-cols-2 sm:gap-6 xl:grid-cols-4">
           {videos.map((video) => (
-            <div key={video.id} data-reveal-item className="w-full flex justify-center">
+            <div key={video.id} data-reveal-item className="flex w-full justify-center">
               <InstagramEmbed permalink={video.permalink} title={video.title} />
             </div>
           ))}
@@ -129,7 +171,7 @@ export default function VideoTestimonials() {
         <div data-reveal-item className="mt-10 text-center">
           <a
             href="#book"
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-full font-bold hover:brightness-110 transition-all shadow-lg"
+            className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-lg hover:brightness-110"
           >
             <span className="material-symbols-outlined text-base">calendar_month</span>
             Start Your Recovery Journey

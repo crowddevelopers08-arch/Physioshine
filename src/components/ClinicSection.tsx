@@ -2,7 +2,7 @@ import AnimatedSection from "./AnimatedSection";
 
 const differentiators = [
   { icon: "self_improvement", text: "Holistic Treatment Approach" },
-  { icon: "biotech", text: "Combination of Manual Therapy and Advanced Technology" },
+  { icon: "biotech", text: "Manual Therapy + Advanced Technology" },
   { icon: "science", text: "Evidence-Based Treatment Protocols" },
   { icon: "person_check", text: "Personalised Care for each Patient" },
   { icon: "flash_on", text: "Fast, Safe & Non-Invasive Recovery" },
@@ -16,7 +16,7 @@ const uspStats = [
 
 export default function ClinicSection() {
   return (
-    <AnimatedSection className="py-14 sm:py-16 lg:py-20 bg-surface overflow-hidden">
+    <AnimatedSection className="py-14 sm:py-16 lg:py-20 max-[470px]:py-6 bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
 
         {/* Two-column: text + image */}

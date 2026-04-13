@@ -49,7 +49,7 @@ export default function TreatmentGrid() {
   return (
     <AnimatedSection
       as="section"
-      className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-surface-container-low"
+      className="relative py-12 sm:py-16 max-[470px]:py-6 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-surface-container-low"
       id="treatments"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-brand-soft via-transparent to-transparent" />

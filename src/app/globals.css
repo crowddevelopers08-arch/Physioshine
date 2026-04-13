@@ -111,9 +111,13 @@
 }
 
 .btn-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  text-align: center;
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -122,6 +126,14 @@
     color 220ms ease,
     border-color 220ms ease;
   will-change: transform;
+}
+
+.btn-premium:not(.btn-icon) {
+  min-height: 2.75rem;
+}
+
+.btn-mobile-hidden {
+  display: none !important;
 }
 
 .btn-premium::before {
@@ -150,6 +162,19 @@
 .btn-premium:focus-visible {
   outline: 2px solid rgba(249, 191, 0, 0.9);
   outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .btn-premium:not(.btn-icon) {
+    min-height: 3rem;
+    min-width: 11.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .btn-mobile-hidden {
+    display: inline-flex !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
