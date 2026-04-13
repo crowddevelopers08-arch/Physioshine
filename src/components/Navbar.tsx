@@ -49,8 +49,8 @@ export default function Navbar() {
           scrolled ? "bg-white shadow-md" : "bg-white/90 backdrop-blur-xl shadow-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 py-2 sm:px-8 sm:py-0">
-          <div className="flex min-h-[4.25rem] items-center justify-between sm:h-16">
+        <div className="mx-auto max-w-7xl px-4 py-2 sm:px-8 sm:py-3">
+          <div className="flex min-h-[4.25rem] items-center justify-between sm:min-h-[4.75rem]">
             {/* Logo */}
             <BrandLogo
               href="/"
