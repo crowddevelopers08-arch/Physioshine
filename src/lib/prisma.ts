@@ -28,9 +28,11 @@ async function createPrismaClient() {
 
   const adapter = new PrismaPg(pool);
 
-  const { PrismaClient } = (await import("@prisma/client")) as {
-    PrismaClient: new (options?: Record<string, unknown>) => any;
-  };
+  const prismaModule = await import("@prisma/client");
+  const PrismaClient =
+    "PrismaClient" in prismaModule
+      ? prismaModule.PrismaClient
+      : prismaModule.default.PrismaClient;
 
   return new PrismaClient({
     adapter,
