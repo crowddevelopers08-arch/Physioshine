@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <BookingSection />
+      {/* <BookingSection /> */}
       <HeroSection />
       <USPStrip />
       <ClinicSection />

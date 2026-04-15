@@ -37,7 +37,7 @@ export default function Footer() {
             </a>
             <a
               href="tel:8309199733"
-              className="btn-premium flex items-center justify-center gap-2 rounded-full bg-secondary-fixed px-6 py-3 text-sm font-bold text-on-secondary-fixed"
+              className="btn-premium btn-mobile-only items-center justify-center gap-2 rounded-full bg-secondary-fixed px-6 py-3 text-sm font-bold text-on-secondary-fixed"
             >
               <span className="material-symbols-outlined text-base">call</span>
               8309-199733
@@ -134,7 +134,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 "1000+ Google Reviews",
-                "4.7 / 5 Google Rating",
+                "4.8 / 5 Google Rating",
                 "5000+ Satisfied Clients",
                 "150+ Patients Per Day",
                 "Medical Grade Equipment",

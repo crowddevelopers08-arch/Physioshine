@@ -87,8 +87,11 @@ export default function ReviewsCarousel() {
             data-reveal-item
             className="flex w-full shrink-0 items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 sm:w-auto sm:justify-start"
           >
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm">
+              <img src="/google-g.svg" alt="Google" className="h-5 w-5" />
+            </div>
             <div className="text-center">
-              <p className="text-2xl font-black">4.7</p>
+              <p className="text-2xl font-black">4.8</p>
               <div className="flex text-secondary-fixed">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="material-symbols-outlined text-sm" data-weight="fill">
@@ -122,10 +125,8 @@ export default function ReviewsCarousel() {
                     &quot;{review.text}&quot;
                   </p>
                   <div className="mt-4 flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary-fixed">
-                      <span className="material-symbols-outlined text-base text-on-secondary-fixed">
-                        person
-                      </span>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
+                      <img src="/google-g.svg" alt="Google" className="h-4.5 w-4.5" />
                     </div>
                     <div>
                       <p className="text-sm font-bold text-secondary-fixed">
@@ -174,10 +175,8 @@ export default function ReviewsCarousel() {
               &quot;{review.text}&quot;
             </p>
             <div className="mt-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary-fixed">
-                <span className="material-symbols-outlined text-base text-on-secondary-fixed">
-                  person
-                </span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
+                <img src="/google-g.svg" alt="Google" className="h-4.5 w-4.5" />
               </div>
               <div>
                 <p className="text-sm font-bold text-secondary-fixed">

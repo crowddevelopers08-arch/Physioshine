@@ -31,11 +31,16 @@ export default function FinalCTA() {
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 py-2 sm:py-4">
               {[
                 { value: "5000+", label: "Happy Patients" },
-                { value: "4.7*", label: "Google Rating" },
+                { value: "4.8", label: "Google Rating", google: true },
                 { value: "150+", label: "Patients/Day" },
               ].map((s) => (
                 <div key={s.label} className="text-center">
-                  <p className="text-2xl font-black text-secondary-fixed font-headline">{s.value}</p>
+                  <div className="flex items-center justify-center gap-2">
+                    {s.google ? (
+                      <img src="/google-g.svg" alt="Google" className="h-4.5 w-4.5 shrink-0" />
+                    ) : null}
+                    <p className="text-2xl font-black text-secondary-fixed font-headline">{s.value}</p>
+                  </div>
                   <p className="text-white/50 text-xs uppercase tracking-widest">{s.label}</p>
                 </div>
               ))}
@@ -51,7 +56,7 @@ export default function FinalCTA() {
               </a>
               <a
                 href="tel:8309199733"
-                className="btn-premium inline-flex items-center justify-center gap-2 rounded-full bg-secondary-fixed px-7 py-3.5 text-sm font-bold text-on-secondary-fixed shadow-lg hover:brightness-110 sm:px-9 sm:py-4 sm:text-base"
+                className="btn-premium btn-mobile-only items-center justify-center gap-2 rounded-full bg-secondary-fixed px-7 py-3.5 text-sm font-bold text-on-secondary-fixed shadow-lg hover:brightness-110"
               >
                 <span className="material-symbols-outlined text-base">call</span>
                 8309-199733

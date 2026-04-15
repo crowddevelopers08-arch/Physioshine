@@ -44,6 +44,21 @@ export default function ClinicSection() {
               become the most trusted name for effective, non-surgical pain management.
             </p>
 
+            <div data-reveal-item className="relative lg:hidden">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  className="image-softened h-72 w-full object-cover"
+                  src="/DSC07927.png"
+                  alt="Physio Shine Clinic"
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-brand-deeper/90 via-brand-deep/50 to-transparent p-6 pt-12">
+                  <p className="text-sm italic leading-relaxed text-white">
+                    &ldquo;Setting a new benchmark in clinical excellence across Hyderabad.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Differentiators */}
             <ul className="space-y-3">
               {differentiators.map((item) => (
@@ -68,11 +83,11 @@ export default function ClinicSection() {
           </div>
 
           {/* Image side */}
-          <div data-reveal-item className="relative order-1 lg:order-2">
+          <div data-reveal-item className="relative order-1 hidden lg:block lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                className="w-full h-72 sm:h-96 lg:h-120 object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfXj1bpHmQCrZG2jQQiKYWR5x9vFTrsQhCedMJVV5oIONHYWnTIJTW2EGm2i5-ejHVkg26q4vAdWNPriG4g7xq6gj8GQLHQvU1KAmCXyrDN804FKsxnbuSP-C3Oj9uftneBZASBBQaD-k3cjo395KXjjLtpkV0VAFLOhQevpkWMp2lWmj3lZjw99USfsMwLfvWqVdXOipiASe8v8eq2jLD0P9pVIayJ91oFF8TvXhDkmIra41wt7JBhD1Y2WgxTmoy7l2pEZLpI6k"
+                className="image-softened w-full h-72 object-cover sm:h-96 lg:h-120"
+                src="/DSC07927.png"
                 alt="Physio Shine Clinic"
               />
               {/* Quote overlay */}
@@ -93,12 +108,14 @@ export default function ClinicSection() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {uspStats.map((s) => (
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-12 sm:grid-cols-3">
+          {uspStats.map((s, index) => (
             <div
               key={s.label}
               data-reveal-item
-              className={`flex items-center gap-5 rounded-2xl px-5 sm:px-7 py-5 ${s.color} shadow-md`}
+              className={`flex flex-col items-center gap-3 rounded-2xl px-4 py-5 text-center sm:flex-row sm:gap-5 sm:px-7 sm:text-left ${s.color} shadow-md ${
+                index === 2 ? "col-span-2 mx-auto w-full max-w-xs sm:col-span-1 sm:max-w-none" : ""
+              }`}
             >
               <span className="material-symbols-outlined text-3xl opacity-80 shrink-0">{s.icon}</span>
               <div>
@@ -122,10 +139,17 @@ export default function ClinicSection() {
           </p>
           <a
             href="tel:8309199733"
-            className="shrink-0 flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold text-sm hover:brightness-110 transition-all whitespace-nowrap"
+            className="btn-mobile-only shrink-0 items-center gap-2 bg-primary px-6 py-3 rounded-full font-bold text-sm text-white hover:brightness-110 transition-all whitespace-nowrap"
           >
             <span className="material-symbols-outlined text-base">call</span>
             Call Us Now
+          </a>
+          <a
+            href="#book"
+            className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all whitespace-nowrap hover:brightness-110 sm:flex"
+          >
+            <span className="material-symbols-outlined text-base">calendar_month</span>
+            Book Now
           </a>
         </div>
       </div>

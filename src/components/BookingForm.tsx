@@ -28,27 +28,27 @@ export default function BookingForm() {
   }
 
   return (
-    <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
+    <form className="grid grid-cols-1 gap-3" onSubmit={handleSubmit}>
       <input
-        className="w-full bg-white/85 border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary text-on-surface outline-none"
+        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 text-on-surface outline-none focus:ring-2 focus:ring-primary"
         placeholder="Full Name"
         required
         type="text"
       />
       <input
-        className="w-full bg-white/85 border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary outline-none"
+        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 outline-none focus:ring-2 focus:ring-primary"
         placeholder="Phone Number"
         required
         type="tel"
       />
       <input
-        className="w-full bg-white/85 border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary outline-none"
+        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 outline-none focus:ring-2 focus:ring-primary"
         placeholder="Email Address"
         required
         type="email"
       />
       <select
-        className="w-full bg-white/85 border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary text-on-surface-variant outline-none"
+        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 text-on-surface-variant outline-none focus:ring-2 focus:ring-primary"
         required
         defaultValue=""
       >
@@ -64,20 +64,13 @@ export default function BookingForm() {
         <option>Spine Compression</option>
         <option>Posture Correction</option>
       </select>
-      <div className="grid grid-cols-2 gap-4">
-        <input
-          className="bg-white/85 border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary outline-none"
-          required
-          type="date"
-        />
-        <input
-          className="bg-white/85 border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary outline-none"
-          required
-          type="time"
-        />
-      </div>
+      <input
+        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 outline-none focus:ring-2 focus:ring-primary"
+        required
+        type="date"
+      />
       <button
-        className="w-full bg-secondary-fixed text-on-secondary-fixed font-black text-lg py-5 rounded-lg uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all mt-4 cursor-pointer shadow-lg shadow-secondary-fixed/20"
+        className="mt-2 w-full cursor-pointer rounded-lg bg-secondary-fixed py-4 text-base font-black uppercase tracking-widest text-on-secondary-fixed shadow-lg shadow-secondary-fixed/20 transition-all hover:brightness-110 active:scale-95"
         type="submit"
       >
         Submit

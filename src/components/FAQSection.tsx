@@ -81,10 +81,17 @@ export default function FAQSection() {
           </div>
           <a
             href="tel:8309199733"
-            className="shrink-0 flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold text-sm hover:brightness-110 transition-all"
+            className="btn-mobile-only shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all hover:brightness-110"
           >
             <span className="material-symbols-outlined text-base">call</span>
             Call: 8309-199733
+          </a>
+          <a
+            href="#book"
+            className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all hover:brightness-110 sm:flex"
+          >
+            <span className="material-symbols-outlined text-base">calendar_month</span>
+            Book Now
           </a>
         </div>
       </div>

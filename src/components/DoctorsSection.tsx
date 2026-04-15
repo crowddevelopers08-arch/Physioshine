@@ -8,25 +8,25 @@ const teamDoctors = [
     name: "Dr. Manisha",
     qualification: "Neuro Rehabilitation Specialist",
     desc: "Expert in Stroke & Neuro Rehabilitation. Restoring mobility and independence with personalised recovery programs.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2w4RDP41gAmWrwHWI4ptEVy8CsUkRqzElVihuj1DRBC9_tDHqEPan7YJhVGbvfIUNMhS9Wu0H-5pFetkAII6T0War87U3HoPybd-Tgg3o923j-hyWxjZKn63IKjbGafJiaApN3RQQxUqKwojiC9JdPTkUbhTGm2tf8UducMqKZlk-sYqcWgKU7txjO_NIn9EUoCqds7gD75YQ_DEDQxT5QVY9Yb6vPzTKnf6xshTcETlf_t9iz6SAR6G0KMh-ecJbw3giT-d1LBk",
+    img: "/manisha.png",
   },
   {
     name: "Dr. Sufiyan",
     qualification: "Sports Rehabilitation Specialist",
     desc: "Specialised in Sports Injury Recovery. Strength, flexibility & performance recovery trusted by athletes.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD49JIUhYaiEH9AKrT1NCwDbg1WwNe9efrjI_HCjydSqeUfBfgBV9RR6TDwXIdEj3cfti0GA55PJ-jsHN6hsY6AMKjF_qGNFrxtWr0UzvkF38RXyAXMqKc7Yrl68QJ55teLzhcv4YGEAd1BZygIFAyPcD9kAMxr98x4fFN8T_vD5_npfyRvfheuZiEWnIvYQKUgk0xV8ffLQqOHs8Am9c9M0sBo4GpOSQwD_u2pa_EWvNvydb9p1mQBC4lQPXqeSHjDTcgDtNpm3-w",
+    img: "/sufiyan.png",
   },
   {
     name: "Dr. Dhanush",
     qualification: "Manual Therapy Expert",
     desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9oslE4KrJDZeXlIgaehucvZmsH7b0Oot8NWVDrYLd6b5zPXSr1xjA8B_g9wifCvL1qgsnY30uO6fQre1S2ixAbPe73Oms3VYLptYRMUJIzdt7ZfXx2QooZHsCbqAKMeL03Pf7V6x39d8aOpoDIBwGN-HSSh8NSYggkn9u-DRCqHWBda_US7J0tm2vGc4drK3xTCB5aiLcEUt_cH2rNAw1C_to26uHgtYCvULjSz_ek64h4nDkWZZSbk0ZxKkUb-05Vr45WDmVMZ8",
+    img: "/danush.png",
   },
   {
     name: "Dr. Anjali",
     qualification: "Manual Therapy Expert",
     desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAL9ca0k-8QXcsRY3vA8hgXZe2CksTmXp0oPeW5XjO4-A-7-uBsft_eLphaLoLSeVqVdIu9-FceB1VYL8J_DsiI9XlrHnaoB_om4NpylEIOydZwZ-lmmZzIIiApYoWYNrRe3mAsbLmWO1IJJVlJpmfl2t7cLALQPws35QG_CGFAi1YMrd9BHyu3qP0juCywjgpJwr17ldzrJSo9HtX25E3CweJvrmwzOq9iYHjrf3pWv0YcU2fzNUw2GnWTpxSXGJWGNzkZJUp0Kc4",
+    img: "/anjali.png",
   },
 ];
 
@@ -76,8 +76,8 @@ export default function DoctorsSection() {
         >
           <div className="relative shrink-0 lg:w-[420px]">
             <img
-              className="h-72 w-full object-cover object-top sm:h-96 lg:h-full"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdAdovoR_NJJwrLstcWkbMnXY7C8DMma19DH1jJEkIHKoYQv5GupKFUddI0z9wmOrFlaMOdQHPYTe2EE2bvWBI9GNx029IpiNRmSBOubJfcYvNSe0nzQlbfu7foSScXKc4oj3WA_aILLE7vpWx_rHzLTOJQZJx1PB8NdDm-d3_IKf4EaM9FOVnHKylCzXqJtJ6GJXHSayqwafv_YMAKjHKe6dOMXXDNwQf1KU6jPt3aPeA4Lfp3t7VaqafNDKDTeaR8IXykSXxcug"
+              className="image-softened h-72 w-full object-cover object-top sm:h-96 lg:h-full"
+              src="/sachinnew.png"
               alt="Dr. Gahwal Sachin Raj"
             />
             <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-brand-deep/60 to-transparent lg:hidden" />
@@ -123,7 +123,7 @@ export default function DoctorsSection() {
               </a>
               <a
                 href="tel:8309199733"
-                className="btn-premium inline-flex items-center gap-2 rounded-full border-2 border-primary/30 px-6 py-3 text-sm font-bold text-primary hover:border-primary hover:bg-primary/5"
+                className="btn-premium btn-mobile-only items-center gap-2 rounded-full border-2 border-primary/30 px-6 py-3 text-sm font-bold text-primary hover:border-primary hover:bg-primary/5"
               >
                 <span className="material-symbols-outlined text-base">call</span>
                 Call Now
@@ -132,31 +132,7 @@ export default function DoctorsSection() {
           </div>
         </div>
 
-        <div
-          data-reveal-item
-          className="relative mb-10 overflow-hidden rounded-2xl bg-brand-deep p-7 sm:p-9"
-        >
-          <div className="pointer-events-none absolute right-0 top-0 h-48 w-48 -translate-y-1/3 translate-x-1/3 rounded-full bg-primary/15" />
-          <div className="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-5">
-            <div className="lg:col-span-2">
-              <p className="mb-2 text-xs font-black uppercase tracking-widest text-secondary-fixed">Our Commitment</p>
-              <h3 className="font-headline text-xl font-bold text-white sm:text-2xl">
-                Patient Centric Care
-              </h3>
-              <p className="mt-2 text-sm text-white/60">Our doctors ensure every patient gets:</p>
-            </div>
-            <div className="grid grid-cols-2 gap-3 lg:col-span-3">
-              {patientCarePoints.map((item) => (
-                <div key={item.label} className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/8 p-3">
-                  <span className="material-symbols-outlined shrink-0 text-xl text-secondary-fixed" data-weight="fill">
-                    {item.icon}
-                  </span>
-                  <span className="text-xs font-medium leading-snug text-white sm:text-sm">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+       
 
         <div>
           <h3 className="mb-7 text-center font-headline text-xl font-bold sm:text-2xl">
@@ -179,7 +155,7 @@ export default function DoctorsSection() {
                         <div className="mb-4">
                           <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-brand-soft shadow-lg">
                             <img
-                              className="h-full w-full object-cover object-top transition-transform duration-500"
+                              className="image-softened h-full w-full object-cover object-top transition-transform duration-500"
                               src={doc.img}
                               alt={doc.name}
                             />
@@ -234,7 +210,7 @@ export default function DoctorsSection() {
                   <div className="mb-4">
                     <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-brand-soft shadow-lg sm:h-32 sm:w-32">
                       <img
-                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        className="image-softened h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                         src={doc.img}
                         alt={doc.name}
                       />
@@ -254,6 +230,32 @@ export default function DoctorsSection() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+         <div
+          data-reveal-item
+          className="relative mt-10 overflow-hidden rounded-2xl bg-brand-deep p-7 sm:p-9"
+        >
+          <div className="pointer-events-none absolute right-0 top-0 h-48 w-48 -translate-y-1/3 translate-x-1/3 rounded-full bg-primary/15" />
+          <div className="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-5">
+            <div className="lg:col-span-2">
+              <p className="mb-2 text-xs font-black uppercase tracking-widest text-secondary-fixed">Our Commitment</p>
+              <h3 className="font-headline text-xl font-bold text-white sm:text-2xl">
+                Patient Centric Care
+              </h3>
+              <p className="mt-2 text-sm text-white/60">Our doctors ensure every patient gets:</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3 lg:col-span-3">
+              {patientCarePoints.map((item) => (
+                <div key={item.label} className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/8 p-3">
+                  <span className="material-symbols-outlined shrink-0 text-xl text-secondary-fixed" data-weight="fill">
+                    {item.icon}
+                  </span>
+                  <span className="text-xs font-medium leading-snug text-white sm:text-sm">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

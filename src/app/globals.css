@@ -110,6 +110,10 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
+.image-softened {
+  filter: saturate(0.95) contrast(0.97) brightness(0.985);
+}
+
 .btn-premium {
   display: inline-flex;
   align-items: center;
@@ -134,6 +138,10 @@
 
 .btn-mobile-hidden {
   display: none !important;
+}
+
+.btn-mobile-only {
+  display: inline-flex !important;
 }
 
 .btn-premium::before {
@@ -168,6 +176,10 @@
   .btn-premium:not(.btn-icon) {
     min-height: 3rem;
     min-width: 11.5rem;
+  }
+
+  .btn-mobile-only {
+    display: none !important;
   }
 }
 
