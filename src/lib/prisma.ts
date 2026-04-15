@@ -1,13 +1,13 @@
 import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "@prisma/client";
 import { Pool } from "pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: any;
   prismaConnectionString: string | undefined;
-  prismaPromise: Promise<any> | undefined;
 };
 
-async function createPrismaClient() {
+function createPrismaClient() {
   const connectionString =
     process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL;
 
@@ -28,12 +28,6 @@ async function createPrismaClient() {
 
   const adapter = new PrismaPg(pool);
 
-  const prismaModule = await import("@prisma/client");
-  const PrismaClient =
-    "PrismaClient" in prismaModule
-      ? prismaModule.PrismaClient
-      : prismaModule.default.PrismaClient;
-
   return new PrismaClient({
     adapter,
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
@@ -51,24 +45,9 @@ export async function getPrisma() {
     return globalForPrisma.prisma;
   }
 
-  if (
-    globalForPrisma.prismaPromise &&
-    globalForPrisma.prismaConnectionString === connectionString
-  ) {
-    return globalForPrisma.prismaPromise;
-  }
-
   globalForPrisma.prismaConnectionString = connectionString;
-  globalForPrisma.prismaPromise = createPrismaClient().then((client) => {
-    globalForPrisma.prisma = client;
-    return client;
-  });
+  const client = createPrismaClient();
+  globalForPrisma.prisma = client;
 
-  const prisma = await globalForPrisma.prismaPromise;
-
-  if (process.env.NODE_ENV === "production") {
-    globalForPrisma.prismaPromise = undefined;
-  }
-
-  return prisma;
+  return client;
 }
