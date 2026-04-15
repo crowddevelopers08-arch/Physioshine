@@ -244,7 +244,7 @@ export default function PrivacyPolicy() {
             </p>
             <div className="space-y-2 rounded-lg bg-surface-container-low p-4 sm:p-6">
               <p className="font-bold text-on-surface">Physio Shine</p>
-              <p>Hyderabad, Telangana, India</p>
+              <p>MNR complex, SBH road, opposite SBI bank, near metro station, Lb Nagar, Hyderabad-500074</p>
               <p>
                 Phone:{" "}
                 <a

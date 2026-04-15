@@ -28,7 +28,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <span className="flex items-center gap-1.5">
             <span className="material-symbols-outlined text-sm">location_on</span>
-            Hyderabad, Telangana, India
+            MNR complex, SBH road, opposite SBI bank, near metro station, Lb Nagar, Hyderabad-500074
           </span>
           <div className="flex items-center gap-6">
             <a href="tel:8309199733" className="flex items-center gap-1.5 hover:text-secondary-fixed transition-colors">

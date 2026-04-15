@@ -53,16 +53,16 @@ export default function Footer() {
             className="space-y-4 sm:col-span-2 lg:col-span-1"
           >
             <BrandLogo href="/" width={240} className="shrink-0" />
-            <p className="text-sm leading-relaxed text-white/68">
+            {/* <p className="text-sm leading-relaxed text-white/68">
               Advanced Physiotherapy, Chiropractic & Rehabilitation Centre in
               Hyderabad. Delivering holistic, evidence-based care since 2018.
-            </p>
+            </p> */}
             <div className="space-y-2 text-sm text-white/68">
               <p className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-primary">
                   location_on
                 </span>
-                Hyderabad, Telangana, India
+                MNR complex, SBH road, opposite SBI bank, near metro station, Lb Nagar, Hyderabad-500074
               </p>
               <a
                 href="tel:8309199733"
@@ -157,7 +157,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10 px-4 py-2 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-xs text-white/40 sm:flex-row">
-          <p>&copy; 2024 Physio Shine. All rights reserved.</p>
+          <p>&copy; 2026 Physio Shine. All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <span className="text-white/25">Legal</span>
             <Link
