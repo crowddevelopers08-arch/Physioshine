@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 type DbLeadStatus = "NEW" | "CONTACTED" | "SCHEDULED" | "CONVERTED" | "LOST";
 
@@ -16,6 +16,7 @@ export async function PATCH(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const prisma = await getPrisma();
     const { id } = await context.params;
     const body = await request.json();
     const status = String(body?.status || "").toUpperCase() as DbLeadStatus;

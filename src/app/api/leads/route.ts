@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 type DbLeadStatus = "NEW" | "CONTACTED" | "SCHEDULED" | "CONVERTED" | "LOST";
 
@@ -141,6 +141,7 @@ async function syncLeadToTelecrm(lead: {
 
 export async function GET(request: Request) {
   try {
+    const prisma = await getPrisma();
     const { searchParams } = new URL(request.url);
     const search = searchParams.get("search")?.trim() || "";
     const status = searchParams.get("status")?.trim() || "";
@@ -202,6 +203,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    const prisma = await getPrisma();
     const body = (await request.json()) as CreateLeadPayload;
 
     const name = body.name?.trim();

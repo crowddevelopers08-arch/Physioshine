@@ -1,16 +1,13 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
-const { PrismaClient } = require("@prisma/client") as {
-  PrismaClient: new (options?: Record<string, unknown>) => any;
-};
-
 const globalForPrisma = globalThis as unknown as {
   prisma: any;
   prismaConnectionString: string | undefined;
+  prismaPromise: Promise<any> | undefined;
 };
 
-function createPrismaClient() {
+async function createPrismaClient() {
   const connectionString =
     process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL;
 
@@ -31,21 +28,45 @@ function createPrismaClient() {
 
   const adapter = new PrismaPg(pool);
 
+  const { PrismaClient } = (await import("@prisma/client")) as {
+    PrismaClient: new (options?: Record<string, unknown>) => any;
+  };
+
   return new PrismaClient({
     adapter,
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
   });
 }
 
-export const prisma =
-  globalForPrisma.prisma &&
-  globalForPrisma.prismaConnectionString ===
-    (process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL)
-    ? globalForPrisma.prisma
-    : createPrismaClient();
-
-if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = prisma;
-  globalForPrisma.prismaConnectionString =
+export async function getPrisma() {
+  const connectionString =
     process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL;
+
+  if (
+    globalForPrisma.prisma &&
+    globalForPrisma.prismaConnectionString === connectionString
+  ) {
+    return globalForPrisma.prisma;
+  }
+
+  if (
+    globalForPrisma.prismaPromise &&
+    globalForPrisma.prismaConnectionString === connectionString
+  ) {
+    return globalForPrisma.prismaPromise;
+  }
+
+  globalForPrisma.prismaConnectionString = connectionString;
+  globalForPrisma.prismaPromise = createPrismaClient().then((client) => {
+    globalForPrisma.prisma = client;
+    return client;
+  });
+
+  const prisma = await globalForPrisma.prismaPromise;
+
+  if (process.env.NODE_ENV === "production") {
+    globalForPrisma.prismaPromise = undefined;
+  }
+
+  return prisma;
 }
