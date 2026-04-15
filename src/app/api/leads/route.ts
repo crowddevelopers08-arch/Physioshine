@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { LeadStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+
+type DbLeadStatus = "NEW" | "CONTACTED" | "SCHEDULED" | "CONVERTED" | "LOST";
 
 type CreateLeadPayload = {
   name?: string;
@@ -11,7 +12,7 @@ type CreateLeadPayload = {
   source?: string;
 };
 
-const frontendStatusMap: Record<LeadStatus, string> = {
+const frontendStatusMap: Record<DbLeadStatus, string> = {
   NEW: "new",
   CONTACTED: "contacted",
   SCHEDULED: "scheduled",
@@ -142,7 +143,7 @@ export async function GET(request: Request) {
         : {}),
       ...(status
         ? {
-            status: status.toUpperCase() as LeadStatus,
+            status: status.toUpperCase() as DbLeadStatus,
           }
         : {}),
       ...(treatment

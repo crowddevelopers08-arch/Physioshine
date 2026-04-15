@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { LeadStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
-const allowedStatuses = new Set<LeadStatus>([
+type DbLeadStatus = "NEW" | "CONTACTED" | "SCHEDULED" | "CONVERTED" | "LOST";
+
+const allowedStatuses = new Set<DbLeadStatus>([
   "NEW",
   "CONTACTED",
   "SCHEDULED",
@@ -17,7 +18,7 @@ export async function PATCH(
   try {
     const { id } = await context.params;
     const body = await request.json();
-    const status = String(body?.status || "").toUpperCase() as LeadStatus;
+    const status = String(body?.status || "").toUpperCase() as DbLeadStatus;
 
     if (!allowedStatuses.has(status)) {
       return NextResponse.json(
