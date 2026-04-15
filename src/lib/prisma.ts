@@ -1,9 +1,12 @@
-import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
+const { PrismaClient } = require("@prisma/client") as {
+  PrismaClient: new (options?: Record<string, unknown>) => any;
+};
+
 const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined;
+  prisma: any;
   prismaConnectionString: string | undefined;
 };
 
