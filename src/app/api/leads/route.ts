@@ -12,6 +12,22 @@ type CreateLeadPayload = {
   source?: string;
 };
 
+type LeadRow = {
+  id: string;
+  name: string;
+  phone: string;
+  email: string | null;
+  treatment: string;
+  preferredDate: string | null;
+  source: string | null;
+  status: DbLeadStatus;
+  telecrmSynced: boolean;
+  telecrmId: string | null;
+  telecrmError: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 const frontendStatusMap: Record<DbLeadStatus, string> = {
   NEW: "new",
   CONTACTED: "contacted",
@@ -159,7 +175,7 @@ export async function GET(request: Request) {
     });
 
     return NextResponse.json({
-      leads: leads.map((lead) => ({
+      leads: leads.map((lead: LeadRow) => ({
         id: lead.id,
         name: lead.name,
         phone: lead.phone,
