@@ -16,7 +16,8 @@ export default function HeroSection() {
   return (
     <AnimatedSection
       as="header"
-      className="relative isolate flex items-start overflow-hidden lg:items-center"
+      className="relative isolate flex items-start overflow-hidden scroll-mt-32 lg:items-center"
+      id="home"
     >
       {/* Fixed background image */}
       <div className="absolute inset-0 z-0">
@@ -50,8 +51,8 @@ export default function HeroSection() {
               <TypingWords
                 words={["Physiotherapy,", "Chiropractic", "Rehabilitation"]}
               />
-            </span>{" "}
-            Care for all your pain
+            </span>
+            <span className="block">Care for all your pain</span>
           </h1>
 
           <p className="max-w-xl text-sm leading-relaxed text-white/80 min-[475px]:text-base sm:text-lg">

@@ -29,7 +29,10 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <AnimatedSection className="py-14 sm:py-16 max-[470px]:py-6 px-4 sm:px-8 bg-brand-soft">
+    <AnimatedSection
+      className="py-14 sm:py-16 max-[470px]:py-6 px-4 sm:px-8 bg-brand-soft scroll-mt-32"
+      id="faqs"
+    >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div data-reveal-header className="text-center mb-10 space-y-2">

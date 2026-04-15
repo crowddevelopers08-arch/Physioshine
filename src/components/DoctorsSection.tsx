@@ -55,7 +55,7 @@ export default function DoctorsSection() {
   };
 
   return (
-    <AnimatedSection className="bg-surface py-20 max-[470px]:py-6" id="doctors">
+    <AnimatedSection className="bg-surface py-20 max-[470px]:py-6 scroll-mt-32" id="doctors">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div data-reveal-header className="mb-14 max-[470px]:mb-6 space-y-3 text-center">
           <span className="text-xs font-black uppercase tracking-widest text-primary sm:text-sm">

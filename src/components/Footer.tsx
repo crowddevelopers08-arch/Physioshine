@@ -107,11 +107,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               {[
-                { label: "About Clinic", href: "#" },
+                { label: "About Clinic", href: "#clinic" },
                 { label: "Meet Our Doctors", href: "#doctors" },
                 { label: "Patient Reviews", href: "#reviews" },
                 { label: "Book Appointment", href: "#book" },
-                { label: "FAQs", href: "#" },
+                { label: "FAQs", href: "#faqs" },
                 { label: "Privacy Policy", href: "/privacy-policy" },
               ].map((link) => (
                 <li key={link.label}>
@@ -166,9 +166,12 @@ export default function Footer() {
             >
               Privacy Policy
             </Link>
-            <a href="#" className="transition-colors hover:text-white/75">
+            <Link
+              href="/terms-of-service"
+              className="transition-colors hover:text-white/75"
+            >
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

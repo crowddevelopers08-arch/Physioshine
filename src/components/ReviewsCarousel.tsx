@@ -67,7 +67,7 @@ export default function ReviewsCarousel() {
 
   return (
     <AnimatedSection
-      className="max-[470px]:py-6 overflow-hidden bg-brand-deep py-14 text-white sm:py-16"
+      className="max-[470px]:py-6 overflow-hidden bg-brand-deep py-14 text-white scroll-mt-32 sm:py-16"
       id="reviews"
     >
       <div className="mx-auto mb-8 max-w-7xl px-4 sm:mb-10 sm:px-8">

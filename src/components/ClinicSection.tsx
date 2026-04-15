@@ -16,7 +16,10 @@ const uspStats = [
 
 export default function ClinicSection() {
   return (
-    <AnimatedSection className="py-14 sm:py-16 lg:py-20 max-[470px]:py-6 bg-surface overflow-hidden">
+    <AnimatedSection
+      className="py-14 sm:py-16 lg:py-20 max-[470px]:py-6 bg-surface overflow-hidden scroll-mt-32"
+      id="clinic"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
 
         {/* Two-column: text + image */}
@@ -29,7 +32,7 @@ export default function ClinicSection() {
                 About Physio Shine
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-headline leading-tight mt-2">
-                Hyderabad&apos;s Leading{" "}
+                Hyderabad&apos;s Biggest{" "}
                 <span className="text-primary">
                   Physio &amp; Rehab Centre
                 </span>
@@ -48,7 +51,7 @@ export default function ClinicSection() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   className="image-softened h-72 w-full object-cover"
-                  src="/DSC07927.png"
+                  src="/DSC04203.JPG"
                   alt="Physio Shine Clinic"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-brand-deeper/90 via-brand-deep/50 to-transparent p-6 pt-12">
@@ -87,7 +90,7 @@ export default function ClinicSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
                 className="image-softened w-full h-72 object-cover sm:h-96 lg:h-120"
-                src="/DSC07927.png"
+                src="/DSC04203.JPG"
                 alt="Physio Shine Clinic"
               />
               {/* Quote overlay */}

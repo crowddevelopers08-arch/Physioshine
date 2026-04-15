@@ -1,41 +1,40 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Script from "next/script";
+import { useRef } from "react";
 import AnimatedSection from "./AnimatedSection";
 
 const videos = [
   {
     id: 1,
-    permalink: "https://www.instagram.com/reel/REPLACE_WITH_REEL_1/",
-    title: "Back Pain Recovery",
+    permalink: "https://www.instagram.com/p/DWWx33SETar/",
+    title: "Patient Recovery Story 1",
   },
   {
     id: 2,
-    permalink: "https://www.instagram.com/reel/REPLACE_WITH_REEL_2/",
-    title: "Stroke Rehab Progress",
+    permalink: "https://www.instagram.com/p/DV8kebVkudX/",
+    title: "Patient Recovery Story 2",
   },
   {
     id: 3,
-    permalink: "https://www.instagram.com/reel/REPLACE_WITH_REEL_3/",
-    title: "Sports Injury Comeback",
+    permalink: "https://www.instagram.com/p/DTKpu51Dpi1/",
+    title: "Patient Recovery Story 3",
   },
   {
     id: 4,
-    permalink: "https://www.instagram.com/reel/REPLACE_WITH_REEL_4/",
-    title: "Spine Compression Relief",
+    permalink: "https://www.instagram.com/p/DTcTKhjkzLL/",
+    title: "Patient Recovery Story 4",
+  },
+  {
+    id: 5,
+    permalink: "https://www.instagram.com/p/DTcZxjmCfQK/",
+    title: "Patient Recovery Story 5",
+  },
+  {
+    id: 6,
+    permalink: "https://www.instagram.com/p/DRhLG_EDoRx/",
+    title: "Patient Recovery Story 6",
   },
 ];
-
-declare global {
-  interface Window {
-    instgrm?: {
-      Embeds?: {
-        process: () => void;
-      };
-    };
-  }
-}
 
 function InstagramEmbed({
   permalink,
@@ -44,46 +43,25 @@ function InstagramEmbed({
   permalink: string;
   title: string;
 }) {
-  const isPlaceholder = permalink.includes("REPLACE_WITH_REEL");
-
-  if (isPlaceholder) {
-    return (
-      <div className="mx-auto flex aspect-[9/16] w-full max-w-[21rem] flex-col items-center justify-center rounded-[2rem] border border-dashed border-white/20 bg-white/6 p-6 text-center text-white/75">
-        <span className="material-symbols-outlined mb-4 text-5xl text-secondary-fixed">
-          smart_display
-        </span>
-        <h3 className="font-headline text-lg font-bold text-white">{title}</h3>
-        <p className="mt-3 text-sm leading-relaxed">
-          Replace this placeholder with an Instagram Reel URL in
-          <span className="mx-1 rounded bg-white/10 px-2 py-1 font-mono text-xs text-white">
-            `videos`
-          </span>
-          to render the real embed here.
-        </p>
-      </div>
-    );
-  }
+  const embedUrl = permalink.endsWith("/")
+    ? `${permalink}embed/captioned/`
+    : `${permalink}/embed/captioned/`;
 
   return (
-    <blockquote
-      className="instagram-media !m-0 !min-w-0 !w-full !max-w-[21rem] !rounded-[2rem] !border !border-white/10 !bg-white !shadow-xl"
-      data-instgrm-captioned
-      data-instgrm-permalink={permalink}
-      data-instgrm-version="14"
-    >
-      <a href={permalink} target="_blank" rel="noreferrer">
-        View this post on Instagram
-      </a>
-    </blockquote>
+    <div className="w-full max-w-[21rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white shadow-xl">
+      <iframe
+        title={title}
+        src={embedUrl}
+        className="h-[38rem] w-full bg-white sm:h-[39rem]"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        loading="lazy"
+      />
+    </div>
   );
 }
 
 export default function VideoTestimonials() {
   const videosCarouselRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    window.instgrm?.Embeds?.process();
-  }, []);
 
   const scrollVideos = (direction: "prev" | "next") => {
     const container = videosCarouselRef.current;
@@ -101,38 +79,27 @@ export default function VideoTestimonials() {
 
   return (
     <AnimatedSection className="bg-brand-deeper py-16 max-[470px]:py-6 text-white">
-      <Script
-        async
-        src="https://www.instagram.com/embed.js"
-        strategy="afterInteractive"
-        onLoad={() => window.instgrm?.Embeds?.process()}
-      />
-
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div data-reveal-header className="mb-10 space-y-2 text-center">
           <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
             Real Results
           </span>
           <h2 className="font-headline text-3xl font-black sm:text-4xl">
-            Patient Instagram Video Testimonials
+            Patient Testimonials
           </h2>
-          <p className="mx-auto max-w-2xl text-sm text-white/60 sm:text-base">
-            Add your Instagram Reel links below and this section will render the
-            real Instagram video embeds directly on the page.
-          </p>
         </div>
 
-        <div className="sm:hidden">
+        <div>
           <div className="overflow-hidden">
             <div
               ref={videosCarouselRef}
-              className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5"
             >
               {videos.map((video) => (
                 <div
                   key={video.id}
                   data-reveal-item
-                  className="flex min-w-full shrink-0 snap-center justify-center"
+                  className="flex min-w-full shrink-0 snap-center justify-center sm:min-w-[50%] xl:min-w-[33.333%]"
                 >
                   <InstagramEmbed permalink={video.permalink} title={video.title} />
                 </div>
@@ -158,14 +125,6 @@ export default function VideoTestimonials() {
               <span className="material-symbols-outlined text-xl">chevron_right</span>
             </button>
           </div>
-        </div>
-
-        <div className="hidden items-start justify-items-center gap-5 sm:grid sm:grid-cols-2 sm:gap-6 xl:grid-cols-4">
-          {videos.map((video) => (
-            <div key={video.id} data-reveal-item className="flex w-full justify-center">
-              <InstagramEmbed permalink={video.permalink} title={video.title} />
-            </div>
-          ))}
         </div>
 
         <div data-reveal-item className="mt-10 text-center">

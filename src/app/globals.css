@@ -111,7 +111,7 @@
 }
 
 .image-softened {
-  filter: saturate(0.95) contrast(0.97) brightness(0.985);
+  filter: none;
 }
 
 .btn-premium {

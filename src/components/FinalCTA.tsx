@@ -2,7 +2,7 @@ import AnimatedSection from "./AnimatedSection";
 
 export default function FinalCTA() {
   return (
-    <AnimatedSection className="relative py-0 bg-surface overflow-hidden" id="contact">
+    <AnimatedSection className="relative py-0 bg-surface overflow-hidden scroll-mt-32" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-6">
         <div
           data-reveal-item

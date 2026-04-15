@@ -14,7 +14,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "#home" },
     { label: "Treatments", href: "#treatments" },
     { label: "Doctors", href: "#doctors" },
     { label: "Reviews", href: "#reviews" },

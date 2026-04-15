@@ -11,23 +11,27 @@ import ReviewsCarousel from "@/components/ReviewsCarousel";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import ThreeHomepageBackground from "@/components/ThreeHomepageBackground";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-      {/* <BookingSection /> */}
-      <HeroSection />
-      <USPStrip />
-      <ClinicSection />
-      <PathToRecovery />
-      <TreatmentGrid />
-      <DoctorsSection />
-      <VideoTestimonials />
-      <ReviewsCarousel />
-      <FAQSection />
-      <FinalCTA />
-      <Footer />
-    </>
+    <div className="relative bg-surface">
+      <ThreeHomepageBackground />
+      <div className="relative z-10">
+        <Navbar />
+        {/* <BookingSection /> */}
+        <HeroSection />
+        <USPStrip />
+        <ClinicSection />
+        <PathToRecovery />
+        <TreatmentGrid />
+        <DoctorsSection />
+        <VideoTestimonials />
+        <ReviewsCarousel />
+        <FAQSection />
+        <FinalCTA />
+        <Footer />
+      </div>
+    </div>
   );
 }
