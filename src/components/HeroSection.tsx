@@ -49,7 +49,7 @@ export default function HeroSection() {
             Advanced{" "}
             <span className="text-secondary-fixed">
               <TypingWords
-                words={["Physiotherapy,", "Chiropractic", "Rehabilitation"]}
+                words={["Physiotherapy", "Chiropractic", "Rehabilitation"]}
               />
             </span>
             <span className="block">Care for all your pain</span>

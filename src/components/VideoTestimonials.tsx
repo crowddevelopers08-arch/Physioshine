@@ -44,17 +44,18 @@ function InstagramEmbed({
   title: string;
 }) {
   const embedUrl = permalink.endsWith("/")
-    ? `${permalink}embed/captioned/`
-    : `${permalink}/embed/captioned/`;
+    ? `${permalink}embed/`
+    : `${permalink}/embed/`;
 
   return (
     <div className="w-full max-w-[21rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white shadow-xl">
       <iframe
         title={title}
         src={embedUrl}
-        className="h-[38rem] w-full bg-white sm:h-[39rem]"
+        className="h-[42rem] w-full bg-white sm:h-[44rem]"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         loading="lazy"
+        scrolling="no"
       />
     </div>
   );
