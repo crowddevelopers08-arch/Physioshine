@@ -37,7 +37,7 @@ export default function Navbar() {
             </a>
             <span className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-sm">schedule</span>
-              Mon – Sat: 9am – 7pm
+              Mon - Sun: 8am - 8pm
             </span>
           </div>
         </div>

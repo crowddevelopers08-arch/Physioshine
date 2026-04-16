@@ -102,12 +102,25 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-col flex-wrap justify-center gap-2 pt-2 min-[475px]:flex-row sm:gap-3 lg:justify-start">
-            <a
-              href="#book"
-              className="btn-premium rounded-full bg-primary px-4 py-1.5 text-center text-[11px] font-bold text-white shadow-lg shadow-primary/25 hover:brightness-110 min-[475px]:text-xs sm:px-4.5 sm:py-1.5 sm:text-sm"
-            >
-              Start Your Recovery
-            </a>
+            <div className="group relative overflow-hidden rounded-2xl border border-secondary-fixed/45 bg-white/10 px-4 py-3 text-center shadow-xl shadow-brand-deeper/20 backdrop-blur-md min-[475px]:max-w-[22rem] sm:px-5 sm:py-3.5 lg:text-left">
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-secondary-fixed lg:inset-x-auto lg:inset-y-0 lg:left-0 lg:h-auto lg:w-1.5" />
+              <div className="grid justify-items-center gap-2 pl-1 lg:grid-cols-[2.5rem_1fr] lg:items-center lg:justify-items-start lg:gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary-fixed text-on-secondary-fixed shadow-lg shadow-secondary-fixed/20">
+                  <span
+                    className="material-symbols-outlined text-[22px] leading-none"
+                    data-weight="fill"
+                  >
+                    support_agent
+                  </span>
+                </span>
+                <p className="min-w-0 text-sm font-black leading-snug text-white sm:text-base">
+                  One-Time Consultation{" "}
+                  <span className="block text-xs font-bold text-secondary-fixed sm:text-sm">
+                    Get Lifetime Expert Support
+                  </span>
+                </p>
+              </div>
+            </div>
             <a
               href="tel:8309199733"
               className="btn-premium btn-mobile-only items-center justify-center gap-1.5 rounded-full bg-secondary-fixed px-4 py-1.5 text-[11px] font-bold text-on-secondary-fixed shadow-lg shadow-secondary-fixed/20 hover:brightness-105 min-[475px]:text-xs"
