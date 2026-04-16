@@ -23,17 +23,8 @@ export default function VideoTestimonials() {
           </p>
         </div>
 
-        <div data-reveal-item>
-          <div className="mb-8 space-y-2 text-center">
-            <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
-              Instagram Stories
-            </span>
-            <h3 className="font-headline text-2xl font-black text-white sm:text-3xl">
-              Patient Recovery Reels
-            </h3>
-          </div>
           <InstagramTestimonialsCarousel />
-        </div>
+
 
         <div data-reveal-item className="mt-14 border-t border-white/10 pt-10">
           <div className="mb-8 space-y-2 text-center">
@@ -41,7 +32,7 @@ export default function VideoTestimonials() {
               Social Proof
             </span>
             <h3 className="font-headline text-2xl font-black text-white sm:text-3xl">
-              More Patient Stories
+              Our Treatment Videos
             </h3>
           </div>
           <BeforeAfterVideoCarousel />

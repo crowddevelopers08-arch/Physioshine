@@ -136,7 +136,7 @@ export default function Footer() {
                 "1000+ Google Reviews",
                 "4.8 / 5 Google Rating",
                 "5000+ Satisfied Clients",
-                "150+ Patients Per Day",
+                "150+ Patients Per Day Capacity",
                 "Medical Grade Equipment",
                 "Non-Surgical Solutions",
               ].map((item) => (
