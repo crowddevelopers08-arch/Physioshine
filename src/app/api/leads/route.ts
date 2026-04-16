@@ -10,6 +10,7 @@ type CreateLeadPayload = {
   treatment?: string;
   preferredDate?: string;
   source?: string;
+  pageUrl?: string;
 };
 
 type LeadRow = {
@@ -47,7 +48,10 @@ function buildTelecrmPayload(lead: {
   treatment: string;
   preferredDate?: string | null;
   source?: string | null;
+  pageUrl?: string | null;
 }) {
+  const pageName = lead.pageUrl || lead.source || "website";
+
   return {
     fields: {
       Id: "",
@@ -60,8 +64,8 @@ function buildTelecrmPayload(lead: {
       message: "",
       "Lead Status": "new",
       "Lead Request Type": "appointment",
-      PageName: lead.source || "website",
-      FormName: "physioshine_booking_form",
+      PageName: pageName,
+      FormName: "website leads",
     },
     actions: [
       {
@@ -76,6 +80,10 @@ function buildTelecrmPayload(lead: {
         type: "SYSTEM_NOTE",
         text: `Source: ${lead.source || "website"}`,
       },
+      {
+        type: "SYSTEM_NOTE",
+        text: `Page URL: ${pageName}`,
+      },
     ],
   };
 }
@@ -88,6 +96,7 @@ async function syncLeadToTelecrm(lead: {
   treatment: string;
   preferredDate?: string | null;
   source?: string | null;
+  pageUrl?: string | null;
 }) {
   const endpoint = process.env.TELECRM_API_URL;
   const apiKey = process.env.TELECRM_API_KEY;
@@ -212,6 +221,11 @@ export async function POST(request: Request) {
     const treatment = body.treatment?.trim();
     const preferredDate = body.preferredDate?.trim() || null;
     const source = body.source?.trim() || "homepage-booking-form";
+    const pageUrl =
+      body.pageUrl?.trim() ||
+      request.headers.get("referer") ||
+      request.headers.get("origin") ||
+      null;
 
     if (!name || !phone || !treatment) {
       return NextResponse.json(
@@ -231,7 +245,10 @@ export async function POST(request: Request) {
       },
     });
 
-    const telecrmResult = await syncLeadToTelecrm(lead);
+    const telecrmResult = await syncLeadToTelecrm({
+      ...lead,
+      pageUrl,
+    });
 
     const updatedLead = await prisma.lead.update({
       where: { id: lead.id },

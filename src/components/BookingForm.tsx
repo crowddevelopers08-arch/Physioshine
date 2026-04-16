@@ -53,6 +53,7 @@ export default function BookingForm() {
         body: JSON.stringify({
           ...formData,
           source: "homepage-booking-form",
+          pageUrl: window.location.href,
         }),
       });
 
@@ -190,12 +191,19 @@ export default function BookingForm() {
         className="btn-premium mt-0.5 w-full cursor-pointer rounded-full bg-secondary-fixed px-4 py-3 text-sm font-black text-on-secondary-fixed shadow-xl shadow-secondary-fixed/25 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-65 sm:py-3.5"
         type="submit"
       >
-        <span className="inline-flex items-center justify-center gap-2">
-          {isSubmitting ? "Submitting..." : "Book Your Consultation"}
-          <span className="material-symbols-outlined text-[20px]">
-            arrow_forward
+        {isSubmitting ? (
+          <span className="inline-flex items-center justify-center gap-2">
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-on-secondary-fixed/30 border-t-on-secondary-fixed" />
+            Sending Request...
           </span>
-        </span>
+        ) : (
+          <span className="inline-flex items-center justify-center gap-2">
+            Book Your Consultation
+            <span className="material-symbols-outlined text-[20px]">
+              arrow_forward
+            </span>
+          </span>
+        )}
       </button>
       {errorMessage ? (
         <p className="rounded-xl border border-error/15 bg-error-container/60 px-3 py-2 text-sm font-semibold text-on-error-container">
