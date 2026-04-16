@@ -114,9 +114,9 @@ export default function HeroSection() {
                   </span>
                 </span>
                 <p className="min-w-0 text-sm font-black leading-snug text-white sm:text-base">
-                  One-Time Consultation{" "}
+                 Get lifetime expert support {" "}
                   <span className="block text-xs font-bold text-secondary-fixed sm:text-sm">
-                    Get Lifetime Expert Support
+                    with one-time consultation
                   </span>
                 </p>
               </div>
