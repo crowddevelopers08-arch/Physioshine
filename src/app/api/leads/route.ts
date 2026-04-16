@@ -51,6 +51,7 @@ function buildTelecrmPayload(lead: {
   pageUrl?: string | null;
 }) {
   const pageName = lead.pageUrl || lead.source || "website";
+  const formName = "website leads";
 
   return {
     fields: {
@@ -58,14 +59,14 @@ function buildTelecrmPayload(lead: {
       name: lead.name,
       email: lead.email || "",
       phone: normalizePhone(lead.phone),
-      preferreddate: lead.preferredDate || "",
-      preferredtime: "",
       select_the_procedure: lead.treatment,
       message: "",
       "Lead Status": "new",
       "Lead Request Type": "appointment",
       PageName: pageName,
-      FormName: "website leads",
+      FormName: formName,
+      formname: formName,
+      "Form Name": formName,
     },
     actions: [
       {
@@ -74,15 +75,15 @@ function buildTelecrmPayload(lead: {
       },
       {
         type: "SYSTEM_NOTE",
-        text: `Preferred Date: ${lead.preferredDate || "Not provided"}`,
-      },
-      {
-        type: "SYSTEM_NOTE",
         text: `Source: ${lead.source || "website"}`,
       },
       {
         type: "SYSTEM_NOTE",
         text: `Page URL: ${pageName}`,
+      },
+      {
+        type: "SYSTEM_NOTE",
+        text: `Form Name: ${formName}`,
       },
     ],
   };
