@@ -31,15 +31,19 @@ export default function FinalCTA() {
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 py-2 sm:py-4">
               {[
                 { value: "5000+", label: "Happy Patients" },
-                { value: "4.8", label: "Google Rating", google: true },
+                { value: "4.8", label: "Google Rating", star: true },
                 { value: "150+", label: "Patients/Day" },
               ].map((s) => (
                 <div key={s.label} className="text-center">
                   <div className="flex items-center justify-center gap-2">
-                    {s.google ? (
-                      <img src="/google-g.svg" alt="Google" className="h-4.5 w-4.5 shrink-0" />
-                    ) : null}
-                    <p className="text-2xl font-black text-secondary-fixed font-headline">{s.value}</p>
+                    <p className="flex items-center gap-1 text-2xl font-black text-secondary-fixed font-headline">
+                      {s.value}
+                      {s.star ? (
+                        <span className="material-symbols-outlined text-xl" data-weight="fill">
+                          star
+                        </span>
+                      ) : null}
+                    </p>
                   </div>
                   <p className="text-white/50 text-xs uppercase tracking-widest">{s.label}</p>
                 </div>

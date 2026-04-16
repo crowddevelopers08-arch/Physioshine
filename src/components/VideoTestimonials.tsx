@@ -1,131 +1,50 @@
-"use client";
-
-import { useRef } from "react";
 import AnimatedSection from "./AnimatedSection";
-
-const videos = [
-  {
-    id: 1,
-    permalink: "https://www.instagram.com/p/DWWx33SETar/",
-    title: "Patient Recovery Story 1",
-  },
-  {
-    id: 2,
-    permalink: "https://www.instagram.com/p/DV8kebVkudX/",
-    title: "Patient Recovery Story 2",
-  },
-  {
-    id: 3,
-    permalink: "https://www.instagram.com/p/DTKpu51Dpi1/",
-    title: "Patient Recovery Story 3",
-  },
-  {
-    id: 4,
-    permalink: "https://www.instagram.com/p/DTcTKhjkzLL/",
-    title: "Patient Recovery Story 4",
-  },
-  {
-    id: 5,
-    permalink: "https://www.instagram.com/p/DTcZxjmCfQK/",
-    title: "Patient Recovery Story 5",
-  },
-  {
-    id: 6,
-    permalink: "https://www.instagram.com/p/DRhLG_EDoRx/",
-    title: "Patient Recovery Story 6",
-  },
-];
-
-function InstagramEmbed({
-  permalink,
-  title,
-}: {
-  permalink: string;
-  title: string;
-}) {
-  const embedUrl = permalink.endsWith("/")
-    ? `${permalink}embed/`
-    : `${permalink}/embed/`;
-
-  return (
-    <div className="w-full max-w-[21rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white shadow-xl">
-      <iframe
-        title={title}
-        src={embedUrl}
-        className="h-[42rem] w-full bg-white sm:h-[44rem]"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-        loading="lazy"
-        scrolling="no"
-      />
-    </div>
-  );
-}
+import BeforeAfterVideoCarousel from "./BeforeAfterVideoCarousel";
+import InstagramTestimonialsCarousel from "./InstagramTestimonialsCarousel";
 
 export default function VideoTestimonials() {
-  const videosCarouselRef = useRef<HTMLDivElement | null>(null);
-
-  const scrollVideos = (direction: "prev" | "next") => {
-    const container = videosCarouselRef.current;
-
-    if (!container) {
-      return;
-    }
-
-    const amount = container.clientWidth;
-    container.scrollBy({
-      left: direction === "next" ? amount : -amount,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <AnimatedSection className="bg-brand-deeper py-16 max-[470px]:py-6 text-white">
+    <AnimatedSection className="bg-brand-deeper py-16 text-white max-[470px]:py-6">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <div data-reveal-header className="mb-10 space-y-2 text-center">
-          <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
-            Real Results
-          </span>
-          <h2 className="font-headline text-3xl font-black sm:text-4xl">
+        <div data-reveal-header className="mx-auto mb-10 max-w-3xl space-y-3 text-center">
+          <div className="flex items-center justify-center gap-4">
+            <span className="h-px w-14 bg-linear-to-r from-transparent to-secondary-fixed/80" />
+            <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
+              Real Results
+            </span>
+            <span className="h-px w-14 bg-linear-to-r from-secondary-fixed/80 to-transparent" />
+          </div>
+          <h2 className="font-headline text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
             Patient Testimonials
           </h2>
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+            Watch real recovery stories and patient experiences from Physio
+            Shine.
+          </p>
         </div>
 
-        <div>
-          <div className="overflow-hidden">
-            <div
-              ref={videosCarouselRef}
-              className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5"
-            >
-              {videos.map((video) => (
-                <div
-                  key={video.id}
-                  data-reveal-item
-                  className="flex min-w-full shrink-0 snap-center justify-center sm:min-w-[50%] xl:min-w-[33.333%]"
-                >
-                  <InstagramEmbed permalink={video.permalink} title={video.title} />
-                </div>
-              ))}
-            </div>
+        <div data-reveal-item>
+          <div className="mb-8 space-y-2 text-center">
+            <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
+              Instagram Stories
+            </span>
+            <h3 className="font-headline text-2xl font-black text-white sm:text-3xl">
+              Patient Recovery Reels
+            </h3>
           </div>
+          <InstagramTestimonialsCarousel />
+        </div>
 
-          <div className="mt-5 flex items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => scrollVideos("prev")}
-              className="btn-premium btn-icon inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm"
-              aria-label="Previous testimonial video"
-            >
-              <span className="material-symbols-outlined text-xl">chevron_left</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollVideos("next")}
-              className="btn-premium btn-icon inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm"
-              aria-label="Next testimonial video"
-            >
-              <span className="material-symbols-outlined text-xl">chevron_right</span>
-            </button>
+        <div data-reveal-item className="mt-14 border-t border-white/10 pt-10">
+          <div className="mb-8 space-y-2 text-center">
+            <span className="text-xs font-black uppercase tracking-widest text-secondary-fixed sm:text-sm">
+              Social Proof
+            </span>
+            <h3 className="font-headline text-2xl font-black text-white sm:text-3xl">
+              More Patient Stories
+            </h3>
           </div>
+          <BeforeAfterVideoCarousel />
         </div>
 
         <div data-reveal-item className="mt-10 text-center">

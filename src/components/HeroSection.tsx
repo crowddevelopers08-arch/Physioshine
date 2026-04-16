@@ -122,14 +122,14 @@ export default function HeroSection() {
 
         <div
           data-reveal-item
-          className="glass-effect mx-auto mt-2 w-full max-w-[30rem] space-y-1 rounded-xl border border-white/45 p-3 shadow-2xl shadow-brand-deeper/20 min-[475px]:p-3.5 sm:space-y-1.5 sm:p-4 lg:mt-0 lg:max-w-[28.5rem] lg:p-4"
+          className="mx-auto mt-2 w-full max-w-[30rem] space-y-3 rounded-[1.5rem] border border-white/70 bg-white p-4 shadow-2xl shadow-brand-deeper/20 min-[475px]:p-5 sm:p-5 lg:mt-0 lg:max-w-[30rem]"
           id="book"
         >
-          <div className="space-y-0.5 text-center sm:space-y-1">
-            <h2 className="font-headline text-lg font-black text-on-surface min-[475px]:text-xl sm:text-2xl lg:text-3xl">
-              Book an Appointment Now
+          <div className="space-y-0.5 text-center">
+            <h2 className="font-headline text-base font-black text-on-surface min-[475px]:text-lg sm:text-xl lg:text-2xl">
+              Book a Quick Appointment
             </h2>
-            <p className="text-[11px] font-medium text-on-surface-variant min-[475px]:text-xs sm:text-sm">
+            <p className="text-[10px] font-medium text-on-surface-variant min-[475px]:text-[11px] sm:text-xs">
               Heal Better. Move Freely. Live Pain-Free.
             </p>
           </div>

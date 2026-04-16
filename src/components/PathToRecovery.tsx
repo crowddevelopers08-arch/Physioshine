@@ -1,4 +1,5 @@
 import AnimatedSection from "./AnimatedSection";
+import type { CSSProperties } from "react";
 
 const steps = [
   {
@@ -23,6 +24,9 @@ const steps = [
   },
 ];
 
+const sequenceSlotSeconds = 1.65;
+const connectorDrawSeconds = 0.9;
+
 export default function PathToRecovery() {
   return (
     <AnimatedSection className="py-14 sm:py-16 max-[470px]:py-6 bg-surface-container-low">
@@ -37,31 +41,59 @@ export default function PathToRecovery() {
           <div className="w-20 h-1.5 bg-secondary-fixed mx-auto rounded-full shadow-sm shadow-secondary-fixed/30" />
         </div>
 
-        <div className="relative flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-8">
-          {/* Connector line */}
-          <div className="hidden sm:block absolute top-11 left-0 w-full h-0.5 bg-outline-variant/30 -z-10" />
+        <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-4 sm:gap-8">
 
           {steps.map((step, i) => (
             <div
               key={step.title}
               data-reveal-item
-              className="flex-1 w-full flex flex-col items-center text-center space-y-3 group"
+              className="path-step group relative flex w-full flex-col items-center space-y-3 text-center"
+              style={
+                {
+                  "--step-delay": `${i * sequenceSlotSeconds}s`,
+                } as CSSProperties
+              }
             >
+              {i < steps.length - 1 ? (
+                <>
+                  <span
+                    className="path-connector-fill hidden sm:block"
+                    aria-hidden="true"
+                  />
+                  <span
+                    className="path-connector-arrow hidden sm:block"
+                    aria-hidden="true"
+                  />
+                </>
+              ) : null}
+
               {/* Step circle */}
-              <div className="relative w-22 h-22 rounded-full bg-surface-container-lowest shadow-xl flex items-center justify-center border-4 border-brand-soft ring-4 ring-primary/15 group-hover:scale-110 transition-transform">
+              <div
+                className="path-step-circle relative z-10 w-22 h-22 rounded-full bg-surface-container-lowest shadow-xl flex items-center justify-center border-4 border-brand-soft ring-4 ring-primary/15"
+                style={
+                  {
+                    "--step-pop-delay":
+                      i === 0
+                        ? "0s"
+                        : `${
+                            (i - 1) * sequenceSlotSeconds +
+                            connectorDrawSeconds
+                          }s`,
+                  } as CSSProperties
+                }
+              >
                 <span
                   className="material-symbols-outlined text-3xl text-primary"
                   data-weight="fill"
                 >
                   {step.icon}
                 </span>
-                {/* Step number badge */}
-                <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-black flex items-center justify-center">
+              </div>
+              <h4 className="flex items-start justify-center gap-2 px-2 text-base font-bold font-headline leading-snug sm:text-lg">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary-fixed text-xs font-black leading-none text-on-secondary-fixed">
                   {i + 1}
                 </span>
-              </div>
-              <h4 className="text-base sm:text-lg font-bold font-headline leading-snug px-2">
-                {step.title}
+                <span>{step.title}</span>
               </h4>
               <p className="text-on-surface-variant text-xs sm:text-sm px-2 leading-relaxed">
                 {step.desc}

@@ -9,7 +9,7 @@ const differentiators = [
 ];
 
 const uspStats = [
-  { icon: "groups", value: "150+", label: "Patients Per Day", color: "bg-primary text-white" },
+  { icon: "groups", value: "Capacity", label: "150+ Patients Per Day", color: "bg-primary text-white" },
   { icon: "biotech", value: "Grade A", label: "Medical Equipment", color: "bg-secondary-fixed text-on-secondary-fixed" },
   { icon: "hand_gesture", value: "Expert", label: "Hands-On Therapy", color: "bg-brand-deep text-white" },
 ];
@@ -122,7 +122,9 @@ export default function ClinicSection() {
             >
               <span className="material-symbols-outlined text-3xl opacity-80 shrink-0">{s.icon}</span>
               <div>
-                <p className="text-2xl font-black font-headline leading-none">{s.value}</p>
+                <p className="text-2xl font-black font-headline leading-none">
+                  {s.value}
+                </p>
                 <p className="text-sm font-medium opacity-80 mt-0.5">{s.label}</p>
               </div>
             </div>

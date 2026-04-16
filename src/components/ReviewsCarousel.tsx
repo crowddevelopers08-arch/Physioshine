@@ -6,32 +6,37 @@ import AnimatedSection from "./AnimatedSection";
 const reviews = [
   {
     text: "I came to physioshine for my neck and low back pain. I'm feeling very much better now, the treatment is very good. I am feeling comfortable and relaxed now. I'm recovered by 99% now, thank you & respect for Dr Fathima Madam, and I thank everyone at physioshine.",
-    author: "Google Reviewer",
+    author: "vijay kumar",
     rating: 5,
   },
   {
     text: "My dad has had severe sciatic nerve pain and lower back pain for a long time. After taking physiotherapy sessions here, my father's pain has reduced a lot. The sessions included stretching, strengthening exercises, and posture guidance, which really helped improve my mobility.",
-    author: "Google Reviewer",
+    author: "Ajay giragani",
+    image: "/p1.png",
     rating: 5,
   },
   {
     text: "I'm thoroughly impressed with the physiotherapy services at Physioshine - Advanced Neuro & Chiropractic Centre. The team is super professional, caring, and skilled. My experience was top-notch - from the warm welcome to the personalised treatment plan.",
-    author: "Google Reviewer",
+    author: "kusuma sravani",
+    image: "/p2.png",
     rating: 5,
   },
   {
     text: "Treatment is good. Recovered from my back pain, very satisfied with the result. Thank you, Dr Sachin sir and team physioshine.",
-    author: "Google Reviewer",
+    author: "sridhar kuncham",
+    image: "/p3.png",
     rating: 5,
   },
   {
     text: "I was suffering from low back pain for 3 months, and nothing seemed to help until I visited PhysioShine PhysioRehab. Dr Sachin and Dr Anjali clearly explained my condition and treated the root cause instead of just giving temporary relief.",
-    author: "Google Reviewer",
+    author: "Ajay Rachakonda",
+    image: "/p4.png",
     rating: 5,
   },
   {
     text: "It was more effective therapy, compared to other clinics... I went with severe neck & lower back pain... in 12 sittings it was cleared. Now I can rate my pain - lower back zero % pain. Your demand is more... so increase your branches on all 4 sides of the city!",
-    author: "Google Reviewer",
+    author: "Mendi Kiran",
+    image: "/p5.png",
     rating: 5,
   },
 ];
@@ -44,6 +49,28 @@ function Stars({ count }: { count: number }) {
           star
         </span>
       ))}
+    </div>
+  );
+}
+
+function ReviewerAvatar({
+  author,
+  image,
+}: {
+  author: string;
+  image?: string;
+}) {
+  return (
+    <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-secondary-fixed text-sm font-black uppercase text-on-secondary-fixed ring-2 ring-white/15">
+      {image ? (
+        <img
+          src={image}
+          alt={author}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        author.charAt(0)
+      )}
     </div>
   );
 }
@@ -124,16 +151,11 @@ export default function ReviewsCarousel() {
                   <p className="text-sm italic leading-relaxed whitespace-normal text-white/90">
                     &quot;{review.text}&quot;
                   </p>
-                  <div className="mt-4 flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-                      <img src="/google-g.svg" alt="Google" className="h-4.5 w-4.5" />
-                    </div>
+                  <div className="mt-4 flex items-center gap-3">
+                    <ReviewerAvatar author={review.author} image={review.image} />
                     <div>
                       <p className="text-sm font-bold text-secondary-fixed">
                         {review.author}
-                      </p>
-                      <p className="text-xs text-white/50">
-                        Verified Google Review
                       </p>
                     </div>
                   </div>
@@ -174,15 +196,12 @@ export default function ReviewsCarousel() {
             <p className="line-clamp-5 whitespace-normal text-sm italic leading-relaxed text-white/90">
               &quot;{review.text}&quot;
             </p>
-            <div className="mt-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-                <img src="/google-g.svg" alt="Google" className="h-4.5 w-4.5" />
-              </div>
+            <div className="mt-4 flex items-center gap-3">
+              <ReviewerAvatar author={review.author} image={review.image} />
               <div>
                 <p className="text-sm font-bold text-secondary-fixed">
                   {review.author}
                 </p>
-                <p className="text-xs text-white/50">Verified Google Review</p>
               </div>
             </div>
           </div>

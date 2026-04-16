@@ -1,11 +1,23 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+const inputClass =
+  "h-9 w-full rounded-lg border border-outline-variant/70 bg-white px-3 text-sm font-semibold text-on-surface outline-none transition-all duration-200 placeholder:text-on-surface-variant/60 hover:border-primary/40 focus:border-primary focus:ring-3 focus:ring-primary/10 sm:h-10";
+
+const iconClass =
+  "material-symbols-outlined text-[17px] text-primary";
+
+const compactFieldClass = "grid gap-1";
+
+const labelClass =
+  "flex items-center gap-1.5 text-xs font-black text-on-surface-variant sm:text-sm";
+
+const requiredMark = <span className="text-error">*</span>;
 
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [dateInputType, setDateInputType] = useState<"text" | "date">("text");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -15,19 +27,7 @@ export default function BookingForm() {
     treatment: "",
     preferredDate: "",
   });
-  const dateInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-
-  function openDatePicker() {
-    const input = dateInputRef.current;
-    if (!input) return;
-
-    setDateInputType("date");
-    requestAnimationFrame(() => {
-      input.focus();
-      input.showPicker?.();
-    });
-  }
 
   function updateField<K extends keyof typeof formData>(
     field: K,
@@ -77,102 +77,130 @@ export default function BookingForm() {
 
   if (submitted) {
     return (
-      <div className="py-10 text-center">
-        <span className="material-symbols-outlined text-6xl text-primary block mb-4 animate-bounce">
+      <div className="rounded-2xl border border-primary/10 bg-white/86 px-5 py-9 text-center shadow-xl shadow-brand-deep/10">
+        <span className="material-symbols-outlined mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary-fixed text-4xl text-primary animate-bounce">
           check_circle
         </span>
-        <h3 className="text-2xl font-bold">Appointment Booked</h3>
-        <p className="text-on-surface-variant">
-          Our Team will contact you shortly
+        <h3 className="font-headline text-2xl font-black text-on-surface">
+          Appointment Booked
+        </h3>
+        <p className="mt-2 text-sm font-medium text-on-surface-variant">
+          Our team will contact you shortly.
         </p>
       </div>
     );
   }
 
   return (
-    <form className="grid grid-cols-1 gap-3" onSubmit={handleSubmit}>
-      <input
-        value={formData.name}
-        onChange={(event) => updateField("name", event.target.value)}
-        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 text-on-surface placeholder:text-on-surface-variant outline-none focus:ring-2 focus:ring-primary"
-        placeholder="Full Name"
-        required
-        type="text"
-      />
-      <input
-        value={formData.phone}
-        onChange={(event) => updateField("phone", event.target.value)}
-        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 text-on-surface placeholder:text-on-surface-variant outline-none focus:ring-2 focus:ring-primary"
-        placeholder="Phone Number"
-        required
-        type="tel"
-      />
-      <input
-        value={formData.email}
-        onChange={(event) => updateField("email", event.target.value)}
-        className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 text-on-surface placeholder:text-on-surface-variant outline-none focus:ring-2 focus:ring-primary"
-        placeholder="Email Address"
-        required
-        type="email"
-      />
-      <div className="relative">
-        <select
-          value={formData.treatment}
-          onChange={(event) => updateField("treatment", event.target.value)}
-          className="w-full appearance-none rounded-lg border border-primary/10 bg-white/85 p-3.5 pr-12 text-on-surface outline-none focus:ring-2 focus:ring-primary"
-          required
-        >
-          <option value="" disabled>
-            Select Treatment
-          </option>
-          <option>Back pain</option>
-          <option>Shoulder pain</option>
-          <option>neck pain</option>
-          <option>knee pain</option>
-          <option>Sport Injury Rehab</option>
-          <option>Stroke Rehab</option>
-          <option>Spine Compression</option>
-          <option>Posture Correction</option>
-        </select>
-        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-on-surface">
-          <span className="material-symbols-outlined text-[20px]">expand_more</span>
-        </span>
-      </div>
-      <div className="relative">
+    <form
+      className="grid grid-cols-1 gap-2.5 rounded-3xl bg-white p-0.5 sm:gap-3"
+      onSubmit={handleSubmit}
+    >
+      <div className={compactFieldClass}>
+        <label className={labelClass} htmlFor="booking-name">
+          <span className={iconClass}>person</span>
+          Full Name {requiredMark}
+        </label>
         <input
-          ref={dateInputRef}
-          value={formData.preferredDate}
-          onChange={(event) => updateField("preferredDate", event.target.value)}
-          className="w-full rounded-lg border border-primary/10 bg-white/85 p-3.5 pr-12 text-on-surface placeholder:text-on-surface-variant outline-none [color-scheme:light] [&::-webkit-calendar-picker-indicator]:hidden focus:ring-2 focus:ring-primary"
+          id="booking-name"
+          value={formData.name}
+          onChange={(event) => updateField("name", event.target.value)}
+          className={inputClass}
+          placeholder="Enter your full name"
           required
-          type={dateInputType}
-          placeholder="dd-mm-yyyy"
-          onFocus={() => setDateInputType("date")}
-          onBlur={(event) => {
-            if (!event.currentTarget.value) {
-              setDateInputType("text");
-            }
-          }}
+          type="text"
         />
-        <button
-          type="button"
-          onMouseDown={(event) => event.preventDefault()}
-          onClick={openDatePicker}
-          aria-label="Open calendar"
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface"
-        >
-          <span className="material-symbols-outlined text-[20px]">calendar_month</span>
-        </button>
       </div>
+
+      <div className={compactFieldClass}>
+        <label className={labelClass} htmlFor="booking-email">
+          <span className={iconClass}>mail</span>
+          Email Address
+        </label>
+        <input
+          id="booking-email"
+          value={formData.email}
+          onChange={(event) => updateField("email", event.target.value)}
+          className={inputClass}
+          placeholder="Enter your email"
+          type="email"
+        />
+      </div>
+
+      <div className={compactFieldClass}>
+        <label className={labelClass} htmlFor="booking-phone">
+          <span className={iconClass}>call</span>
+          Phone Number {requiredMark}
+        </label>
+        <input
+          id="booking-phone"
+          value={formData.phone}
+          onChange={(event) => updateField("phone", event.target.value)}
+          className={inputClass}
+          placeholder="+91 98765 43210"
+          required
+          type="tel"
+        />
+      </div>
+
+      <div className={compactFieldClass}>
+        <label className={labelClass} htmlFor="booking-treatment">
+          Treatment Type {requiredMark}
+        </label>
+        <div className="relative">
+          <select
+            id="booking-treatment"
+            value={formData.treatment}
+            onChange={(event) => updateField("treatment", event.target.value)}
+            className={`${inputClass} appearance-none pr-12`}
+            required
+          >
+            <option value="" disabled>
+              Select a treatment
+            </option>
+            <option>Back Pain</option>
+            <option>Shoulder Pain</option>
+            <option>Neck Pain</option>
+            <option>Knee Pain</option>
+            <option>Sport Injury Rehab</option>
+            <option>Stroke Rehab</option>
+            <option>Spine Compression</option>
+            <option>Posture Correction</option>
+          </select>
+          <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[22px] text-on-surface">
+            expand_more
+          </span>
+        </div>
+      </div>
+
+      <label className="flex items-start gap-2 text-[11px] font-medium leading-snug text-on-surface-variant sm:text-xs">
+        <input
+          className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded border-outline-variant text-primary accent-primary"
+          required
+          type="checkbox"
+        />
+        <span>
+          I consent to being contacted via call, SMS, or WhatsApp regarding my
+          appointment and treatment options. {requiredMark}
+        </span>
+      </label>
+
       <button
         disabled={isSubmitting}
-        className="btn-premium mt-2 w-full cursor-pointer rounded-lg bg-secondary-fixed py-4 text-base font-black uppercase tracking-widest text-on-secondary-fixed shadow-lg shadow-secondary-fixed/20 hover:brightness-110"
+        className="btn-premium mt-0.5 w-full cursor-pointer rounded-full bg-secondary-fixed px-4 py-3 text-sm font-black text-on-secondary-fixed shadow-xl shadow-secondary-fixed/25 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-65 sm:py-3.5"
         type="submit"
       >
-        {isSubmitting ? "Submitting..." : "Submit"}
+        <span className="inline-flex items-center justify-center gap-2">
+          {isSubmitting ? "Submitting..." : "Book Your Consultation"}
+          <span className="material-symbols-outlined text-[20px]">
+            arrow_forward
+          </span>
+        </span>
       </button>
       {errorMessage ? (
-        <p className="text-sm font-medium text-error">{errorMessage}</p>
+        <p className="rounded-xl border border-error/15 bg-error-container/60 px-3 py-2 text-sm font-semibold text-on-error-container">
+          {errorMessage}
+        </p>
       ) : null}
     </form>
   );

@@ -70,7 +70,7 @@ export default function TreatmentGrid() {
             <div
               key={treatment.title}
               data-reveal-item
-              className="group flex h-full flex-col overflow-hidden rounded-xl border border-primary/12 bg-surface-container-lowest hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 sm:flex-row"
+              className="group flex h-full flex-col overflow-hidden rounded-lg border border-primary/12 bg-surface-container-lowest hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 sm:flex-row"
             >
               <div
                 className="relative h-72 w-full shrink-0 overflow-hidden bg-brand-soft sm:h-auto sm:w-52 lg:w-56"
