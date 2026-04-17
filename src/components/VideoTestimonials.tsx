@@ -5,7 +5,7 @@ import InstagramTestimonialsCarousel from "./InstagramTestimonialsCarousel";
 export default function VideoTestimonials() {
   return (
     <AnimatedSection className="bg-brand-deeper py-16 text-white max-[470px]:py-6">
-      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-2 sm:px-8">
         <div data-reveal-header className="mx-auto mb-10 max-w-3xl space-y-3 text-center">
           <div className="flex items-center justify-center gap-4">
             <span className="h-px w-14 bg-linear-to-r from-transparent to-secondary-fixed/80" />

@@ -89,7 +89,7 @@ export default function BeforeAfterVideoCarousel() {
           <span className="material-symbols-outlined text-xl">chevron_left</span>
         </button>
 
-        <div className="ba-cards-container flex w-full min-w-0 flex-1 items-center justify-center gap-4 overflow-hidden [perspective:1200px] lg:gap-5">
+        <div className="ba-cards-container flex w-full min-w-0 flex-1 items-center justify-center gap-0 overflow-hidden [perspective:1200px] sm:gap-4 lg:gap-5">
           {visible.map((cardIndex, position) => {
             const card = cards[cardIndex];
             const isCenter = position === 1;
@@ -106,7 +106,7 @@ export default function BeforeAfterVideoCarousel() {
                 aria-label={`Show ${card.name}`}
                 className={`ba-card-anim relative aspect-[4/5] shrink-0 cursor-pointer overflow-hidden rounded-2xl transition-all duration-500 sm:aspect-[9/16] sm:rounded-3xl ${
                   isCenter
-                    ? "ba-center z-20 w-[calc(100vw-2rem)] border border-primary/40 shadow-2xl shadow-primary/20 sm:w-[20rem] lg:w-[21rem]"
+                    ? "ba-center z-20 w-[calc(100vw-0.25rem)] border border-primary/40 shadow-2xl shadow-primary/20 sm:w-[calc(100vw-1rem)] lg:w-[21rem]"
                     : "ba-side z-10 hidden w-[14.5rem] scale-[0.9] border border-white/10 opacity-55 shadow-xl shadow-brand-deeper/30 xl:block"
                 }`}
               >
