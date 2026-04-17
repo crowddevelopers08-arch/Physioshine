@@ -1,4 +1,5 @@
 import AnimatedSection from "./AnimatedSection";
+import PhoneLink from "./PhoneLink";
 
 const faqs = [
   {
@@ -82,13 +83,12 @@ export default function FAQSection() {
               Call us and our team will be happy to assist you.
             </p>
           </div>
-          <a
-            href="tel:8309199733"
+          <PhoneLink
             className="btn-mobile-only shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all hover:brightness-110"
           >
             <span className="material-symbols-outlined text-base">call</span>
             Call: 8309-199733
-          </a>
+          </PhoneLink>
           <a
             href="#booking-form"
             className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all hover:brightness-110 sm:flex"

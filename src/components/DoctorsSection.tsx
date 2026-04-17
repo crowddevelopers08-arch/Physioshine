@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import AnimatedSection from "./AnimatedSection";
+import PhoneLink from "./PhoneLink";
 
 const teamDoctors = [
   {
@@ -121,13 +122,12 @@ export default function DoctorsSection() {
                 <span className="material-symbols-outlined text-base">calendar_month</span>
                 Book with Dr. Raj
               </a>
-              <a
-                href="tel:8309199733"
+              <PhoneLink
                 className="btn-premium btn-mobile-only items-center gap-2 rounded-full border-2 border-primary/30 px-6 py-3 text-sm font-bold text-primary hover:border-primary hover:bg-primary/5"
               >
                 <span className="material-symbols-outlined text-base">call</span>
                 Call Now
-              </a>
+              </PhoneLink>
             </div>
           </div>
         </div>

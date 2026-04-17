@@ -1,6 +1,7 @@
 import BookingForm from "./BookingForm";
 import AnimatedSection from "./AnimatedSection";
 import { FinalCTACard } from "./FinalCTA";
+import PhoneLink from "./PhoneLink";
 import TypingWords from "./TypingWords";
 
 const uspPoints = [
@@ -137,15 +138,14 @@ export default function HeroSection() {
                   </p>
                 </div>
               </div>
-              <a
-                href="tel:8309199733"
+              <PhoneLink
                 className="btn-premium btn-mobile-only items-center justify-center gap-1.5 rounded-full bg-secondary-fixed px-4 py-1.5 text-[11px] font-bold text-on-secondary-fixed shadow-lg shadow-secondary-fixed/20 hover:brightness-105 min-[475px]:text-xs"
               >
                 <span className="material-symbols-outlined text-sm sm:text-base">
                   call
                 </span>
                 <span className="whitespace-nowrap">8309-199733</span>
-              </a>
+              </PhoneLink>
             </div>
           </div>
 

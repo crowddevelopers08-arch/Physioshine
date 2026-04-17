@@ -46,6 +46,17 @@ export default function RootLayout({
           }}
         />
         {/* End Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('config', 'AW-16763988862/ZLzECOrK0p0cEP7W2Lk-', {
+                'phone_conversion_number': '8309199733'
+              });
+            `,
+          }}
+        />
       </head>
       <body className="m-0 min-h-screen overflow-x-hidden bg-brand-deeper text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-fixed">
         {/* Google Tag Manager (noscript) */}

@@ -1,4 +1,5 @@
 import AnimatedSection from "./AnimatedSection";
+import PhoneLink from "./PhoneLink";
 
 type FinalCTACardProps = {
   compact?: boolean;
@@ -59,13 +60,12 @@ export function FinalCTACard({
         </div>
 
         <div className="flex justify-center">
-          <a
-            href="tel:8309199733"
+          <PhoneLink
             className="btn-premium btn-mobile-only items-center justify-center gap-2 rounded-full bg-secondary-fixed px-7 py-3.5 text-sm font-bold text-on-secondary-fixed shadow-lg hover:brightness-110"
           >
             <span className="material-symbols-outlined text-base">call</span>
             8309-199733
-          </a>
+          </PhoneLink>
         </div>
 
         <p className="text-white/30 text-xs">

@@ -1,4 +1,5 @@
 import AnimatedSection from "./AnimatedSection";
+import PhoneLink from "./PhoneLink";
 
 const differentiators = [
   { icon: "self_improvement", text: "Holistic Treatment Approach" },
@@ -142,13 +143,12 @@ export default function ClinicSection() {
             <span className="text-primary">Free Movement</span> &amp;{" "}
             <span className="text-primary">a Pain-Free Life</span>.
           </p>
-          <a
-            href="tel:8309199733"
+          <PhoneLink
             className="btn-mobile-only shrink-0 items-center gap-2 bg-primary px-6 py-3 rounded-full font-bold text-sm text-white hover:brightness-110 transition-all whitespace-nowrap"
           >
             <span className="material-symbols-outlined text-base">call</span>
             Call Us Now
-          </a>
+          </PhoneLink>
           <a
             href="#booking-form"
             className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all whitespace-nowrap hover:brightness-110 sm:flex"

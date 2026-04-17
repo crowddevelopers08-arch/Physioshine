@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import PhoneLink from "./PhoneLink";
 
 const treatments = [
   "Back Pain",
@@ -35,13 +36,12 @@ export default function Footer() {
             >
               Book Appointment
             </a>
-            <a
-              href="tel:8309199733"
+            <PhoneLink
               className="btn-premium btn-mobile-only items-center justify-center gap-2 rounded-full bg-secondary-fixed px-6 py-3 text-sm font-bold text-on-secondary-fixed"
             >
               <span className="material-symbols-outlined text-base">call</span>
               8309-199733
-            </a>
+            </PhoneLink>
           </div>
         </div>
       </div>
@@ -64,15 +64,14 @@ export default function Footer() {
                 </span>
                 MNR complex, SBH road, opposite SBI bank, near metro station, Lb Nagar, Hyderabad-500074
               </p>
-              <a
-                href="tel:8309199733"
+              <PhoneLink
                 className="flex items-center gap-2 transition-colors hover:text-white"
               >
                 <span className="material-symbols-outlined text-base text-primary">
                   call
                 </span>
                 8309-199733
-              </a>
+              </PhoneLink>
               <p className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-primary">
                   schedule

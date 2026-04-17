@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
+import PhoneLink from "@/components/PhoneLink";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Physio Shine",
@@ -228,12 +229,11 @@ export default function TermsOfService() {
               <p>MNR complex, SBH road, opposite SBI bank, near metro station, Lb Nagar, Hyderabad-500074</p>
               <p>
                 Phone:{" "}
-                <a
-                  href="tel:8309199733"
+                <PhoneLink
                   className="font-semibold text-primary hover:underline"
                 >
                   8309-199733
-                </a>
+                </PhoneLink>
               </p>
             </div>
           </section>

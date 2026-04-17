@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
+import PhoneLink from "@/components/PhoneLink";
 
 export const metadata: Metadata = {
   title: "Appointment Confirmed | Physio Shine",
@@ -14,13 +15,12 @@ export default function ThankYou() {
       <nav className="fixed top-0 z-50 w-full border-b border-outline-variant/25 bg-white/92 backdrop-blur-xl shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
           <BrandLogo href="/" width={160} priority imageClassName="rounded-md sm:w-auto" />
-          <a
-            href="tel:8309199733"
+          <PhoneLink
             className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary sm:px-6 sm:py-2.5 sm:text-base"
           >
             <span className="material-symbols-outlined text-sm">call</span>
             8309-199733
-          </a>
+          </PhoneLink>
         </div>
       </nav>
 
@@ -98,13 +98,12 @@ export default function ThankYou() {
             <p className="mb-4 text-sm font-medium text-on-surface-variant sm:text-base">
               Need to speak to someone urgently?
             </p>
-            <a
-              href="tel:8309199733"
+            <PhoneLink
               className="btn-premium inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-base font-bold text-white shadow-lg sm:px-8 sm:py-4 sm:text-lg"
             >
               <span className="material-symbols-outlined">call</span>
               Call: 8309-199733
-            </a>
+            </PhoneLink>
           </div>
 
           <div className="space-y-4 rounded-xl bg-primary p-5 text-white sm:p-6 lg:p-8">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import BrandLogo from "./BrandLogo";
+import PhoneLink from "./PhoneLink";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,10 +32,10 @@ export default function Navbar() {
             LB Nagar, Hyderabad-500074
           </span>
           <div className="flex items-center gap-6">
-            <a href="tel:8309199733" className="flex items-center gap-1.5 hover:text-secondary-fixed transition-colors">
+            <PhoneLink className="flex items-center gap-1.5 hover:text-secondary-fixed transition-colors">
               <span className="material-symbols-outlined text-sm">call</span>
               8309-199733
-            </a>
+            </PhoneLink>
             <span className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-sm">schedule</span>
               Mon - Sun: 8am - 8pm
@@ -75,13 +76,12 @@ export default function Navbar() {
 
             {/* Right CTA */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <a
-                href="tel:8309199733"
+              <PhoneLink
                 className="btn-premium btn-mobile-hidden rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-white lg:items-center lg:gap-2"
               >
                 <span className="material-symbols-outlined text-base">call</span>
                 <span className="hidden lg:inline">8309-199733</span>
-              </a>
+              </PhoneLink>
               <a
                 href="#booking-form"
                 className="btn-premium btn-mobile-hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:brightness-110 lg:px-5"
@@ -114,13 +114,13 @@ export default function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href="tel:8309199733"
+              <PhoneLink
+                onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-primary"
               >
                 <span className="material-symbols-outlined text-base">call</span>
                 Call: 8309-199733
-              </a>
+              </PhoneLink>
             </div>
           )}
         </div>
