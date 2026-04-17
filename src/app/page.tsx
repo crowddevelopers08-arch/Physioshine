@@ -19,7 +19,7 @@ export default function Home() {
       <ThreeHomepageBackground />
       <div className="relative z-10">
         <Navbar />
-        {/* <BookingSection /> */}
+        <BookingSection />
         <HeroSection />
         <USPStrip />
         <ClinicSection />
