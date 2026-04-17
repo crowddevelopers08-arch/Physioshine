@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import BookingSection from "@/components/BookingSection";
 import HeroSection from "@/components/HeroSection";
 import USPStrip from "@/components/USPStrip";
 import ClinicSection from "@/components/ClinicSection";
@@ -19,7 +18,6 @@ export default function Home() {
       <ThreeHomepageBackground />
       <div className="relative z-10">
         <Navbar />
-        <BookingSection />
         <HeroSection />
         <USPStrip />
         <ClinicSection />
@@ -29,7 +27,7 @@ export default function Home() {
         <VideoTestimonials />
         <ReviewsCarousel />
         <FAQSection />
-        <FinalCTA />
+        {/* <FinalCTA /> */}
         <Footer />
       </div>
     </div>
