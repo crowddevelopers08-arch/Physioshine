@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <a
-              href="#book"
+              href="#booking-form"
               className="btn-premium rounded-full bg-white px-6 py-3 text-center text-sm font-bold text-primary"
             >
               Book Appointment
@@ -110,7 +110,7 @@ export default function Footer() {
                 { label: "About Clinic", href: "#clinic" },
                 { label: "Meet Our Doctors", href: "#doctors" },
                 { label: "Patient Reviews", href: "#reviews" },
-                { label: "Book Appointment", href: "#book" },
+                { label: "Book Appointment", href: "#booking-form" },
                 { label: "FAQs", href: "#faqs" },
                 { label: "Privacy Policy", href: "/privacy-policy" },
               ].map((link) => (

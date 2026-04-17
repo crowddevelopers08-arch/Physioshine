@@ -83,7 +83,7 @@ export default function Navbar() {
                 <span className="hidden lg:inline">8309-199733</span>
               </a>
               <a
-                href="#book"
+                href="#booking-form"
                 className="btn-premium btn-mobile-hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:brightness-110 lg:px-5"
               >
                 Book Appointment

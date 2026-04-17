@@ -115,7 +115,7 @@ export default function DoctorsSection() {
 
             <div className="flex flex-wrap gap-3 pt-1">
               <a
-                href="#book"
+                href="#booking-form"
                 className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 hover:brightness-110"
               >
                 <span className="material-symbols-outlined text-base">calendar_month</span>

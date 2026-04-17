@@ -77,7 +77,7 @@ export default function ClinicSection() {
             </ul>
 
             <a
-              href="#book"
+              href="#booking-form"
               className="mx-auto lg:mx-0 inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20"
             >
               <span className="material-symbols-outlined text-base">directions_walk</span>
@@ -150,7 +150,7 @@ export default function ClinicSection() {
             Call Us Now
           </a>
           <a
-            href="#book"
+            href="#booking-form"
             className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all whitespace-nowrap hover:brightness-110 sm:flex"
           >
             <span className="material-symbols-outlined text-base">calendar_month</span>
