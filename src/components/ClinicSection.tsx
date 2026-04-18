@@ -33,7 +33,7 @@ export default function ClinicSection() {
                 About Physio Shine
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-headline leading-tight mt-2">
-                Hyderabad&apos;s Biggest{" "}
+                Hyderabad&apos;s 1st and Biggest{" "}
                 <span className="text-primary">
                   Physio &amp; Rehab Centre
                 </span>
@@ -44,7 +44,7 @@ export default function ClinicSection() {
               At Physio Shine, we are committed to delivering advanced, holistic physiotherapy
               and chiropractic care that focuses on{" "}
               <strong className="text-on-surface">long-term recovery</strong> — not just temporary relief.
-              With <strong className="text-on-surface">5+ years of experience</strong>, our clinic has
+              With <strong className="text-on-surface">8+ years of experience</strong>, our clinic has
               become the most trusted name for effective, non-surgical pain management.
             </p>
 
@@ -104,7 +104,7 @@ export default function ClinicSection() {
 
             {/* Floating badge */}
             <div className="absolute -top-4 -right-4 bg-secondary-fixed text-on-secondary-fixed rounded-xl px-4 py-3 shadow-xl font-black text-sm text-center hidden sm:block">
-              <p className="text-lg font-black leading-none">5+</p>
+              <p className="text-lg font-black leading-none">8+</p>
               <p className="text-xs font-bold">Years of</p>
               <p className="text-xs font-bold">Excellence</p>
             </div>

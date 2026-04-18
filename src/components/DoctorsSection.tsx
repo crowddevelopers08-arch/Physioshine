@@ -6,28 +6,28 @@ import PhoneLink from "./PhoneLink";
 
 const teamDoctors = [
   {
-    name: "Dr. Manisha",
+    name: "Dr. Manisha.PT",
     qualification: "Neuro Rehabilitation Specialist",
     desc: "Expert in Stroke & Neuro Rehabilitation. Restoring mobility and independence with personalised recovery programs.",
     img: "/manisha.png",
   },
+   {
+    name: "Dr. Anjali.PT",
+    qualification: "Manual & Rehab Therapy Expert",
+    desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
+    img: "/anjali.png",
+  },
   {
-    name: "Dr. Sufiyan",
+    name: "Dr. Sufiyan.PT",
     qualification: "Sports Rehabilitation Specialist",
     desc: "Specialised in Sports Injury Recovery. Strength, flexibility & performance recovery trusted by athletes.",
     img: "/sufiyan.png",
   },
   {
-    name: "Dr. Dhanush",
+    name: "Dr. Dhanush.PT",
     qualification: "Manual Therapy Expert",
     desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
     img: "/danush.png",
-  },
-  {
-    name: "Dr. Anjali",
-    qualification: "Manual Therapy Expert",
-    desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
-    img: "/anjali.png",
   },
 ];
 
@@ -90,13 +90,13 @@ export default function DoctorsSection() {
                 Founder &amp; Lead Specialist
               </span>
               <span className="rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
-                5+ Years Experience
+                8+ Years Experience
               </span>
             </div>
 
             <div>
               <h3 className="font-headline text-2xl font-black leading-tight text-on-surface sm:text-3xl lg:text-4xl">
-                Dr. Gahwal Sachin Raj
+                Dr. Gahwal Sachin Raj.PT
               </h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {["Chiropractic Specialist", "Spine Alignment Expert"].map((tag) => (
@@ -111,7 +111,7 @@ export default function DoctorsSection() {
             </div>
 
             <blockquote className="rounded-r-xl border-l-4 border-secondary-fixed bg-secondary-fixed/5 py-1 pl-5 pr-4 text-sm italic leading-relaxed text-on-surface-variant sm:text-base">
-              &ldquo;Expert Chiropractor with 5+ years of industry experience. My mission is to bring global standards of rehabilitation to every patient, ensuring that recovery is not just a process, but a lifestyle transformation.&rdquo;
+              &ldquo;Expert Chiropractor with 8+ years of industry experience. My mission is to bring global standards of rehabilitation to every patient, ensuring that recovery is not just a process, but a lifestyle transformation.&rdquo;
             </blockquote>
 
             <div className="flex flex-wrap gap-3 pt-1">

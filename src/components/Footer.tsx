@@ -26,7 +26,7 @@ export default function Footer() {
               Ready to Live Pain-Free?
             </p>
             <p className="mt-1 text-sm text-white/80">
-              Join 5000+ satisfied patients. Book your slot today.
+              Join 40,000+ satisfied patients. Book your slot today.
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
@@ -134,7 +134,7 @@ export default function Footer() {
               {[
                 "1000+ Google Reviews",
                 "4.8 / 5 Google Rating",
-                "5000+ Satisfied Clients",
+                "40,000+ Satisfied Clients",
                 "150+ Patients Per Day Capacity",
                 "Medical Grade Equipment",
                 "Non-Surgical Solutions",

@@ -110,7 +110,7 @@ export default function USPStrip() {
             </div>
             <div>
               <p className="text-2xl font-black font-headline text-white leading-none">
-                <CounterValue end={5000} suffix="+" />
+                <CounterValue end={40000} suffix="+" />
               </p>
               <p className="mt-1 text-[11px] font-bold uppercase tracking-widest text-white/50">
                 Happy Clients

@@ -55,7 +55,7 @@ export default function TreatmentGrid() {
           className="max-w-3xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16"
         >
           <h2 className="text-2xl min-[475px]:text-3xl sm:text-4xl lg:text-5xl font-black font-headline leading-tight mb-4">
-            Advanced 
+          World Class Advanced 
             <span className="text-primary"> Treatments</span>
           </h2>
           <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed">

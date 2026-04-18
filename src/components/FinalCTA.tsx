@@ -34,12 +34,12 @@ export function FinalCTACard({
         </h2>
 
         <p className="text-white/60 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-          Take the first step towards recovery. Join 5000+ happy patients who trust Physio Shine for results that last.
+          Take the first step towards recovery. Join 40,000+ happy patients who trust Physio Shine for results that last.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 py-2 sm:py-4">
           {[
-            { value: "5000+", label: "Happy Patients" },
+            { value: "40,000+", label: "Happy Patients" },
             { value: "4.8", label: "Google Rating", star: true },
             { value: "150+", label: "Patients/Day" },
           ].map((s) => (
