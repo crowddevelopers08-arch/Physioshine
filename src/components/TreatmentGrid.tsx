@@ -42,7 +42,7 @@ const treatments = [
     image: "/Neuro-rehabilitation.webp",
     title: "Neuro Rehab",
     items: [
-      "Stroke Recovery (Paralysis / Hemiplegia)",
+      "Paralysis",
       "Parkinson's Disease",
       "Nerve Injuries",
     ],
