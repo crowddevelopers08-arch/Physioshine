@@ -76,7 +76,13 @@ export default function Footer() {
                 <span className="material-symbols-outlined text-base text-primary">
                   schedule
                 </span>
-                Mon - Sun: 8am - 8pm
+                Mon - Sat: 8am - 8pm
+              </p>
+                 <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base text-primary">
+                  schedule
+                </span>
+                Sun : 8am - 3.30pm
               </p>
             </div>
           </div>

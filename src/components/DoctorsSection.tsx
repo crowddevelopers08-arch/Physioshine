@@ -79,7 +79,7 @@ export default function DoctorsSection() {
             <img
               className="image-softened h-72 w-full object-cover object-top sm:h-96 lg:h-full"
               src="/sachinnew.png"
-              alt="Dr. Gahwal Sachin Raj"
+              alt="Dr. Gajwel Sachin Raj"
             />
             <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-brand-deep/60 to-transparent lg:hidden" />
           </div>
@@ -96,7 +96,7 @@ export default function DoctorsSection() {
 
             <div>
               <h3 className="font-headline text-2xl font-black leading-tight text-on-surface sm:text-3xl lg:text-4xl">
-                Dr. Gahwal Sachin Raj.PT
+                Dr. Gajwel Sachin Raj.PT
               </h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {["Chiropractic Specialist", "Spine Alignment Expert"].map((tag) => (
@@ -120,7 +120,7 @@ export default function DoctorsSection() {
                 className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 hover:brightness-110"
               >
                 <span className="material-symbols-outlined text-base">calendar_month</span>
-                Book with Dr. Raj
+                Book with Dr. Sachin.PT
               </a>
               <PhoneLink
                 className="btn-premium btn-mobile-only items-center gap-2 rounded-full border-2 border-primary/30 px-6 py-3 text-sm font-bold text-primary hover:border-primary hover:bg-primary/5"

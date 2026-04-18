@@ -21,10 +21,10 @@ export default function ClinicSection() {
       className="py-14 sm:py-16 lg:py-20 max-[470px]:py-6 bg-surface overflow-hidden scroll-mt-32"
       id="clinic"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 xl:max-w-[84rem] 2xl:max-w-[88rem]">
 
         {/* Two-column: text + image */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:gap-14 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] xl:gap-16 items-center">
 
           {/* Text side */}
           <div data-reveal-header className="space-y-6 sm:space-y-7 order-2 lg:order-1 text-center lg:text-left">
@@ -52,7 +52,7 @@ export default function ClinicSection() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   className="image-softened h-72 w-full object-cover"
-                  src="/DSC04203.JPG"
+                  src="/DSC04208.JPG"
                   alt="Physio Shine Clinic"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-brand-deeper/90 via-brand-deep/50 to-transparent p-6 pt-12">
@@ -90,8 +90,8 @@ export default function ClinicSection() {
           <div data-reveal-item className="relative order-1 hidden lg:block lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                className="image-softened w-full h-72 object-cover sm:h-96 lg:h-120"
-                src="/DSC04203.JPG"
+                className="image-softened h-72 w-full object-cover sm:h-96 lg:h-[29rem] xl:h-[31rem]"
+                src="/DSC04208.JPG"
                 alt="Physio Shine Clinic"
               />
               {/* Quote overlay */}

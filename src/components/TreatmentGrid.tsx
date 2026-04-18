@@ -16,7 +16,7 @@ const treatments = [
   },
   {
     image: "/spine-pain.png",
-    title: "Spine Compression",
+    title: "Spinal Decompression",
     items: ["Disc Issues", "Nerve Compression", "Chronic Back Pain"],
     result: "Focused non-surgical care designed to ease pressure, reduce pain, and restore movement.",
   },
@@ -37,6 +37,17 @@ const treatments = [
     title: "Advanced Therapy Treatments",
     items: ["Laser Therapy", "Manual Therapy", "Shockwave Therapy"],
     result: "Technology-driven therapies that accelerate healing and improve long-term recovery outcomes.",
+  },
+  {
+    image: "/Neuro-rehabilitation.webp",
+    title: "Neuro Rehab",
+    items: [
+      "Stroke Recovery (Paralysis / Hemiplegia)",
+      "Parkinson's Disease",
+      "Nerve Injuries",
+    ],
+    result:
+      "Get expert care with our advanced neuro rehabilitation programs designed to restore independence and improve quality of life.",
   },
 ];
 
@@ -66,51 +77,60 @@ export default function TreatmentGrid() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-2 max-w-7xl mx-auto">
-          {treatments.map((treatment) => (
-            <div
-              key={treatment.title}
-              data-reveal-item
-              className="group flex h-full flex-col overflow-hidden rounded-lg border border-primary/12 bg-surface-container-lowest hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 sm:flex-row"
-            >
+          {treatments.map((treatment, index) => {
+            const isCenteredLastCard =
+              treatments.length % 2 === 1 && index === treatments.length - 1;
+
+            return (
               <div
-                className="relative h-72 w-full shrink-0 overflow-hidden bg-brand-soft sm:h-auto sm:w-52 lg:w-56"
-                style={{ backgroundImage: `url(${treatment.image})` }}
+                key={treatment.title}
+                data-reveal-item
+                className={`group flex h-full flex-col overflow-hidden rounded-lg border border-primary/12 bg-surface-container-lowest hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 sm:flex-row ${
+                  isCenteredLastCard
+                    ? "lg:col-span-2 lg:mx-auto lg:w-[calc(50%-0.75rem)]"
+                    : ""
+                }`}
               >
-                {treatment.layeredFill ? (
-                  <div
-                    className="absolute inset-0 scale-115 bg-cover bg-center blur-sm brightness-90"
-                    style={{ backgroundImage: `url(${treatment.image})` }}
+                <div
+                  className="relative h-72 w-full shrink-0 overflow-hidden bg-brand-soft sm:h-auto sm:w-52 lg:w-56"
+                  style={{ backgroundImage: `url(${treatment.image})` }}
+                >
+                  {treatment.layeredFill ? (
+                    <div
+                      className="absolute inset-0 scale-115 bg-cover bg-center blur-sm brightness-90"
+                      style={{ backgroundImage: `url(${treatment.image})` }}
+                    />
+                  ) : null}
+                  <img
+                    src={treatment.image}
+                    alt={treatment.title}
+                    className="image-softened relative z-10 h-full w-full object-cover object-[center_35%] transition-transform duration-300 group-hover:scale-105"
                   />
-                ) : null}
-                <img
-                  src={treatment.image}
-                  alt={treatment.title}
-                  className="image-softened relative z-10 h-full w-full object-cover object-[center_35%] transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-4 text-on-surface sm:p-5">
-                <h3 className="mb-2.5 min-h-[3.25rem] text-xl font-bold leading-snug text-brand-deep sm:text-2xl font-headline">
-                  {treatment.title}
-                </h3>
-
-                <div className="mb-3.5 flex min-h-[4rem] flex-wrap content-start gap-2">
-                  {treatment.items.map((item) => (
-                    <span
-                      key={item}
-                      className="text-sm sm:text-[15px] bg-brand-soft text-brand-deep border border-primary/15 px-3 py-1.5 rounded-full font-semibold leading-snug shadow-sm"
-                    >
-                      {item}
-                    </span>
-                  ))}
                 </div>
 
-                <p className="min-h-[4.75rem] text-base leading-relaxed text-on-surface-variant sm:text-[17px]">
-                  {treatment.result}
-                </p>
+                <div className="flex flex-1 flex-col p-4 text-on-surface sm:p-5">
+                  <h3 className="mb-2.5 min-h-[3.25rem] text-xl font-bold leading-snug text-brand-deep sm:text-2xl font-headline">
+                    {treatment.title}
+                  </h3>
+
+                  <div className="mb-3.5 flex min-h-[4rem] flex-wrap content-start gap-2">
+                    {treatment.items.map((item) => (
+                      <span
+                        key={item}
+                        className="text-sm sm:text-[15px] bg-brand-soft text-brand-deep border border-primary/15 px-3 py-1.5 rounded-full font-semibold leading-snug shadow-sm"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="min-h-[4.75rem] text-base leading-relaxed text-on-surface-variant sm:text-[17px]">
+                    {treatment.result}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </AnimatedSection>

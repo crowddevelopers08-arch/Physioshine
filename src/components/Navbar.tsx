@@ -38,7 +38,7 @@ export default function Navbar() {
             </PhoneLink>
             <span className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-sm">schedule</span>
-              Mon - Sun: 8am - 8pm
+              Mon - Sat: 8am - 8pm
             </span>
           </div>
         </div>
