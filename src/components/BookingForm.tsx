@@ -165,7 +165,7 @@ export default function BookingForm() {
             <option>Knee Pain</option>
             <option>Sport Injury Rehab</option>
             <option>Stroke Rehab</option>
-            <option>Spine Compression</option>
+            <option>Spinal Decompression</option>
             <option>Posture Correction</option>
           </select>
           <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[22px] text-on-surface">

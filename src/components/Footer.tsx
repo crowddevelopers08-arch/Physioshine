@@ -9,7 +9,7 @@ const treatments = [
   "Knee & Shoulder Pain",
   "Sports Injury Rehab",
   "Stroke Rehabilitation",
-  "Spine Compression",
+  "Spinal Decompression",
   "Posture Correction",
 ];
 
