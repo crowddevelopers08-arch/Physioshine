@@ -50,7 +50,7 @@ const Review = () => {
           {/* Buttons */}
           <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
             <a
-              href="https://g.page/r/CUoMPVQdmsOQEBM/review"
+              href="https://g.page/r/CecwYXDXqAJ9EBM/review"
               target="_blank"
               rel="noopener noreferrer"
             >
