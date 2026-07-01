@@ -31,7 +31,10 @@ export default function Footer() {
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <a
-              href="#booking-form"
+              href="https://zbooking.in/xbeGn"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="booking"
               className="btn-premium rounded-full bg-white px-6 py-3 text-center text-sm font-bold text-primary"
             >
               Book Appointment
@@ -115,20 +118,35 @@ export default function Footer() {
                 { label: "About Clinic", href: "#clinic" },
                 { label: "Meet Our Doctors", href: "#doctors" },
                 { label: "Patient Reviews", href: "#reviews" },
-                { label: "Book Appointment", href: "#booking-form" },
+                { label: "Book Appointment", href: "https://zbooking.in/xbeGn" },
                 { label: "FAQs", href: "#faqs" },
                 { label: "Privacy Policy", href: "/privacy-policy" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="flex items-center gap-2 text-sm text-white/68 transition-colors hover:text-secondary-fixed"
-                  >
-                    <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              ].map((link) =>
+                link.href.startsWith("http") ? (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cta="booking"
+                      className="flex items-center gap-2 text-sm text-white/68 transition-colors hover:text-secondary-fixed"
+                    >
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                      {link.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="flex items-center gap-2 text-sm text-white/68 transition-colors hover:text-secondary-fixed"
+                    >
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 

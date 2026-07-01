@@ -19,7 +19,10 @@ export default function MobileNav() {
       </PhoneLink>
       <a
         className="flex flex-col items-center justify-center text-on-surface-variant p-2"
-        href="#booking-form"
+        href="https://zbooking.in/xbeGn"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta="booking"
       >
         <span className="material-symbols-outlined">calendar_month</span>
         <span className="text-[10px] font-medium uppercase tracking-widest mt-1">

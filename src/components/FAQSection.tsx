@@ -90,7 +90,10 @@ export default function FAQSection() {
             Call: 8309-199733
           </PhoneLink>
           <a
-            href="#booking-form"
+            href="https://zbooking.in/xbeGn"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="booking"
             className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-sm text-white transition-all hover:brightness-110 sm:flex"
           >
             <span className="material-symbols-outlined text-base">calendar_month</span>

@@ -1,9 +1,7 @@
-import BookingForm from "./BookingForm";
 import AnimatedSection from "./AnimatedSection";
 import { FinalCTACard } from "./FinalCTA";
 import PhoneLink from "./PhoneLink";
 import TypingWords from "./TypingWords";
-import ZohoBookingForm from "./testing";
 
 const uspPoints = [
   { icon: "neurology", label: "Advanced Rehabilitation Care" },
@@ -174,10 +172,10 @@ export default function TestingHeroSection() {
           <FinalCTACard compact className="h-full" />
 
           <div
-            className="w-full scroll-mt-32 self-center space-y-3 rounded-[1.5rem] border border-outline-variant/30 bg-white p-4 shadow-2xl shadow-brand-deeper/10 min-[475px]:p-5 sm:p-6"
+            className="flex w-full scroll-mt-32 flex-col items-center justify-center gap-4 self-center rounded-[1.5rem] border border-outline-variant/30 bg-white p-4 text-center shadow-2xl shadow-brand-deeper/10 min-[475px]:p-5 sm:p-6"
             id="booking-form"
           >
-            <div className="space-y-0.5 text-center">
+            <div className="space-y-0.5">
               <h2 className="font-headline text-base font-black text-on-surface min-[475px]:text-lg sm:text-xl lg:text-2xl">
                 Book a Quick Appointment
               </h2>
@@ -185,7 +183,16 @@ export default function TestingHeroSection() {
                 Heal Better. Move Freely. Live Pain-Free.
               </p>
             </div>
-            <ZohoBookingForm />
+            <a
+              href="https://zbooking.in/xbeGn"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="booking"
+              className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:brightness-110"
+            >
+              <span className="material-symbols-outlined text-base">calendar_month</span>
+              Book Appointment
+            </a>
           </div>
         </div>
       </AnimatedSection>

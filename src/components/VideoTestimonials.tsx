@@ -40,7 +40,10 @@ export default function VideoTestimonials() {
 
         <div data-reveal-item className="mt-10 text-center">
           <a
-            href="#booking-form"
+            href="https://zbooking.in/xbeGn"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="booking"
             className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-lg hover:brightness-110"
           >
             <span className="material-symbols-outlined text-base">calendar_month</span>

@@ -83,7 +83,10 @@ export default function Navbar() {
                 <span className="hidden lg:inline">8309-199733</span>
               </PhoneLink>
               <a
-                href="#booking-form"
+                href="https://zbooking.in/xbeGn"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="booking"
                 className="btn-premium btn-mobile-hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:brightness-110 lg:px-5"
               >
                 Book Appointment
