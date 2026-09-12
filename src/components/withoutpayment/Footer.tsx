@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <a
-              href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
+              href="https://zbooking.in/xbeGn"
               target="_blank"
               rel="noopener noreferrer"
               data-cta="booking"
@@ -55,11 +55,7 @@ export default function Footer() {
             data-reveal-item
             className="space-y-4 sm:col-span-2 lg:col-span-1"
           >
-            <BrandLogo href="/" width={240} className="shrink-0" />
-            {/* <p className="text-sm leading-relaxed text-white/68">
-              Advanced Physiotherapy, Chiropractic & Rehabilitation Centre in
-              Hyderabad. Delivering holistic, evidence-based care since 2018.
-            </p> */}
+            <BrandLogo href="/withoutpayment" width={240} className="shrink-0" />
             <div className="space-y-2 text-sm text-white/68">
               <p className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-primary">
@@ -118,9 +114,9 @@ export default function Footer() {
                 { label: "About Clinic", href: "#clinic" },
                 { label: "Meet Our Doctors", href: "#doctors" },
                 { label: "Patient Reviews", href: "#reviews" },
-                { label: "Book Appointment", href: "https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL" },
+                { label: "Book Appointment", href: "https://zbooking.in/xbeGn" },
                 { label: "FAQs", href: "#faqs" },
-                { label: "Privacy Policy", href: "/privacy-policy" },
+                { label: "Privacy Policy", href: "/withoutpayment/privacy-policy" },
               ].map((link) =>
                 link.href.startsWith("http") ? (
                   <li key={link.label}>
@@ -184,13 +180,13 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <span className="text-white/25">Legal</span>
             <Link
-              href="/privacy-policy"
+              href="/withoutpayment/privacy-policy"
               className="transition-colors hover:text-white/75"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/terms-of-service"
+              href="/withoutpayment/terms-of-service"
               className="transition-colors hover:text-white/75"
             >
               Terms of Service

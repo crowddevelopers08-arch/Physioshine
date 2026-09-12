@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="flex min-h-[4.25rem] items-center justify-between sm:min-h-[4.75rem]">
             {/* Logo */}
             <BrandLogo
-              href="/"
+              href="/withoutpayment"
               priority
               width={180}
               className="shrink-0"
@@ -83,7 +83,7 @@ export default function Navbar() {
                 <span className="hidden lg:inline">8309-199733</span>
               </PhoneLink>
               <a
-                href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
+                href="https://zbooking.in/xbeGn"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta="booking"

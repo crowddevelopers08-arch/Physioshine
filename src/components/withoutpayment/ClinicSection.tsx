@@ -78,7 +78,7 @@ export default function ClinicSection() {
             </ul>
 
             <a
-              href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
+              href="https://zbooking.in/xbeGn"
               target="_blank"
               rel="noopener noreferrer"
               data-cta="booking"
@@ -153,7 +153,7 @@ export default function ClinicSection() {
             Call Us Now
           </PhoneLink>
           <a
-            href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
+            href="https://zbooking.in/xbeGn"
             target="_blank"
             rel="noopener noreferrer"
             data-cta="booking"

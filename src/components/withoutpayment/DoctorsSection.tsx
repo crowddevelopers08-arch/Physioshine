@@ -116,7 +116,7 @@ export default function DoctorsSection() {
 
             <div className="flex flex-wrap gap-3 pt-1">
               <a
-                href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
+                href="https://zbooking.in/xbeGn"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta="booking"
@@ -134,8 +134,6 @@ export default function DoctorsSection() {
             </div>
           </div>
         </div>
-
-       
 
         <div>
           <h3 className="mb-7 text-center font-headline text-xl font-bold sm:text-2xl">

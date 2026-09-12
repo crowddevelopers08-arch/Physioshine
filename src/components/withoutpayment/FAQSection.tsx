@@ -90,7 +90,7 @@ export default function FAQSection() {
             Call: 8309-199733
           </PhoneLink>
           <a
-            href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
+            href="https://zbooking.in/xbeGn"
             target="_blank"
             rel="noopener noreferrer"
             data-cta="booking"
