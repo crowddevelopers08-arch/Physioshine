@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import BrandLogo from "@/components/withoutpayment/BrandLogo";
-import PhoneLink from "@/components/withoutpayment/PhoneLink";
+import BrandLogo from "@/components/wp/BrandLogo";
+import PhoneLink from "@/components/wp/PhoneLink";
 
 export const metadata: Metadata = {
   title: "Appointment Confirmed | Physio Shine",
@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     "Thank you for booking with Physio Shine. Our team will contact you shortly to confirm your appointment.",
 };
 
-export default function WithoutPaymentThankYou() {
+export default function WpThankYou() {
   return (
     <>
       <nav className="fixed top-0 z-50 w-full border-b border-outline-variant/25 bg-white/92 backdrop-blur-xl shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
-          <BrandLogo href="/withoutpayment" width={160} priority imageClassName="rounded-md sm:w-auto" />
+          <BrandLogo href="/wp" width={160} priority imageClassName="rounded-md sm:w-auto" />
           <PhoneLink
             className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary sm:px-6 sm:py-2.5 sm:text-base"
           >
@@ -126,7 +126,7 @@ export default function WithoutPaymentThankYou() {
           </div>
 
           <Link
-            href="/withoutpayment"
+            href="/wp"
             className="btn-premium inline-flex items-center gap-3 rounded-full px-5 py-3 text-base font-bold text-primary sm:text-lg"
           >
             <span className="material-symbols-outlined">arrow_back</span>

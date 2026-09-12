@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="flex min-h-[4.25rem] items-center justify-between sm:min-h-[4.75rem]">
             {/* Logo */}
             <BrandLogo
-              href="/withoutpayment"
+              href="/wp"
               priority
               width={180}
               className="shrink-0"

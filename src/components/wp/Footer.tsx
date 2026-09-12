@@ -55,7 +55,7 @@ export default function Footer() {
             data-reveal-item
             className="space-y-4 sm:col-span-2 lg:col-span-1"
           >
-            <BrandLogo href="/withoutpayment" width={240} className="shrink-0" />
+            <BrandLogo href="/wp" width={240} className="shrink-0" />
             <div className="space-y-2 text-sm text-white/68">
               <p className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-primary">
@@ -116,7 +116,7 @@ export default function Footer() {
                 { label: "Patient Reviews", href: "#reviews" },
                 { label: "Book Appointment", href: "https://zbooking.in/xbeGn" },
                 { label: "FAQs", href: "#faqs" },
-                { label: "Privacy Policy", href: "/withoutpayment/privacy-policy" },
+                { label: "Privacy Policy", href: "/wp/privacy-policy" },
               ].map((link) =>
                 link.href.startsWith("http") ? (
                   <li key={link.label}>
@@ -180,13 +180,13 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <span className="text-white/25">Legal</span>
             <Link
-              href="/withoutpayment/privacy-policy"
+              href="/wp/privacy-policy"
               className="transition-colors hover:text-white/75"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/withoutpayment/terms-of-service"
+              href="/wp/terms-of-service"
               className="transition-colors hover:text-white/75"
             >
               Terms of Service

@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import BrandLogo from "@/components/withoutpayment/BrandLogo";
-import PhoneLink from "@/components/withoutpayment/PhoneLink";
+import BrandLogo from "@/components/wp/BrandLogo";
+import PhoneLink from "@/components/wp/PhoneLink";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Physio Shine",
+  title: "Terms of Service | Physio Shine",
   description:
-    "Learn how Physio Shine collects, uses, and protects your personal information.",
+    "Read the terms and conditions governing the use of Physio Shine's website, bookings, and services.",
 };
 
-export default function WithoutPaymentPrivacyPolicy() {
+export default function WpTermsOfService() {
   return (
     <>
       <nav className="fixed top-0 z-50 w-full border-b border-outline-variant/25 bg-white/92 backdrop-blur-xl shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
-          <BrandLogo href="/withoutpayment" width={160} priority imageClassName="rounded-md sm:w-auto" />
+          <BrandLogo href="/wp" width={160} priority imageClassName="rounded-md sm:w-auto" />
           <Link
-            href="/withoutpayment"
+            href="/wp"
             className="btn-premium rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary sm:px-6 sm:py-2.5 sm:text-base"
           >
             Back to Home
@@ -30,7 +30,7 @@ export default function WithoutPaymentPrivacyPolicy() {
             Legal
           </span>
           <h1 className="font-headline text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-            Privacy Policy
+            Terms of Service
           </h1>
           <p className="text-sm font-medium text-on-surface-variant">
             Last updated: January 1, 2024
@@ -40,51 +40,33 @@ export default function WithoutPaymentPrivacyPolicy() {
         <div className="max-w-none space-y-6 text-sm leading-relaxed text-on-surface-variant sm:space-y-8 sm:text-base lg:space-y-10">
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              1. Introduction
+              1. Acceptance of Terms
             </h2>
             <p>
-              Welcome to Physio Shine (&quot;we&quot;, &quot;our&quot;, or
-              &quot;us&quot;). We are committed to protecting your personal
-              information and your right to privacy. This Privacy Policy
-              explains how we collect, use, disclose, and safeguard your
-              information when you visit our website or book an appointment with
-              us.
-            </p>
-            <p>
-              Please read this policy carefully. If you disagree with its terms,
-              please discontinue use of our site and services.
+              By accessing this website, booking an appointment, or using any
+              services offered by Physio Shine, you agree to be bound by these
+              Terms of Service. If you do not agree with any part of these
+              terms, please do not use our website or services.
             </p>
           </section>
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              2. Information We Collect
+              2. Scope of Services
             </h2>
-            <p>We collect information that you voluntarily provide to us when you:</p>
-            <ul className="ml-2 space-y-2 sm:ml-4">
-              {[
-                "Book an appointment via our website form",
-                "Call us by phone",
-                "Contact us via email or messaging platforms",
-                "Register as a patient at our clinic",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 font-semibold text-on-surface">
-              Personal data we may collect includes:
+            <p>
+              Physio Shine provides physiotherapy, chiropractic, rehabilitation,
+              consultation, and related wellness services. Information on this
+              website is provided for general guidance and does not replace
+              professional medical advice, diagnosis, or treatment.
             </p>
+            <p className="font-semibold text-on-surface">Our services may include:</p>
             <ul className="ml-2 space-y-2 sm:ml-4">
               {[
-                "Full name",
-                "Phone number and email address",
-                "Date of birth and gender",
-                "Medical history and health condition details",
-                "Payment and billing information",
-                "IP address and browser type (via cookies)",
+                "Appointment scheduling through our website or by phone",
+                "In-clinic consultations and therapy sessions",
+                "Post-treatment communication and follow-up support",
+                "Educational content related to recovery and mobility",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -96,18 +78,20 @@ export default function WithoutPaymentPrivacyPolicy() {
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              3. How We Use Your Information
+              3. Appointments and Booking
             </h2>
-            <p>We use the information we collect or receive for the following purposes:</p>
+            <p>
+              When you book an appointment, you agree to provide accurate,
+              complete, and up-to-date information. Appointment requests made
+              online are subject to confirmation by our team and are not final
+              until confirmed by phone, message, or email.
+            </p>
             <ul className="ml-2 space-y-2 sm:ml-4">
               {[
-                "To schedule and manage your appointments",
-                "To provide clinical care and physiotherapy treatment",
-                "To send appointment reminders and follow-up communications",
-                "To process payments and maintain billing records",
-                "To improve our services and patient experience",
-                "To comply with legal and regulatory obligations",
-                "To send promotional communications (only with your consent)",
+                "Appointments are subject to therapist and clinic availability",
+                "Please arrive on time for your scheduled appointment",
+                "Late arrival may shorten your session duration",
+                "Repeated missed appointments may affect future booking priority",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -119,19 +103,36 @@ export default function WithoutPaymentPrivacyPolicy() {
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              4. Sharing Your Information
+              4. Cancellations and Rescheduling
             </h2>
             <p>
-              We do not sell, trade, or rent your personal information to third
-              parties. We may share your information only in the following
-              circumstances:
+              We understand plans can change. If you need to cancel or
+              reschedule, we request reasonable advance notice so we can offer
+              the slot to another patient.
+            </p>
+            <p>
+              Physio Shine reserves the right to reschedule or cancel
+              appointments in the event of emergencies, therapist unavailability,
+              technical issues, or other operational reasons. In such cases, we
+              will make reasonable efforts to inform you promptly.
+            </p>
+          </section>
+
+          <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
+            <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
+              5. Payments and Fees
+            </h2>
+            <p>
+              Fees for consultations, therapy sessions, treatment packages, and
+              related services will be communicated at the time of booking or
+              consultation. By using our services, you agree to pay applicable
+              charges in accordance with the clinic&apos;s payment policies.
             </p>
             <ul className="ml-2 space-y-2 sm:ml-4">
               {[
-                "With referring physicians or specialists involved in your care (with your consent)",
-                "With insurance providers to process claims on your behalf",
-                "With trusted service providers who assist in operating our website and practice management systems under strict confidentiality agreements",
-                "When required by law, court order, or government authority",
+                "Prices may change from time to time without prior public notice",
+                "Package validity and refund terms, if any, will be explained separately",
+                "Some services may require advance payment or deposit confirmation",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -143,20 +144,33 @@ export default function WithoutPaymentPrivacyPolicy() {
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              5. Cookies & Tracking Technologies
+              6. Medical Disclaimer
             </h2>
             <p>
-              Our website may use cookies and similar tracking technologies to
-              enhance your browsing experience and gather analytics data. You
-              can control cookie settings through your browser preferences.
-              Disabling cookies may affect some features of our website.
+              Content on this website, including text, images, and treatment
+              descriptions, is intended for informational purposes only. It is
+              not a substitute for professional medical evaluation or
+              personalised treatment advice.
             </p>
-            <p className="font-semibold text-on-surface">We may use:</p>
+            <p>
+              Treatment outcomes may vary depending on the patient&apos;s
+              condition, medical history, adherence to advice, and other
+              individual factors. Physio Shine does not guarantee specific
+              clinical results.
+            </p>
+          </section>
+
+          <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
+            <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
+              7. Website Use
+            </h2>
+            <p>You agree not to misuse this website. Prohibited conduct includes:</p>
             <ul className="ml-2 space-y-2 sm:ml-4">
               {[
-                "Session cookies to operate our website",
-                "Preference cookies to remember your settings",
-                "Analytics cookies (e.g., Google Analytics) to understand traffic patterns",
+                "Submitting false, misleading, or incomplete information",
+                "Attempting to interfere with website performance or security",
+                "Copying, reproducing, or redistributing website content without permission",
+                "Using the website for unlawful, fraudulent, or abusive purposes",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -168,79 +182,47 @@ export default function WithoutPaymentPrivacyPolicy() {
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              6. Data Retention
+              8. Intellectual Property
             </h2>
             <p>
-              We retain your personal and medical information for as long as
-              necessary to provide services to you and comply with our legal
-              obligations. Clinical records are retained for a minimum of 7
-              years as per Indian Medical Council regulations. Marketing data is
-              retained until you opt out.
+              All content on this website, including branding, graphics,
+              written material, layout, and service descriptions, is the
+              property of Physio Shine or its licensors unless otherwise stated.
+              Unauthorised use, copying, or distribution is prohibited.
             </p>
           </section>
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              7. Your Rights
+              9. Limitation of Liability
             </h2>
-            <p>You have the right to:</p>
-            <ul className="ml-2 space-y-2 sm:ml-4">
-              {[
-                "Access the personal data we hold about you",
-                "Request correction of inaccurate data",
-                "Request deletion of your data (subject to legal retention requirements)",
-                "Withdraw consent for marketing communications at any time",
-                "Lodge a complaint with the relevant data protection authority",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
             <p>
-              To exercise any of these rights, please contact us at{" "}
-              <PhoneLink
-                className="font-semibold text-primary hover:underline"
-              >
-                8309-199733
-              </PhoneLink>
-              .
+              To the fullest extent permitted by law, Physio Shine shall not be
+              liable for any indirect, incidental, consequential, or special
+              damages arising from the use of this website or our services.
+              Nothing in these terms excludes liability where such exclusion is
+              not permitted by applicable law.
             </p>
           </section>
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              8. Security
+              10. Changes to These Terms
             </h2>
             <p>
-              We implement appropriate technical and organisational measures to
-              protect your personal information against unauthorised access,
-              alteration, disclosure, or destruction. However, no method of
-              transmission over the internet is 100% secure, and we cannot
-              guarantee absolute security.
+              We may update these Terms of Service from time to time. Updated
+              terms will be posted on this page with a revised effective date.
+              Continued use of our website or services after such updates
+              constitutes acceptance of the revised terms.
             </p>
           </section>
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              9. Changes to This Policy
+              11. Contact Us
             </h2>
             <p>
-              We may update this Privacy Policy from time to time. Any changes
-              will be posted on this page with an updated &quot;Last
-              updated&quot; date. We encourage you to review this policy
-              periodically.
-            </p>
-          </section>
-
-          <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
-            <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              10. Contact Us
-            </h2>
-            <p>
-              If you have any questions about this Privacy Policy or our data
-              practices, please contact us:
+              If you have any questions about these Terms of Service, please contact us:
             </p>
             <div className="space-y-2 rounded-lg bg-surface-container-low p-4 sm:p-6">
               <p className="font-bold text-on-surface">Physio Shine</p>
@@ -259,7 +241,7 @@ export default function WithoutPaymentPrivacyPolicy() {
 
         <div className="mt-12 text-center sm:mt-16">
           <Link
-            href="/withoutpayment"
+            href="/wp"
             className="btn-premium inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-base font-bold text-white shadow-lg sm:px-8 sm:py-3.5 sm:text-lg"
           >
             <span className="material-symbols-outlined">arrow_back</span>

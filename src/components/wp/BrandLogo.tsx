@@ -10,7 +10,7 @@ type BrandLogoProps = {
 };
 
 export default function BrandLogo({
-  href = "/withoutpayment",
+  href = "/wp",
   className = "",
   imageClassName = "",
   priority = false,
