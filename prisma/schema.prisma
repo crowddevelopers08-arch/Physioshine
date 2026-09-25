@@ -19,7 +19,8 @@ model Lead {
   name          String
   phone         String
   email         String?
-  treatment     String
+  city          String?
+  treatment    String
   preferredDate String?
   source        String?
   status        LeadStatus @default(NEW)

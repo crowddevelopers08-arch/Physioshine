@@ -1,5 +1,7 @@
 "use client"
 
+import { useState, type FormEvent } from "react"
+import { useRouter } from "next/navigation"
 import Image, { getImageProps } from "next/image"
 import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-react"
 
@@ -9,7 +11,7 @@ import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-re
  * TWO LAYOUTS:
  * 1. lg and up (>=1024px) — exact pixel-mapped replica of the 1916x821
  *    reference (left% = x/1916, top% = y/821), type in `cqw` + clamp().
- * 2. below lg — stacked flow: headline, stats, buttons, photo, then form.
+ * 2. below lg — stacked flow: headline, paragraph, photo, stats, buttons, then form.
  *
  * Traced measurements (lg+ layout):
  *   headline left margin ... x = 147           (7.67%)
@@ -75,32 +77,145 @@ const stats = [
 ]
 
 const fields = [
-  { icon: User, placeholder: "Name", type: "text" },
-  { icon: Phone, placeholder: "Phone", type: "tel" },
-  { icon: Mail, placeholder: "Email", type: "email" },
-  { icon: MapPin, placeholder: "City", type: "text" },
+  { icon: User, name: "name", placeholder: "Name", type: "text", required: true },
+  { icon: Phone, name: "phone", placeholder: "Phone", type: "tel", required: true },
+  { icon: Mail, name: "email", placeholder: "Email", type: "email", required: false },
+  { icon: MapPin, name: "city", placeholder: "City", type: "text", required: false },
 ]
 
+// Posted to /api/leads (DB + TeleCRM).
+const FORM_NAME = "manuthera-lp-leads"
+const FORM_SOURCE = "manuthera leads"
+const TREATMENT = "Manual Therapy"
+const THANK_YOU_PATH = "/consult/thank-you"
+
+type SubmitStatus = "idle" | "sending" | "success" | "error"
+
+function useLeadSubmit() {
+  const router = useRouter()
+  const [status, setStatus] = useState<SubmitStatus>("idle")
+  const [error, setError] = useState("")
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (status === "sending" || status === "success") return
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const value = (key: string) => String(data.get(key) ?? "").trim()
+
+    const phone = value("phone").replace(/[\s\-()]/g, "").replace(/^\+91/, "")
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+      setStatus("error")
+      setError("Please enter a valid 10-digit mobile number.")
+      return
+    }
+
+    setStatus("sending")
+    setError("")
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: value("name"),
+          phone,
+          email: value("email"),
+          city: value("city"),
+          treatment: TREATMENT,
+          source: FORM_SOURCE,
+          formName: FORM_NAME,
+          pageUrl: window.location.href,
+        }),
+      })
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(json?.error || "Something went wrong. Please try again.")
+      setStatus("success")
+      router.push(THANK_YOU_PATH)
+    } catch (err) {
+      setStatus("error")
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.")
+    }
+  }
+
+  const buttonLabel =
+    status === "sending" ? "SUBMITTING..." : status === "success" ? "REDIRECTING..." : "CONSULT NOW"
+
+  return { status, error, onSubmit, buttonLabel }
+}
+
 function LeadForm({ compact = false }: { compact?: boolean }) {
+  const { status, error, onSubmit, buttonLabel } = useLeadSubmit()
   return (
-    <form className={compact ? "space-y-3" : "space-y-4"}>
+    <form onSubmit={onSubmit} className={compact ? "space-y-3" : "space-y-4"}>
       {fields.map((f) => (
         <div key={f.placeholder} className="relative">
           <f.icon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#5B6B85]" />
           <input
             type={f.type}
+            name={f.name}
             placeholder={f.placeholder}
+            required={f.required}
             className="w-full rounded-xl border border-black/10 bg-[#F4F6FA] py-4 pl-12 pr-4 text-[15px] text-[#3A4258] placeholder:text-[#7B8AA3] focus:border-[#2363B1] focus:outline-none"
           />
         </div>
       ))}
       <button
         type="submit"
-        className="w-full rounded-full py-4 text-[15px] font-extrabold tracking-wide text-[#00123C] transition hover:brightness-105"
+        disabled={status === "sending" || status === "success"}
+        className="w-full rounded-full py-4 text-[15px] font-extrabold tracking-wide text-[#00123C] transition hover:brightness-105 disabled:opacity-70"
         style={{ backgroundColor: BTN_GOLD }}
       >
-        CONSULT NOW
+        {buttonLabel}
       </button>
+      {status === "error" && <p className="text-center text-[13px] text-red-600">{error}</p>}
+    </form>
+  )
+}
+
+// lg+ form card: sized in cqw to match the design box. The error line is
+// absolutely placed under the button so it never shifts the field layout.
+function DesktopLeadForm() {
+  const { status, error, onSubmit, buttonLabel } = useLeadSubmit()
+  return (
+    // fields + button spread with equal gaps
+    <form onSubmit={onSubmit} className="relative flex h-full flex-col justify-between">
+      {fields.map((f) => (
+        <div key={f.placeholder} className="relative">
+          <f.icon
+            className="pointer-events-none absolute left-[1.2cqw] top-1/2 -translate-y-1/2 text-[#5B6B85]"
+            style={{ width: "1.35cqw", height: "1.35cqw" }}
+          />
+          <input
+            type={f.type}
+            name={f.name}
+            placeholder={f.placeholder}
+            required={f.required}
+            className="w-full rounded-[0.8cqw] border border-black/10 bg-[#F4F6FA] text-[#3A4258] placeholder:text-[#7B8AA3] focus:border-[#2363B1] focus:outline-none"
+            style={{ padding: "1.3cqw 1cqw 1.3cqw 3.6cqw", fontSize: "clamp(12px, 1.1cqw, 20px)" }}
+          />
+        </div>
+      ))}
+      <button
+        type="submit"
+        disabled={status === "sending" || status === "success"}
+        className="w-full rounded-full font-extrabold tracking-wide transition hover:brightness-105 disabled:opacity-70"
+        style={{
+          backgroundColor: BTN_GOLD,
+          color: NAVY_TEXT,
+          padding: "1.3cqw 0",
+          fontSize: "clamp(12px, 1.15cqw, 21px)",
+        }}
+      >
+        {buttonLabel}
+      </button>
+      {status === "error" && (
+        <p
+          className="absolute inset-x-0 top-full text-center leading-tight text-red-600"
+          style={{ marginTop: "0.4cqw", fontSize: "clamp(11px, 0.8cqw, 14px)" }}
+        >
+          {error}
+        </p>
+      )}
     </form>
   )
 }
@@ -176,7 +291,11 @@ export default function ManutheraBanner() {
           movement and manual therapy
         </p>
 
-        <div className="mt-6 grid grid-cols-3 gap-2">
+        <div className="relative mt-6 w-full overflow-hidden rounded-3xl" style={{ aspectRatio: "4 / 3" }}>
+          <Image src="/manuthera-photo.png" alt="Therapist performing manual therapy on a patient" fill className="object-cover" />
+        </div>
+
+        <div className="mt-7 grid grid-cols-3 gap-2">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center text-center">
               <span
@@ -217,10 +336,6 @@ export default function ManutheraBanner() {
             </span>
             {PHONE}
           </span>
-        </div>
-
-        <div className="relative mt-8 w-full overflow-hidden rounded-3xl" style={{ aspectRatio: "4 / 3" }}>
-          <Image src="/manuthera-photo.png" alt="Therapist performing manual therapy on a patient" fill className="object-cover" />
         </div>
 
         <div className="mt-6 rounded-3xl bg-white p-5 shadow-lg">
@@ -364,35 +479,7 @@ export default function ManutheraBanner() {
           // 120px above and below.
           style={{ left: "71.12%", top: "14.62%", width: "26.53%", height: "70.77%", padding: "1.6cqw" }}
         >
-          {/* fields + button spread with equal gaps */}
-          <form className="flex h-full flex-col justify-between">
-            {fields.map((f) => (
-              <div key={f.placeholder} className="relative">
-                <f.icon
-                  className="pointer-events-none absolute left-[1.2cqw] top-1/2 -translate-y-1/2 text-[#5B6B85]"
-                  style={{ width: "1.35cqw", height: "1.35cqw" }}
-                />
-                <input
-                  type={f.type}
-                  placeholder={f.placeholder}
-                  className="w-full rounded-[0.8cqw] border border-black/10 bg-[#F4F6FA] text-[#3A4258] placeholder:text-[#7B8AA3] focus:border-[#2363B1] focus:outline-none"
-                  style={{ padding: "1.3cqw 1cqw 1.3cqw 3.6cqw", fontSize: "clamp(12px, 1.1cqw, 20px)" }}
-                />
-              </div>
-            ))}
-            <button
-              type="submit"
-              className="w-full rounded-full font-extrabold tracking-wide transition hover:brightness-105"
-              style={{
-                backgroundColor: BTN_GOLD,
-                color: NAVY_TEXT,
-                padding: "1.3cqw 0",
-                fontSize: "clamp(12px, 1.15cqw, 21px)",
-              }}
-            >
-              CONSULT NOW
-            </button>
-          </form>
+          <DesktopLeadForm />
         </div>
         </div>
       </div>

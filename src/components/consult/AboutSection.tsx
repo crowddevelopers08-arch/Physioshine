@@ -46,9 +46,11 @@ export default function AboutSection() {
   return (
     <section className={`${INTER} w-full bg-white py-16 sm:py-20 lg:py-[100px]`}>
       <link rel="stylesheet" href={FONTS_HREF} precedence="default" />
-      <div className="mx-auto grid w-full max-w-[1636px] grid-cols-1 items-center gap-y-12 px-5 sm:px-8 lg:grid-cols-[785fr_789fr] lg:gap-x-[62px] lg:px-8 2xl:px-0">
+      {/* Below lg the text wrapper uses `contents`, so its children join this
+          flex column and `order` slots the collage in after the intro paragraph. */}
+      <div className="mx-auto flex w-full max-w-[1636px] flex-col px-5 sm:px-8 lg:grid lg:grid-cols-[785fr_789fr] lg:items-center lg:gap-x-[62px] lg:px-8 2xl:px-0">
         {/* ---------------- image collage ---------------- */}
-        <div className="mx-auto flex w-full max-w-[785px] items-center gap-[3.95%]">
+        <div className="order-1 mx-auto mt-10 flex w-full max-w-[785px] items-center gap-[3.95%] lg:order-none lg:mt-0">
           {/* column A */}
           <div className="w-[48.03%]">
             <div className="relative ml-auto aspect-square w-[80.1%] overflow-hidden rounded-[16px] sm:rounded-[24px]">
@@ -84,7 +86,7 @@ export default function AboutSection() {
         </div>
 
         {/* ---------------- text ---------------- */}
-        <div className="max-w-[775px]">
+        <div className="contents lg:block lg:max-w-[775px]">
           <p className="text-[15px] font-semibold uppercase leading-[28px] tracking-[0.12em] text-[#4274D6] sm:text-[16px]">
             Meet Your Physiotherapist
           </p>
@@ -108,7 +110,7 @@ export default function AboutSection() {
           </p>
 
           {/* ---------- our approach ---------- */}
-          <div className="mt-8 sm:mt-5 rounded-2xl border border-[#E3EAF7] bg-[#F5F8FE] p-2 sm:p-4">
+          <div className="order-2 lg:order-none mt-8 sm:mt-5 rounded-2xl border border-[#E3EAF7] bg-[#F5F8FE] p-2 sm:p-4">
             <h3 className={`${URBANIST} text-[20px] font-semibold text-[#0E1A3C] sm:text-[22px]`}>Our Approach</h3>
 
             <ol className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-3 sm:gap-x-3">
@@ -129,7 +131,7 @@ export default function AboutSection() {
           </div>
 
           {/* ---------- CTA ---------- */}
-          <div className="mt-8 sm:mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <div className="order-2 lg:order-none mt-8 sm:mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
             <a
               href={BOOKING_URL}
               target="_blank"

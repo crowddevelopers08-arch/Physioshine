@@ -7,6 +7,7 @@ type Lead = {
   name: string;
   phone: string;
   email: string | null;
+  city: string | null;
   treatment: string;
   preferredDate: string | null;
   source: string | null;
@@ -171,7 +172,7 @@ export default function AdminDashboardPage() {
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search by name, phone, email, or treatment"
+              placeholder="Search by name, phone, email, city, or treatment"
               className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <div className="relative">
@@ -221,7 +222,7 @@ export default function AdminDashboardPage() {
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search by name, phone, email, or treatment"
+              placeholder="Search by name, phone, email, city, or treatment"
               className="min-w-0 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <div className="relative">
@@ -328,6 +329,12 @@ export default function AdminDashboardPage() {
                       </div>
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                          City
+                        </p>
+                        <p className="mt-1 text-slate-700">{lead.city || "Not provided"}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
                           Preferred Date
                         </p>
                         <p className="mt-1 text-slate-700">
@@ -386,6 +393,7 @@ export default function AdminDashboardPage() {
                     "Lead",
                     "Contact",
                     "Treatment",
+                    "City",
                     "Preferred Date",
                     "Status",
                     "TeleCRM",
@@ -403,13 +411,13 @@ export default function AdminDashboardPage() {
               <tbody className="divide-y divide-slate-200">
                 {loading ? (
                   <tr>
-                    <td colSpan={7} className="px-4 py-10 text-center text-slate-500">
+                    <td colSpan={8} className="px-4 py-10 text-center text-slate-500">
                       Loading leads...
                     </td>
                   </tr>
                 ) : leads.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="px-4 py-10 text-center text-slate-500">
+                    <td colSpan={8} className="px-4 py-10 text-center text-slate-500">
                       No leads found.
                     </td>
                   </tr>
@@ -431,6 +439,9 @@ export default function AdminDashboardPage() {
                       </td>
                       <td className="px-4 py-4 font-medium text-slate-700">
                         {lead.treatment}
+                      </td>
+                      <td className="px-4 py-4 text-slate-600">
+                        {lead.city || "—"}
                       </td>
                       <td className="px-4 py-4 text-slate-600">
                         {lead.preferredDate || "Not selected"}

@@ -11,6 +11,8 @@ type CreateLeadPayload = {
   preferredDate?: string;
   source?: string;
   pageUrl?: string;
+  formName?: string;
+  city?: string;
 };
 
 type LeadRow = {
@@ -18,6 +20,7 @@ type LeadRow = {
   name: string;
   phone: string;
   email: string | null;
+  city: string | null;
   treatment: string;
   preferredDate: string | null;
   source: string | null;
@@ -49,9 +52,11 @@ function buildTelecrmPayload(lead: {
   preferredDate?: string | null;
   source?: string | null;
   pageUrl?: string | null;
+  formName?: string | null;
+  city?: string | null;
 }) {
   const pageName = lead.pageUrl || lead.source || "website";
-  const formName = "website leads";
+  const formName = lead.formName || "website leads";
 
   return {
     fields: {
@@ -59,6 +64,7 @@ function buildTelecrmPayload(lead: {
       name: lead.name,
       email: lead.email || "",
       phone: normalizePhone(lead.phone),
+      ...(lead.city ? { city_1: lead.city } : {}),
       select_the_procedure: lead.treatment,
       message: "",
       "Lead Status": "new",
@@ -85,6 +91,9 @@ function buildTelecrmPayload(lead: {
         type: "SYSTEM_NOTE",
         text: `Form Name: ${formName}`,
       },
+      ...(lead.city
+        ? [{ type: "SYSTEM_NOTE", text: `City: ${lead.city}` }]
+        : []),
     ],
   };
 }
@@ -98,6 +107,8 @@ async function syncLeadToTelecrm(lead: {
   preferredDate?: string | null;
   source?: string | null;
   pageUrl?: string | null;
+  formName?: string | null;
+  city?: string | null;
 }) {
   const endpoint = process.env.TELECRM_API_URL;
   const apiKey = process.env.TELECRM_API_KEY;
@@ -164,6 +175,7 @@ export async function GET(request: Request) {
               { name: { contains: search, mode: "insensitive" as const } },
               { phone: { contains: search } },
               { email: { contains: search, mode: "insensitive" as const } },
+              { city: { contains: search, mode: "insensitive" as const } },
               { treatment: { contains: search, mode: "insensitive" as const } },
             ],
           }
@@ -191,6 +203,7 @@ export async function GET(request: Request) {
         name: lead.name,
         phone: lead.phone,
         email: lead.email,
+        city: lead.city,
         treatment: lead.treatment,
         preferredDate: lead.preferredDate,
         source: lead.source,
@@ -227,6 +240,8 @@ export async function POST(request: Request) {
       request.headers.get("referer") ||
       request.headers.get("origin") ||
       null;
+    const formName = body.formName?.trim() || null;
+    const city = body.city?.trim() || null;
 
     if (!name || !phone || !treatment) {
       return NextResponse.json(
@@ -240,6 +255,7 @@ export async function POST(request: Request) {
         name,
         phone,
         email,
+        city,
         treatment,
         preferredDate,
         source,
@@ -249,6 +265,7 @@ export async function POST(request: Request) {
     const telecrmResult = await syncLeadToTelecrm({
       ...lead,
       pageUrl,
+      formName,
     });
 
     const updatedLead = await prisma.lead.update({
