@@ -1,9 +1,11 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
-import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-react"
+import {
+  Users, Star, ClipboardList, MapPin, Phone, User, Mail,
+  Volume2, VolumeX, Pause, Play, Maximize, Minimize,
+} from "lucide-react"
 
 /**
  * Manuthera — Advanced Manual Therapy banner. Pixel-mapped replica.
@@ -11,7 +13,8 @@ import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-re
  * TWO LAYOUTS:
  * 1. lg and up (>=1024px) — exact pixel-mapped replica of the 1916x821
  *    reference (left% = x/1916, top% = y/821), type in `cqw` + clamp().
- * 2. below lg — stacked flow: headline, paragraph, photo, stats, buttons, then form.
+ * 2. below lg — stacked flow: headline, paragraph, video (16:9 card), stats,
+ *    then form.
  *
  * lg+ layout:
  *   background video ........ muted looping YouTube embed (BG_VIDEO_ID) filling
@@ -30,9 +33,6 @@ import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-re
  *
  * Right side: a thick gold arc (ARC_PATH) with the blue panel beyond it; the
  * panel hides the video, so the video only shows left of the arc.
- *
- * IMAGE YOU SUPPLY (put in /public), used by the mobile layout:
- *   /manuthera-photo.png   - the therapist + patient photo
  */
 
 const BLUE = "#00329D"
@@ -53,7 +53,7 @@ const DESIGN_BOX = { aspectRatio: "1916 / 821", containerType: "inline-size" } a
 const ARC_TOP = "1245,0"
 const ARC_PATH = "C1300,120 1335,300 1330,430 C1325,560 1275,690 1145,821"
 
-// Background video behind the left copy (desktop). Muted + looped YouTube
+// Banner video: behind the left copy on desktop, a 16:9 card on mobile. Muted + looped YouTube
 // embed with no controls; `playlist` = same id is what makes `loop` work.
 const BG_VIDEO_ID = "D4qLEQRH4KY"
 const BG_VIDEO_SRC =
@@ -231,6 +231,95 @@ function DesktopLeadForm() {
   )
 }
 
+// Mobile video card with mute / pause / fullscreen controls. The iframe loads
+// with enablejsapi=1 so the buttons can drive it via postMessage commands.
+// Fullscreen targets the card; where the browser can't (iPhone Safari only
+// allows native <video> fullscreen), it opens the video on YouTube instead.
+function MobileVideo() {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const frameRef = useRef<HTMLIFrameElement>(null)
+  const [muted, setMuted] = useState(true)
+  const [playing, setPlaying] = useState(true)
+  const [fullscreen, setFullscreen] = useState(false)
+
+  useEffect(() => {
+    const onChange = () => setFullscreen(document.fullscreenElement === cardRef.current)
+    document.addEventListener("fullscreenchange", onChange)
+    return () => document.removeEventListener("fullscreenchange", onChange)
+  }, [])
+
+  function command(func: string) {
+    frameRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func, args: [] }),
+      "*",
+    )
+  }
+
+  function toggleMute() {
+    command(muted ? "unMute" : "mute")
+    setMuted(!muted)
+  }
+
+  function togglePlay() {
+    command(playing ? "pauseVideo" : "playVideo")
+    setPlaying(!playing)
+  }
+
+  function toggleFullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen()
+      return
+    }
+    const card = cardRef.current
+    if (card?.requestFullscreen && document.fullscreenEnabled) {
+      card.requestFullscreen().catch(() => {})
+    } else {
+      window.open(`https://youtu.be/${BG_VIDEO_ID}`, "_blank", "noopener,noreferrer")
+    }
+  }
+
+  const controls = [
+    { label: muted ? "Unmute video" : "Mute video", Icon: muted ? VolumeX : Volume2, onClick: toggleMute },
+    { label: playing ? "Pause video" : "Play video", Icon: playing ? Pause : Play, onClick: togglePlay },
+    { label: fullscreen ? "Exit full screen" : "Full screen", Icon: fullscreen ? Minimize : Maximize, onClick: toggleFullscreen },
+  ]
+
+  return (
+    <div
+      ref={cardRef}
+      className={`relative mt-6 w-full overflow-hidden shadow-lg ${fullscreen ? "bg-black" : "rounded-3xl bg-[#DCE6F5]"}`}
+      style={{ aspectRatio: "16 / 9" }}
+    >
+      {/* Scaled up slightly (card clips it) to hide YouTube's edge UI;
+          not in fullscreen, where the whole frame should show. */}
+      <iframe
+        ref={frameRef}
+        src={`${BG_VIDEO_SRC}&enablejsapi=1`}
+        title="Manuthera manual therapy video"
+        tabIndex={-1}
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+        className="pointer-events-none absolute inset-0 h-full w-full border-0"
+        style={{ transform: fullscreen ? "none" : "scale(1.18)" }}
+      />
+
+      <div className="absolute bottom-3 right-3 flex gap-2">
+        {controls.map(({ label, Icon, onClick }) => (
+          <button
+            key={label}
+            type="button"
+            onClick={onClick}
+            aria-label={label}
+            title={label}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition active:scale-95"
+          >
+            <Icon className="h-[18px] w-[18px]" strokeWidth={2.2} />
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function Artwork() {
   return (
     <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 1916 821" preserveAspectRatio="none">
@@ -271,9 +360,8 @@ export default function ManutheraBanner() {
           movement and manual therapy
         </p>
 
-        <div className="relative mt-6 w-full overflow-hidden rounded-3xl" style={{ aspectRatio: "4 / 3" }}>
-          <Image src="/manuthera-photo.png" alt="Therapist performing manual therapy on a patient" fill className="object-cover" />
-        </div>
+        {/* Same video as desktop, as a rounded 16:9 card with controls. */}
+        <MobileVideo />
 
         <div className="mt-7 grid grid-cols-3 gap-2">
           {stats.map((s) => (
