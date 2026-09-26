@@ -433,6 +433,140 @@ button:not(:disabled):focus-visible {
   }
 }
 
+/* ── Two-colour fill sweep (layers on top of .btn-premium) ─────────────────
+   .btn-fill      colour A fills left → right, then colour B fills
+                  right → left over it, both fade, and the loop repeats.
+                  Set --fill-a / --fill-b per button, plus the text colour to
+                  use on each: --fill-text-base (no fill), --fill-text-a,
+                  --fill-text-b. The text switches as each fill crosses it.
+                  Every child must be an element (wrap bare text in <span>) so
+                  it sits above the fill layers.
+   .btn-cta-arrow icon that nudges right on hover
+   .btn-cta-ring  phone icon with a gentle periodic wiggle */
+@keyframes fill-sweep-a {
+  0% { transform: scaleX(0); opacity: 1; }
+  30% { transform: scaleX(1); opacity: 1; }
+  88% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@keyframes fill-sweep-b {
+  0%, 42% { transform: scaleX(0); opacity: 1; }
+  72% { transform: scaleX(1); opacity: 1; }
+  88% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* Text colour follows the fills: A covers the text by ~10%, B by ~58%. */
+@keyframes fill-text {
+  0% { color: var(--fill-text-base, currentColor); }
+  10%, 52% { color: var(--fill-text-a, currentColor); }
+  58%, 88% { color: var(--fill-text-b, currentColor); }
+  100% { color: var(--fill-text-base, currentColor); }
+}
+
+@keyframes cta-wiggle {
+  0%, 70%, 100% { transform: rotate(0); }
+  74%, 82%, 90% { transform: rotate(-14deg); }
+  78%, 86%, 94% { transform: rotate(14deg); }
+}
+
+/* Doubled class beats .btn-premium's own ::before/::after (incl. :hover). */
+.btn-premium.btn-fill::before,
+.btn-premium.btn-fill::after,
+.btn-premium.btn-fill:not(:disabled):hover::before,
+.btn-premium.btn-fill:not(:disabled):hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  border-radius: inherit;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  transform: scaleX(0);
+  animation-duration: 4.2s;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  animation-iteration-count: infinite;
+}
+
+.btn-premium.btn-fill::before,
+.btn-premium.btn-fill:not(:disabled):hover::before {
+  background: var(--fill-a, #fde7a6);
+  transform-origin: left center;
+  animation-name: fill-sweep-a;
+}
+
+.btn-premium.btn-fill::after,
+.btn-premium.btn-fill:not(:disabled):hover::after {
+  background: var(--fill-b, #d6e6fb);
+  transform-origin: right center;
+  animation-name: fill-sweep-b;
+}
+
+/* Brand presets (logo blue #4480C4 / gold #F9C113) for .btn-premium.btn-fill:
+   .btn-brand        blue button — gold sweeps in, then blue sweeps back
+   .btn-brand-light  white button — gold sweeps in, then white sweeps back
+   Plain CSS (unlayered), so these win over Tailwind bg-/text- utilities. */
+.btn-premium.btn-fill.btn-brand {
+  background-color: #4480c4;
+  color: #ffffff;
+  --fill-a: #f9c113;
+  --fill-b: #4480c4;
+  --fill-text-base: #ffffff;
+  --fill-text-a: #0f2747;
+  --fill-text-b: #ffffff;
+}
+
+.btn-premium.btn-fill.btn-brand-light {
+  background-color: #ffffff;
+  color: #2a66ac;
+  border: 1px solid #4480c4;
+  --fill-a: #f9c113;
+  --fill-b: #ffffff;
+  --fill-text-base: #2a66ac;
+  --fill-text-a: #0f2747;
+  --fill-text-b: #2a66ac;
+}
+
+.btn-premium.btn-fill > * {
+  animation: fill-text 4.2s linear infinite;
+}
+
+.btn-premium.btn-fill > .btn-cta-ring {
+  animation:
+    fill-text 4.2s linear infinite,
+    cta-wiggle 2.6s ease-in-out infinite;
+}
+
+.btn-cta-arrow {
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-premium:hover .btn-cta-arrow {
+  transform: translateX(4px);
+}
+
+.btn-cta-ring {
+  display: inline-block;
+  animation: cta-wiggle 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-premium.btn-fill::before,
+  .btn-premium.btn-fill::after {
+    animation: none !important;
+    transform: scaleX(0) !important;
+  }
+
+  .btn-premium.btn-fill > *,
+  .btn-cta-ring,
+  .btn-cta-arrow {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn-premium,
   .btn-premium::before,

@@ -8,25 +8,16 @@ const INTER = "font-['Inter',ui-sans-serif,system-ui,sans-serif]";
 const URBANIST = "font-['Urbanist',ui-sans-serif,system-ui,sans-serif]";
 
 /**
- * Meet Your Physiotherapist section. Image collage is a replica of the
- * reference (measured at 1906px wide); right column holds the doctor intro,
- * "Our Approach" steps and the booking CTA.
+ * Meet Your Physiotherapist section. Two equal columns: the doctor's photo
+ * on the left, and the intro, "Our Approach" steps and booking CTA on the right.
  *
- *   container ............ 1636px, centred (x 135 -> 1771)
- *   image group .......... 785px wide = 377 col + 31 gap + 377 col
- *     col A: img 1 302x302 (right-aligned), 45 gap, img 3 377x377
- *     col B: img 2 377x509, vertically centred against col A
- *   gap to text .......... 62px
- *   button ............... 54px tall, #4A7CD8, radius 6px
- *
- * Images are fluid (% of the group width), so the collage keeps its exact
- * proportions at every screen size. Swap the paths in IMAGES for your own.
+ *   container ............ 1636px, centred
+ *   gap between columns .. 62px
+ *   button ............... 54px tall pill, logo blue, .btn-fill sweep (as Footer)
  */
 
 const IMAGES = {
-  topLeft: "/DSC04203.JPG",
-  tall: "/sachinnew.png",
-  bottomLeft: "/physio.jpg",
+  doctor: "/DSC07927.jpg",
 };
 
 const APPROACH = ["Assess", "Understand", "Treat", "Rehabilitate"];
@@ -47,46 +38,22 @@ export default function AboutSection() {
     <section className={`${INTER} w-full bg-white py-16 sm:py-20 lg:py-[100px]`}>
       <link rel="stylesheet" href={FONTS_HREF} precedence="default" />
       {/* Below lg the text wrapper uses `contents`, so its children join this
-          flex column and `order` slots the collage in after the intro paragraph. */}
-      <div className="mx-auto flex w-full max-w-[1636px] flex-col px-5 sm:px-8 lg:grid lg:grid-cols-[785fr_789fr] lg:items-center lg:gap-x-[62px] lg:px-8 2xl:px-0">
-        {/* ---------------- image collage ---------------- */}
-        <div className="order-1 mx-auto mt-10 flex w-full max-w-[785px] items-center gap-[3.95%] lg:order-none lg:mt-0">
-          {/* column A */}
-          <div className="w-[48.03%]">
-            <div className="relative ml-auto aspect-square w-[80.1%] overflow-hidden rounded-[16px] sm:rounded-[24px]">
-              <Image
-                src={IMAGES.topLeft}
-                alt="Patient smiling during a check-up"
-                fill
-                sizes="(min-width: 1024px) 302px, 38vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative mt-[11.94%] aspect-square w-full overflow-hidden rounded-[16px] sm:rounded-[24px]">
-              <Image
-                src={IMAGES.bottomLeft}
-                alt="Our specialists at work"
-                fill
-                sizes="(min-width: 1024px) 377px, 48vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          {/* column B */}
-          <div className="relative aspect-[377/509] w-[48.03%] overflow-hidden rounded-[16px] sm:rounded-[24px]">
-            <Image
-              src={IMAGES.tall}
-              alt="Happy patient in the treatment chair"
-              fill
-              sizes="(min-width: 1024px) 377px, 48vw"
-              className="object-cover"
-            />
-          </div>
+          flex column and `order` slots the photo in after the intro paragraph. */}
+      <div className="mx-auto flex w-full max-w-[1636px] flex-col px-5 sm:px-8 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-x-[62px] lg:px-8 2xl:px-0">
+        {/* ---------------- image ----------------
+            Equal-width column; on lg it stretches to the text column's height. */}
+        <div className="relative order-1 mt-10 aspect-[4/5] w-full overflow-hidden rounded-[16px] sm:aspect-[4/3] sm:rounded-[24px] lg:order-none lg:mt-0 lg:aspect-auto lg:min-h-[520px]">
+          <Image
+            src={IMAGES.doctor}
+            alt="Dr. Gajwel Sachin Raj, PT"
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover object-top"
+          />
         </div>
 
         {/* ---------------- text ---------------- */}
-        <div className="contents lg:block lg:max-w-[775px]">
+        <div className="contents lg:block lg:self-center">
           <p className="text-[15px] font-semibold uppercase leading-[28px] tracking-[0.12em] text-[#4274D6] sm:text-[16px]">
             Meet Your Physiotherapist
           </p>
@@ -137,9 +104,11 @@ export default function AboutSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-cta="booking"
-              className="inline-flex h-[54px] items-center justify-center self-start rounded-[6px] bg-[#4A7CD8] px-[25px] text-[17px] font-semibold text-white transition-colors hover:bg-[#3A6AC4] sm:self-auto sm:text-[18px]"
+              // Same fill-sweep as the Footer CTA (logo gold, then back to logo blue).
+              className="btn-premium btn-fill btn-brand h-[54px] gap-2 self-start rounded-full px-7 text-[17px] font-bold sm:self-auto sm:text-[18px]"
             >
-              Book a Consultation
+              <span>Book a Consultation</span>
+              <span className="btn-cta-arrow material-symbols-outlined text-xl">arrow_forward</span>
             </a>
             <p className="text-[15px] leading-[1.5] text-[#6B7489] sm:max-w-[260px]">
               Talk to our physiotherapy team about your condition.

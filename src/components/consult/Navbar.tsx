@@ -18,29 +18,9 @@ export default function Navbar() {
     <>
       {/* Top bar */}
       <div className="bg-brand-deep text-white text-xs py-2 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-4 lg:gap-6">
-          <span className="hidden md:flex shrink-0 items-center gap-1.5">
-            <span className="material-symbols-outlined text-sm">location_on</span>
-            LB Nagar, Hyderabad-500074
-          </span>
-
-          {/* Treatments ticker (centre) */}
-          <div className="flex min-w-0 flex-1 items-center gap-4 lg:gap-6">
-            <span className="hidden md:block h-4 w-px shrink-0 bg-white/20" aria-hidden="true" />
-            <RunningTicker className="min-w-0 flex-1" />
-            <span className="hidden md:block h-4 w-px shrink-0 bg-white/20" aria-hidden="true" />
-          </div>
-
-          <div className="hidden md:flex shrink-0 items-center gap-6">
-            <PhoneLink className="flex items-center gap-1.5 hover:text-secondary-fixed transition-colors">
-              <span className="material-symbols-outlined text-sm">call</span>
-              8309-199733
-            </PhoneLink>
-            <span className="hidden lg:flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-sm">schedule</span>
-              Mon - Sat: 8am - 8pm
-            </span>
-          </div>
+        <div className="max-w-7xl mx-auto flex items-center">
+          {/* Treatments ticker (full width) */}
+          <RunningTicker className="min-w-0 flex-1" />
         </div>
       </div>
 
@@ -51,40 +31,44 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 py-2 sm:px-8 sm:py-3">
-          <div className="flex min-h-[4.25rem] items-center justify-between sm:min-h-[4.75rem]">
+          <div className="flex min-h-[3.05rem] items-center justify-between sm:min-h-[4.75rem]">
             {/* Logo */}
             <BrandLogo
               href="/consult"
               priority
               width={180}
-              className="shrink-0"
+              // BrandLogo sizes its box inline; shrink it on mobile only.
+              className="shrink-0 max-sm:[&>div]:w-[130px]! max-sm:[&>div]:h-auto!"
               imageClassName="rounded-md"
             />
 
             {/* Right CTA */}
             <div className="flex items-center gap-2 sm:gap-3">
               <PhoneLink
-                className="btn-premium btn-mobile-hidden rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-white lg:items-center lg:gap-2"
+                className="btn-premium btn-fill btn-brand-light btn-mobile-hidden gap-2 rounded-full px-4 py-2 text-sm font-bold"
               >
-                <span className="material-symbols-outlined text-base">call</span>
+                <span className="btn-cta-ring material-symbols-outlined text-base">call</span>
                 <span className="hidden lg:inline">8309-199733</span>
               </PhoneLink>
               <a
-                href="https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL"
-                target="_blank"
+                href=""
                 rel="noopener noreferrer"
                 data-cta="booking"
-                className="btn-premium btn-mobile-hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:brightness-110 lg:px-5"
+                className="btn-premium btn-fill btn-brand btn-mobile-hidden gap-2 rounded-full px-5 py-2 text-sm font-bold"
               >
-                Book Appointment
+                <span>Book Appointment</span>
+                <span className="btn-cta-arrow material-symbols-outlined text-base">arrow_forward</span>
               </a>
-              {/* Mobile call */}
-              <PhoneLink
-                aria-label="Call 8309-199733"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-sm transition hover:brightness-110 lg:hidden"
-              >
-                <span className="material-symbols-outlined text-xl">call</span>
-              </PhoneLink>
+              {/* Mobile call — wrapper hides it on lg (.btn-premium's display
+                  would override a lg:hidden placed on the link itself). */}
+              <span className="lg:hidden">
+                <PhoneLink
+                  aria-label="Call 8309-199733"
+                  className="btn-premium btn-fill btn-brand btn-icon h-10 w-10 rounded-full"
+                >
+                  <span className="btn-cta-ring material-symbols-outlined text-xl">call</span>
+                </PhoneLink>
+              </span>
             </div>
           </div>
         </div>

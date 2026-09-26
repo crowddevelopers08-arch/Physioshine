@@ -81,18 +81,18 @@ export default function ConsultThankYouPage() {
             <p className="text-xs font-medium text-on-surface-variant sm:text-sm">
               Need to speak to someone urgently?
             </p>
-            <PhoneLink className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white shadow-md">
-              <span className="material-symbols-outlined text-[18px]">call</span>
-              Call: 8309-199733
+            <PhoneLink className="btn-premium btn-fill btn-brand gap-2 rounded-full px-5 py-2 text-sm font-bold">
+              <span className="btn-cta-ring material-symbols-outlined text-[18px]">call</span>
+              <span>Call: 8309-199733</span>
             </PhoneLink>
           </div>
 
           <Link
             href="/consult"
-            className="btn-premium inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-bold text-primary"
+            className="btn-premium btn-fill btn-brand-light gap-2 rounded-full px-5 py-2 text-sm font-bold"
           >
             <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-            Back to Home
+            <span>Back to Home</span>
           </Link>
         </div>
       </main>

@@ -1,20 +1,202 @@
 import Link from "next/link";
+import AnimatedSection from "../AnimatedSection";
+import BrandLogo from "../BrandLogo";
+import PhoneLink from "../PhoneLink";
+
+const treatments = [
+  "Back Pain",
+  "Neck Pain",
+  "Knee & Shoulder Pain",
+  "Sports Injury Rehab",
+  "Stroke Rehabilitation",
+  "Spinal Decompression",
+  "Posture Correction",
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t-2 border-primary bg-white">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-5 text-center text-sm text-brand-deep sm:px-8 md:flex-row md:justify-between md:gap-6 md:text-left lg:text-[15px]">
-        <p className="flex flex-col items-center gap-1 sm:flex-row sm:gap-0">
-          <span>© {new Date().getFullYear()} PhysioShine PhysioRehab. All rights reserved</span>
-        </p>
-
-        <Link
-          href="consult/privacy-policy"
-          className="font-semibold text-primary transition-colors hover:text-secondary"
+    <AnimatedSection as="footer" className="bg-brand-deeper text-slate-300">
+      <div className="bg-primary px-4 py-8 sm:px-8">
+        <div
+          data-reveal-header
+          className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row"
         >
-          Privacy Policy
-        </Link>
+          <div>
+            <p className="font-headline text-xl max-[470px]:text-center font-black text-white sm:text-2xl">
+              Ready to Manuthera?
+            </p>
+            <p className="mt-1 text-sm text-white/80">
+              Join 40,000+ satisfied patients. Book your slot today.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <a
+              rel="noopener noreferrer"
+              data-cta="booking"
+              className="btn-premium btn-fill btn-brand-light gap-2 rounded-full px-6 py-3 text-center text-sm font-bold"
+            >
+              <span>Book Appointment</span>
+              <span className="btn-cta-arrow material-symbols-outlined text-base">arrow_forward</span>
+            </a>
+            <PhoneLink
+              className="btn-premium btn-fill btn-brand-light btn-mobile-only items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold"
+            >
+              <span className="btn-cta-ring material-symbols-outlined text-base">call</span>
+              <span>8309-199733</span>
+            </PhoneLink>
+          </div>
+        </div>
       </div>
-    </footer>
+
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div
+            data-reveal-item
+            className="space-y-4 sm:col-span-2 lg:col-span-1"
+          >
+            <BrandLogo href="/" width={240} className="shrink-0" />
+            {/* <p className="text-sm leading-relaxed text-white/68">
+              Advanced Physiotherapy, Chiropractic & Rehabilitation Centre in
+              Hyderabad. Delivering holistic, evidence-based care since 2018.
+            </p> */}
+            <div className="space-y-2 text-sm text-white/68">
+              <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base text-primary">
+                  location_on
+                </span>
+                MNR complex, SBH road, opposite SBI bank, near metro station, Lb Nagar, Hyderabad-500074
+              </p>
+              <PhoneLink
+                className="flex items-center gap-2 transition-colors hover:text-white"
+              >
+                <span className="material-symbols-outlined text-base text-primary">
+                  call
+                </span>
+                8309-199733
+              </PhoneLink>
+              <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base text-primary">
+                  schedule
+                </span>
+                Mon - Sat: 8am - 8pm
+              </p>
+                 <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base text-primary">
+                  schedule
+                </span>
+                Sun : 8am - 3.30pm
+              </p>
+            </div>
+          </div>
+
+          <div data-reveal-item>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">
+              Our Treatments
+            </h4>
+            <ul className="space-y-2">
+              {treatments.map((treatment) => (
+                <li key={treatment}>
+                  <a
+                    href="#treatments"
+                    className="flex items-center gap-2 text-sm text-white/68 transition-colors hover:text-secondary-fixed"
+                  >
+                    <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                    {treatment}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div data-reveal-item>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">
+              Quick Links
+            </h4>
+            <ul className="space-y-2">
+              {[
+                { label: "About Clinic", href: "#clinic" },
+                { label: "Meet Our Doctors", href: "#doctors" },
+                { label: "Patient Reviews", href: "#reviews" },
+                { label: "Book Appointment", href: "https://physioshine.zohobookings.in/445097000000275205/#/445097000000275205?bookedFrom=ShortenURL" },
+                { label: "FAQs", href: "#faqs" },
+                { label: "Privacy Policy", href: "/privacy-policy" },
+              ].map((link) =>
+                link.href.startsWith("http") ? (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cta="booking"
+                      className="flex items-center gap-2 text-sm text-white/68 transition-colors hover:text-secondary-fixed"
+                    >
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                      {link.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="flex items-center gap-2 text-sm text-white/68 transition-colors hover:text-secondary-fixed"
+                    >
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+
+          <div data-reveal-item>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">
+              Why Choose Us
+            </h4>
+            <ul className="space-y-2.5">
+              {[
+                "1000+ Google Reviews",
+                "4.8 / 5 Google Rating",
+                "40,000+ Satisfied Clients",
+                "150+ Patients Per Day Capacity",
+                "Medical Grade Equipment",
+                "Non-Surgical Solutions",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-sm text-white/68"
+                >
+                  <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary">
+                    check_circle
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10 px-4 py-2 sm:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-xs text-white/40 sm:flex-row">
+          <p>&copy; 2026 Physio Shine. All rights reserved.</p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <span className="text-white/25">Legal</span>
+            <Link
+              href="/consult/privacy-policy"
+              className="transition-colors hover:text-white/75"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="transition-colors hover:text-white/75"
+            >
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </AnimatedSection>
   );
 }

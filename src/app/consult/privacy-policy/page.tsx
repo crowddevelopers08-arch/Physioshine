@@ -17,9 +17,9 @@ export default function PrivacyPolicy() {
           <BrandLogo href="/consult" width={160} priority imageClassName="rounded-md sm:w-auto" />
           <Link
             href="/consult"
-            className="btn-premium rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary sm:px-6 sm:py-2.5 sm:text-base"
+            className="btn-premium btn-fill btn-brand rounded-full px-4 py-2 text-sm font-bold sm:px-6 sm:py-2.5 sm:text-base"
           >
-            Back to Home
+            <span>Back to Home</span>
           </Link>
         </div>
       </nav>
@@ -260,10 +260,10 @@ export default function PrivacyPolicy() {
         <div className="mt-12 text-center sm:mt-16">
           <Link
             href="/consult"
-            className="btn-premium inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-base font-bold text-white shadow-lg sm:px-8 sm:py-3.5 sm:text-lg"
+            className="btn-premium btn-fill btn-brand gap-3 rounded-full px-6 py-3 text-base font-bold sm:px-8 sm:py-3.5 sm:text-lg"
           >
             <span className="material-symbols-outlined">arrow_back</span>
-            Back to Home
+            <span>Back to Home</span>
           </Link>
         </div>
       </main>

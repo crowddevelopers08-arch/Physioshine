@@ -97,7 +97,7 @@ export default function BeforeAfterVideoCarousel() {
           <span className="h-px w-14 bg-linear-to-r from-secondary-fixed/80 to-transparent" />
         </div>
         <h2 className="font-headline text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
-          Patient Recovery Stories
+          Treatment Videos
         </h2>
         <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
           Watch real treatment videos and recovery journeys of patients at PhysioShine.

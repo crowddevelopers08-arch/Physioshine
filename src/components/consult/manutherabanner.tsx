@@ -13,18 +13,11 @@ import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-re
  *    reference (left% = x/1916, top% = y/821), type in `cqw` + clamp().
  * 2. below lg — stacked flow: headline, paragraph, photo, stats, buttons, then form.
  *
- * Traced measurements (lg+ layout):
- *   headline left margin ... x = 147           (7.67%)
- *   headline lines ......... y 105 / 174 / 240 / 312  (serif bold)
- *   gold divider rule ...... y 389, width to x 609
- *   subtext (3 lines) ...... y 409 / 437 / 467
- *   stat circles ........... 69px dia, centers x 225/416/610, y 503-568
- *   stat number/label ...... y 583 / 611
- *   primary button .......... 157,653 -> 649,719  (492 x 66, pill)
- *   location row ............ y ~746-778
- *   form card ............... 1401,192 -> 1843,683 (442 x 491, r28)
- *   form fields ............. 4x, ~68px tall, 89px pitch, starting y 224
- *   consult button ........... 1433,589 -> 1812,652
+ * lg+ layout:
+ *   left copy block ......... x = 147 (7.67%), vertically centred: headline,
+ *                             gold rule, subtext, stats row (cqw gaps)
+ *   form card ............... 1363,120 -> 1871,701, title + 4 fields + button
+ *                             spread evenly
  *
  * Colors sampled from the file:
  *   headline blue ........... #00329D
@@ -162,10 +155,10 @@ function LeadForm({ compact = false }: { compact?: boolean }) {
       <button
         type="submit"
         disabled={status === "sending" || status === "success"}
-        className="w-full rounded-full py-4 text-[15px] font-extrabold tracking-wide text-[#00123C] transition hover:brightness-105 disabled:opacity-70"
-        style={{ backgroundColor: BTN_GOLD }}
+        className="btn-premium btn-fill btn-brand w-full gap-2 rounded-full py-4 text-[15px] font-extrabold tracking-wide disabled:opacity-70"
       >
-        {buttonLabel}
+        <span>{buttonLabel}</span>
+        <span className="btn-cta-arrow material-symbols-outlined text-lg">arrow_forward</span>
       </button>
       {status === "error" && <p className="text-center text-[13px] text-red-600">{error}</p>}
     </form>
@@ -177,37 +170,57 @@ function LeadForm({ compact = false }: { compact?: boolean }) {
 function DesktopLeadForm() {
   const { status, error, onSubmit, buttonLabel } = useLeadSubmit()
   return (
-    // fields + button spread with equal gaps
-    <form onSubmit={onSubmit} className="relative flex h-full flex-col justify-between">
-      {fields.map((f) => (
-        <div key={f.placeholder} className="relative">
-          <f.icon
-            className="pointer-events-none absolute left-[1.2cqw] top-1/2 -translate-y-1/2 text-[#5B6B85]"
-            style={{ width: "1.35cqw", height: "1.35cqw" }}
-          />
-          <input
-            type={f.type}
-            name={f.name}
-            placeholder={f.placeholder}
-            required={f.required}
-            className="w-full rounded-[0.8cqw] border border-black/10 bg-[#F4F6FA] text-[#3A4258] placeholder:text-[#7B8AA3] focus:border-[#2363B1] focus:outline-none"
-            style={{ padding: "1.3cqw 1cqw 1.3cqw 3.6cqw", fontSize: "clamp(12px, 1.1cqw, 20px)" }}
-          />
-        </div>
-      ))}
-      <button
-        type="submit"
-        disabled={status === "sending" || status === "success"}
-        className="w-full rounded-full font-extrabold tracking-wide transition hover:brightness-105 disabled:opacity-70"
-        style={{
-          backgroundColor: BTN_GOLD,
-          color: NAVY_TEXT,
-          padding: "1.3cqw 0",
-          fontSize: "clamp(12px, 1.15cqw, 21px)",
-        }}
-      >
-        {buttonLabel}
-      </button>
+    // title block on top, then fields + button spread with equal gaps below it
+    <form onSubmit={onSubmit} className="relative flex h-full flex-col">
+      <div className="flex shrink-0 flex-col items-center">
+        <h2
+          className="text-center font-serif font-bold leading-tight"
+          style={{ fontSize: "clamp(16px, 1.55cqw, 28px)", color: BLUE }}
+        >
+          Book Your Consultation
+        </h2>
+        <span
+          aria-hidden
+          className="block rounded-full"
+          style={{ marginTop: "0.6cqw", width: "4cqw", height: "3px", backgroundColor: GOLD }}
+        />
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col justify-between" style={{ marginTop: "1.4cqw" }}>
+        {fields.map((f) => (
+          <div key={f.placeholder} className="relative">
+            <f.icon
+              className="pointer-events-none absolute left-[1.2cqw] top-1/2 -translate-y-1/2 text-[#5B6B85]"
+              style={{ width: "1.35cqw", height: "1.35cqw" }}
+            />
+            <input
+              type={f.type}
+              name={f.name}
+              placeholder={f.placeholder}
+              required={f.required}
+              className="w-full rounded-[0.8cqw] border border-black/10 bg-[#F4F6FA] text-[#3A4258] placeholder:text-[#7B8AA3] focus:border-[#2363B1] focus:outline-none"
+              style={{ padding: "1.2cqw 1cqw 1.2cqw 3.6cqw", fontSize: "clamp(12px, 1.1cqw, 20px)" }}
+            />
+          </div>
+        ))}
+        <button
+          type="submit"
+          disabled={status === "sending" || status === "success"}
+          className="btn-premium btn-fill btn-brand w-full rounded-full font-extrabold tracking-wide disabled:opacity-70"
+          // min sizes reset: .btn-premium's 3rem floor would break the cqw fit.
+          style={{
+            gap: "0.5cqw",
+            minHeight: 0,
+            minWidth: 0,
+            padding: "1.2cqw 0",
+            fontSize: "clamp(12px, 1.15cqw, 21px)",
+          }}
+        >
+          <span>{buttonLabel}</span>
+          <span className="btn-cta-arrow material-symbols-outlined" style={{ fontSize: "1.3em" }}>
+            arrow_forward
+          </span>
+        </button>
+      </div>
       {status === "error" && (
         <p
           className="absolute inset-x-0 top-full text-center leading-tight text-red-600"
@@ -314,31 +327,12 @@ export default function ManutheraBanner() {
           ))}
         </div>
 
-        <button
-          type="button"
-          className="mt-7 w-full rounded-full py-4 text-[16px] font-extrabold tracking-wide"
-          style={{ backgroundColor: BTN_GOLD, color: NAVY_TEXT }}
-        >
-          BOOK YOUR CONSULTATION
-        </button>
-
-        <div className="mt-4 flex flex-wrap items-center gap-4 text-[15px] font-bold" style={{ color: NAVY_TEXT }}>
-          <span className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: GOLD }}>
-              <MapPin className="h-4 w-4 text-white" fill="white" strokeWidth={1} />
-            </span>
-            Hyderabad
-          </span>
-          <span className="h-5 w-px bg-black/20" />
-          <span className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: GOLD }}>
-              <Phone className="h-3.5 w-3.5 text-white" fill="white" strokeWidth={0} />
-            </span>
-            {PHONE}
-          </span>
-        </div>
 
         <div className="mt-6 rounded-3xl bg-white p-5 shadow-lg">
+          <h2 className="text-center font-serif text-[22px] font-bold" style={{ color: BLUE }}>
+            Book Your Consultation
+          </h2>
+          <span aria-hidden className="mx-auto mb-5 mt-2 block h-[3px] w-14 rounded-full" style={{ backgroundColor: GOLD }} />
           <LeadForm compact />
         </div>
       </div>
@@ -376,92 +370,61 @@ export default function ManutheraBanner() {
           style={DESIGN_BOX}
         >
 
-        {/* ---------- headline ---------- */}
+        {/* Headline, rule, paragraph and stats flow as one block, centred
+            vertically with even gaps (all in cqw so it scales as one). */}
         <div
-          className="absolute z-10 font-serif font-bold"
-          style={{ left: "7.67%", top: "10.8%", width: "58%", lineHeight: 1.18 }}
+          className="absolute inset-y-0 z-10 flex flex-col justify-center"
+          style={{ left: "7.67%", width: "34cqw" }}
         >
-          <div style={{ fontSize: "clamp(28px, 3.15cqw, 58px)", color: BLUE }}>Manuthera - Advanced</div>
-          <div style={{ fontSize: "clamp(28px, 3.15cqw, 58px)", color: GOLD }}> Manual Therapy in</div>
-          <div style={{ fontSize: "clamp(28px, 3.15cqw, 58px)", color: GOLD }}></div>
-          <div style={{ fontSize: "clamp(28px, 3.15cqw, 58px)", color: BLUE }}> Hyderabad</div>
-        </div>
+          {/* ---------- headline ---------- */}
+          <div
+            className="whitespace-nowrap font-serif font-bold"
+            style={{ fontSize: "clamp(28px, 3.15cqw, 58px)", lineHeight: 1.18 }}
+          >
+            <div style={{ color: BLUE }}>Manuthera - Advanced</div>
+            <div style={{ color: GOLD }}>Manual Therapy in</div>
+            <div style={{ color: BLUE }}>Hyderabad</div>
+          </div>
 
-        <span
-          className="absolute z-10 block"
-          style={{ left: "7.67%", top: "40.4%", width: "24.1%", height: "3px", backgroundColor: GOLD }}
-        />
+          <span className="block" style={{ marginTop: "1.8cqw", width: "24cqw", height: "3px", backgroundColor: GOLD }} />
 
-        <p
-          className="absolute z-10 leading-[1.45]"
-          style={{ left: "7.67%", top: "44.8%", width: "28%", fontSize: "clamp(13px, 1.4cqw, 21px)", color: NAVY_TEXT }}
-        >
-          Advanced joint mobilization, spinal decompression, controlled spinal
-          movement and manual therapy
-        </p>
+          <p
+            className="leading-[1.45]"
+            style={{ marginTop: "1.5cqw", width: "28cqw", fontSize: "clamp(13px, 1.4cqw, 21px)", color: NAVY_TEXT }}
+          >
+            Advanced joint mobilization, spinal decompression, controlled spinal
+            movement and manual therapy
+          </p>
 
-        {/* ---------- stats ---------- */}
-        {stats.map((s, i) => {
-          const centerLeft = [11.74, 21.71, 31.84][i]
-          return (
-            <div key={s.label} className="absolute inset-0 z-10">
-              <span
-                className="absolute flex aspect-square -translate-x-1/2 items-center justify-center rounded-full"
-                style={{ left: `${centerLeft}%`, top: "61.3%", width: "3.6cqw", backgroundColor: GOLD }}
+          {/* ---------- stats ---------- */}
+          <div className="flex" style={{ marginTop: "2.8cqw" }}>
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex flex-col items-center text-center ${i > 0 ? "border-l border-black/15" : ""}`}
+                style={{ width: "10cqw" }}
               >
-                <s.icon style={{ width: "48%", height: "48%" }} className="text-white" fill={s.icon === Star ? "white" : "none"} strokeWidth={2} />
-              </span>
-              <span
-                className="absolute -translate-x-1/2 whitespace-nowrap font-extrabold"
-                style={{ left: `${centerLeft}%`, top: "71%", fontSize: "clamp(15px, 1.35cqw, 25px)", color: BLUE }}
-              >
-                {s.value}
-              </span>
-              <span
-                className="absolute -translate-x-1/2 whitespace-nowrap"
-                style={{ left: `${centerLeft}%`, top: "74.4%", fontSize: "clamp(12px, 1cqw, 18px)", color: NAVY_TEXT }}
-              >
-                {s.label}
-              </span>
-            </div>
-          )
-        })}
-        {[16.76, 26.78].map((l) => (
-          <span key={l} aria-hidden className="absolute z-[5] w-px bg-black/15" style={{ left: `${l}%`, top: "61.5%", height: "14.5%" }} />
-        ))}
-
-        {/* ---------- primary button ---------- */}
-        <button
-          type="button"
-          className="absolute z-10 flex items-center justify-center rounded-full font-extrabold tracking-wide transition hover:brightness-105"
-          style={{
-            left: "8.19%",
-            top: "79.5%",
-            width: "25.68%",
-            height: "8.04%",
-            fontSize: "clamp(14px, 1.35cqw, 24px)",
-            backgroundColor: BTN_GOLD,
-            color: NAVY_TEXT,
-          }}
-        >
-          BOOK YOUR CONSULTATION
-        </button>
-
-        {/* ---------- location / phone row ---------- */}
-        <div className="absolute z-10 flex items-center" style={{ left: "8.61%", top: "90.9%", gap: "1cqw" }}>
-          <span className="flex aspect-square items-center justify-center rounded-full" style={{ width: "1.7cqw", backgroundColor: GOLD }}>
-            <MapPin style={{ width: "60%", height: "60%" }} className="text-white" fill="white" strokeWidth={1} />
-          </span>
-          <span className="font-bold" style={{ fontSize: "clamp(14px, 1.2cqw, 22px)", color: NAVY_TEXT }}>
-            Hyderabad
-          </span>
-          <span className="mx-1 h-5 w-px bg-black/25" />
-          <span className="flex aspect-square items-center justify-center rounded-full" style={{ width: "1.7cqw", backgroundColor: GOLD }}>
-            <Phone style={{ width: "52%", height: "52%" }} className="text-white" fill="white" strokeWidth={0} />
-          </span>
-          <span className="font-bold" style={{ fontSize: "clamp(14px, 1.2cqw, 22px)", color: NAVY_TEXT }}>
-            {PHONE}
-          </span>
+                <span
+                  className="flex aspect-square items-center justify-center rounded-full"
+                  style={{ width: "3.6cqw", backgroundColor: GOLD }}
+                >
+                  <s.icon style={{ width: "48%", height: "48%" }} className="text-white" fill={s.icon === Star ? "white" : "none"} strokeWidth={2} />
+                </span>
+                <span
+                  className="whitespace-nowrap font-extrabold"
+                  style={{ marginTop: "0.8cqw", fontSize: "clamp(15px, 1.35cqw, 25px)", color: BLUE }}
+                >
+                  {s.value}
+                </span>
+                <span
+                  className="whitespace-nowrap"
+                  style={{ fontSize: "clamp(12px, 1cqw, 18px)", color: NAVY_TEXT }}
+                >
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         </div>

@@ -41,7 +41,7 @@ export function RunningTicker({ className = "" }: { className?: string }) {
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-brand-deep to-transparent sm:w-10" />
 
       <div className="group flex">
-        <div className="flex w-max animate-scroll [animation-duration:35s] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+        <div className="flex w-max animate-scroll [animation-duration:70s] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
           <Track compact />
           <Track compact hidden />
         </div>

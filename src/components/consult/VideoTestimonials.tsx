@@ -44,10 +44,11 @@ export default function VideoTestimonials() {
             target="_blank"
             rel="noopener noreferrer"
             data-cta="booking"
-            className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-lg hover:brightness-110"
+            className="btn-premium btn-fill btn-brand gap-2 rounded-full px-8 py-3.5 font-bold"
           >
             <span className="material-symbols-outlined text-base">calendar_month</span>
-            Start Your Recovery Journey
+            <span>Start Your Recovery Journey</span>
+            <span className="btn-cta-arrow material-symbols-outlined text-base">arrow_forward</span>
           </a>
         </div>
       </div>
