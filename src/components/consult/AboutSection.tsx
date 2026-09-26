@@ -17,7 +17,7 @@ const URBANIST = "font-['Urbanist',ui-sans-serif,system-ui,sans-serif]";
  */
 
 const IMAGES = {
-  doctor: "/DSC07927.jpg",
+  doctor: "/DSC07927.JPG",
 };
 
 const APPROACH = ["Assess", "Understand", "Treat", "Rehabilitate"];
