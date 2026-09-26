@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react"
 import { useRouter } from "next/navigation"
-import Image, { getImageProps } from "next/image"
+import Image from "next/image"
 import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-react"
 
 /**
@@ -14,6 +14,9 @@ import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-re
  * 2. below lg — stacked flow: headline, paragraph, photo, stats, buttons, then form.
  *
  * lg+ layout:
+ *   background video ........ muted looping YouTube embed (BG_VIDEO_ID) filling
+ *                             the left section up to the gold arc; a pale wash
+ *                             sits only behind the copy
  *   left copy block ......... x = 147 (7.67%), vertically centred: headline,
  *                             gold rule, subtext, stats row (cqw gaps)
  *   form card ............... 1363,120 -> 1871,701, title + 4 fields + button
@@ -25,12 +28,11 @@ import { Users, Star, ClipboardList, MapPin, Phone, User, Mail } from "lucide-re
  *   panel blue ............... #2363B1
  *   dark navy body text ...... #00123C
  *
- * Photo section: the photo sits on the pale background with a feathered
- * curved left edge, cut on the right by a thick gold arc (ARC_PATH) with
- * the blue panel beyond it. Tweak ARC_PATH / PHOTO to fine-tune.
+ * Right side: a thick gold arc (ARC_PATH) with the blue panel beyond it; the
+ * panel hides the video, so the video only shows left of the arc.
  *
- * IMAGE YOU SUPPLY (put in /public):
- *   /manuthera-photo.jpg   - the therapist + patient photo
+ * IMAGE YOU SUPPLY (put in /public), used by the mobile layout:
+ *   /manuthera-photo.png   - the therapist + patient photo
  */
 
 const BLUE = "#00329D"
@@ -46,22 +48,18 @@ const HEADER_H = 140
 // own container, so the % positions and cqw sizes inside stay design-exact.
 const DESIGN_BOX = { aspectRatio: "1916 / 821", containerType: "inline-size" } as const
 
-// Seam between photo and blue panel (reference coords). Starts at the top
-// edge, bulges right just short of the form card, exits the bottom edge.
+// Seam between the video and the blue panel (reference coords). Starts at the
+// top edge, bulges right just short of the form card, exits the bottom edge.
 const ARC_TOP = "1245,0"
 const ARC_PATH = "C1300,120 1335,300 1330,430 C1325,560 1275,690 1145,821"
 
-// Photo placement in reference coords: full banner height (no top edge),
-// therapist's head around x~1130, right side tucked under the gold arc.
-const PHOTO = { x: 440, y: 0, w: 886, h: 821 }
-
-const { props: photoProps } = getImageProps({
-  src: "/manuthera-photo.png",
-  alt: "",
-  width: 1303,
-  height: 1207,
-})
-const photoSrc = photoProps.src
+// Background video behind the left copy (desktop). Muted + looped YouTube
+// embed with no controls; `playlist` = same id is what makes `loop` work.
+const BG_VIDEO_ID = "D4qLEQRH4KY"
+const BG_VIDEO_SRC =
+  `https://www.youtube-nocookie.com/embed/${BG_VIDEO_ID}` +
+  `?autoplay=1&mute=1&loop=1&playlist=${BG_VIDEO_ID}&controls=0&playsinline=1` +
+  `&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&fs=0`
 
 const stats = [
   { icon: Users, value: "40,000+", label: "Happy Patients" },
@@ -236,44 +234,13 @@ function DesktopLeadForm() {
 function Artwork() {
   return (
     <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 1916 821" preserveAspectRatio="none">
-      <defs>
-        {/* photo sits left of the arc */}
-        <clipPath id="mt-photo-clip" clipPathUnits="userSpaceOnUse">
-          <path d={`M0,0 L${ARC_TOP} ${ARC_PATH} L0,821 Z`} />
-        </clipPath>
-
-        {/* soft, curved left edge that melts into the pale background */}
-        <filter id="mt-feather" x="-200" y="-200" width="2400" height="1300" filterUnits="userSpaceOnUse">
-          <feGaussianBlur stdDeviation="42" />
-        </filter>
-        <mask id="mt-photo-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1916" height="821">
-          <path
-            d="M950,-80 C780,50 620,250 580,450 C550,600 590,760 660,900 L1916,900 L1916,-80 Z"
-            fill="#fff"
-            filter="url(#mt-feather)"
-          />
-        </mask>
-      </defs>
-
-      {/* blue panel, right of the arc */}
+      {/* blue panel, right of the arc (covers the video on that side) */}
       <path d={`M${ARC_TOP} ${ARC_PATH} L1916,821 L1916,0 Z`} fill={PANEL_BLUE} />
       {/* lighter wave inside the panel, bottom right */}
       <path d="M1470,821 C1600,720 1760,670 1916,650 L1916,821 Z" fill="#fff" opacity="0.07" />
       <path d="M1560,0 C1640,60 1760,90 1916,95 L1916,0 Z" fill="#fff" opacity="0.05" />
 
-      {/* photo */}
-      <g clipPath="url(#mt-photo-clip)" mask="url(#mt-photo-mask)">
-        <image
-          href={photoSrc}
-          x={PHOTO.x}
-          y={PHOTO.y}
-          width={PHOTO.w}
-          height={PHOTO.h}
-          preserveAspectRatio="xMidYMax slice"
-        />
-      </g>
-
-      {/* gold arc on the photo / panel seam */}
+      {/* gold arc on the video / panel seam */}
       <path d={`M${ARC_TOP} ${ARC_PATH}`} fill="none" stroke={BTN_GOLD} strokeWidth="46" />
 
       {/* 3x3 dotted grid, top right */}
@@ -352,18 +319,54 @@ export default function ManutheraBanner() {
           backgroundColor: "#EFF4FC",
         }}
       >
-        {/* background swooshes, pinned left, behind everything */}
-        <div aria-hidden className="absolute left-0 top-0 z-0 h-full" style={{ aspectRatio: "1916 / 821" }}>
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1916 821" preserveAspectRatio="none">
-            <path d="M0,70 C260,20 520,40 760,0 L0,0 Z" fill="#fff" opacity="0.7" />
-            <path d="M0,300 C180,420 330,640 560,821 L0,821 Z" fill="#fff" opacity="0.45" />
-            <path d="M0,560 C160,640 300,730 380,821 L0,821 Z" fill="#fff" opacity="0.55" />
-          </svg>
+        {/* ---------- background video (behind everything) ----------
+            The wrapper is a size container so the iframe can "cover" it:
+            16:9 box sized to whichever of width/height is larger, centred,
+            then scaled up a little to crop YouTube's edge UI. The blue panel
+            on the right covers it, so it only shows left of the gold arc. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          style={{ containerType: "size" }}
+        >
+          {/* Video box = visible left section only. The right design box is
+              233.4cqh wide (1916/821 × height); the arc sits ~70% across it,
+              so everything past (100cqw − 70cqh) is behind the blue panel.
+              The box runs slightly under the arc so no gap shows. */}
+          <div
+            className="absolute inset-y-0 left-0 overflow-hidden"
+            style={{ width: "calc(100cqw - 70cqh)", containerType: "size" }}
+          >
+            <iframe
+              src={BG_VIDEO_SRC}
+              title="Manuthera manual therapy background video"
+              tabIndex={-1}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              className="absolute left-1/2 top-1/2 border-0"
+              style={{
+                width: "max(100cqw, 177.78cqh)",
+                height: "max(100cqh, 56.25cqw)",
+                transform: "translate(-50%, -50%) scale(1.18)",
+              }}
+            />
+          </div>
+          {/* Pale wash only behind the copy: pinned to the left design box
+              (same scale as the text), solid under the text column (which
+              ends ~42% across), then gone by ~58% so the rest of the video
+              up to the gold arc shows clearly. */}
+          <div
+            className="absolute left-0 top-0 h-full"
+            style={{
+              aspectRatio: "1916 / 821",
+              background:
+                "linear-gradient(90deg, rgba(239,244,252,0.84) 0%, rgba(239,244,252,0.78) 38%, rgba(239,244,252,0.38) 48%, rgba(239,244,252,0) 58%)",
+            }}
+          />
         </div>
 
         {/* ================= LEFT design box: text =================
-            Sits above the artwork so the photo's faded edge never covers
-            the copy; only its buttons/links take clicks so the form stays
+            Sits above the video and artwork; only its buttons/links take
+            clicks so the form stays
             usable where the two boxes overlap. */}
         <div
           className="pointer-events-none absolute left-0 top-0 z-20 h-full [&_a]:pointer-events-auto [&_button]:pointer-events-auto"
