@@ -68,7 +68,7 @@ const ClientFeedback = () => {
           <div className="mb-4 flex justify-center sm:mb-6 md:mb-8">
             <div className="flex items-center justify-center overflow-hidden rounded-2xl bg-brand-soft px-4 py-2 ring-1 ring-primary-fixed-dim sm:px-6 sm:py-3">
               <Image
-                src="/trans-phylogo.png"
+                src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056500/trans-phylogo.png"
                 alt="Physio Shine"
                 width={200}
                 height={74}

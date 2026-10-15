@@ -12,31 +12,31 @@ const reviews = [
   {
     text: "My dad has had severe sciatic nerve pain and lower back pain for a long time. After taking physiotherapy sessions here, my father's pain has reduced a lot. The sessions included stretching, strengthening exercises, and posture guidance, which really helped improve my mobility.",
     author: "Ajay giragani",
-    image: "/p1.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056496/p1.webp",
     rating: 5,
   },
   {
     text: "I'm thoroughly impressed with the physiotherapy services at Physioshine - Advanced Neuro & Chiropractic Centre. The team is super professional, caring, and skilled. My experience was top-notch - from the warm welcome to the personalised treatment plan.",
     author: "kusuma sravani",
-    image: "/p2.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056497/p2.webp",
     rating: 5,
   },
   {
     text: "Treatment is good. Recovered from my back pain, very satisfied with the result. Thank you, Dr Sachin sir and team physioshine.",
     author: "sridhar kuncham",
-    image: "/p3.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056497/p3.webp",
     rating: 5,
   },
   {
     text: "I was suffering from low back pain for 3 months, and nothing seemed to help until I visited PhysioShine PhysioRehab. Dr Sachin and Dr Anjali clearly explained my condition and treated the root cause instead of just giving temporary relief.",
     author: "Ajay Rachakonda",
-    image: "/p4.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056498/p4.webp",
     rating: 5,
   },
   {
     text: "It was more effective therapy, compared to other clinics... I went with severe neck & lower back pain... in 12 sittings it was cleared. Now I can rate my pain - lower back zero % pain. Your demand is more... so increase your branches on all 4 sides of the city!",
     author: "Mendi Kiran",
-    image: "/p5.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056498/p5.webp",
     rating: 5,
   },
 ];
@@ -64,6 +64,8 @@ function ReviewerAvatar({
     <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-secondary-fixed text-sm font-black uppercase text-on-secondary-fixed ring-2 ring-white/15">
       {image ? (
         <img
+          loading="lazy"
+          decoding="async"
           src={image}
           alt={author}
           className="h-full w-full object-cover"
@@ -115,7 +117,7 @@ export default function ReviewsCarousel() {
             className="flex w-full shrink-0 items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 sm:w-auto sm:justify-start"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm">
-              <img src="/google-g.svg" alt="Google" className="h-5 w-5" />
+              <img src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/google-g.svg" alt="Google" className="h-5 w-5" />
             </div>
             <div className="text-center">
               <p className="text-2xl font-black">4.8</p>

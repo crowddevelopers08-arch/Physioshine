@@ -2,44 +2,44 @@ import AnimatedSection from "./AnimatedSection";
 
 const treatments = [
   {
-    image: "/Internal.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/Internal.webp",
     title: "Pain Management",
     items: ["Back Pain", "Neck Pain", "Shoulder Pain", "Knee Pain"],
     result: "Effective relief from acute and chronic pain conditions with targeted, personalised care.",
   },
   {
-    image: "/Joint-Injections.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/Joint-Injections.webp",
     title: "Complete Rehab",
     items: ["Sport Injury Rehab", "Stroke Rehab"],
     result: "Structured recovery plans to regain strength, mobility, and daily function with confidence.",
     layeredFill: true,
   },
   {
-    image: "/spine-pain.png",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056500/spine-pain.webp",
     title: "Spinal Decompression",
     items: ["Disc Issues", "Nerve Compression", "Chronic Back Pain"],
     result: "Focused non-surgical care designed to ease pressure, reduce pain, and restore movement.",
   },
   {
-    image: "/physio.jpg",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056499/physio.webp",
     title: "Physiotherapy Treatments",
     items: ["Exercise Therapy", "Strength Training", "Pain Relief"],
     result: "Customised treatment plans that support faster recovery, better mobility, and lasting results.",
   },
   {
-    image: "/neckpain3.jpg",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056496/neckpain3.webp",
     title: "Chiropractic Treatment",
     items: ["Spine Alignment", "Pain Relief", "Mobility Support"],
     result: "Advanced spinal care that improves alignment, reduces discomfort, and supports better posture.",
   },
   {
-    image: "/adva.avif",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056493/adva.avif",
     title: "Advanced Therapy Treatments",
     items: ["Laser Therapy", "Manual Therapy", "Shockwave Therapy"],
     result: "Technology-driven therapies that accelerate healing and improve long-term recovery outcomes.",
   },
   {
-    image: "/Neuro-rehabilitation.webp",
+    image: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056496/Neuro-rehabilitation.webp",
     title: "Neuro Rehab",
     items: [
       "Paralysis",
@@ -102,6 +102,8 @@ export default function TreatmentGrid() {
                     />
                   ) : null}
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={treatment.image}
                     alt={treatment.title}
                     className="image-softened relative z-10 h-full w-full object-cover object-[center_35%] transition-transform duration-300 group-hover:scale-105"

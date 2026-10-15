@@ -9,25 +9,25 @@ const teamDoctors = [
     name: "Dr. Manisha.PT",
     qualification: "Neuro Rehabilitation Specialist",
     desc: "Expert in Stroke & Neuro Rehabilitation. Restoring mobility and independence with personalised recovery programs.",
-    img: "/manisha.png",
+    img: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/manisha.webp",
   },
    {
     name: "Dr. Anjali.PT",
     qualification: "Manual & Rehab Therapy Expert",
     desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
-    img: "/anjali.png",
+    img: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056493/anjali.webp",
   },
   {
     name: "Dr. Sufiyan.PT",
     qualification: "Sports Rehabilitation Specialist",
     desc: "Specialised in Sports Injury Recovery. Strength, flexibility & performance recovery trusted by athletes.",
-    img: "/sufiyan.png",
+    img: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056500/sufiyan.webp",
   },
   {
     name: "Dr. Dhanush.PT",
     qualification: "Manual Therapy Expert",
     desc: "Hands-on physiotherapy focused on pain relief and mobility. Known for a patient-friendly treatment approach.",
-    img: "/danush.png",
+    img: "https://res.cloudinary.com/dpjheqgn/image/upload/v1792056493/danush.webp",
   },
 ];
 
@@ -77,8 +77,10 @@ export default function DoctorsSection() {
         >
           <div className="relative shrink-0 lg:w-[420px]">
             <img
+              loading="lazy"
+              decoding="async"
               className="image-softened h-72 w-full object-cover object-top sm:h-96 lg:h-full"
-              src="/sachinnew.png"
+              src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056499/sachinnew.webp"
               alt="Dr. Gajwel Sachin Raj"
             />
             <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-brand-deep/60 to-transparent lg:hidden" />
@@ -158,6 +160,8 @@ export default function DoctorsSection() {
                         <div className="mb-4">
                           <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-brand-soft shadow-lg">
                             <img
+                              loading="lazy"
+                              decoding="async"
                               className="image-softened h-full w-full object-cover object-top transition-transform duration-500"
                               src={doc.img}
                               alt={doc.name}
@@ -213,6 +217,8 @@ export default function DoctorsSection() {
                   <div className="mb-4">
                     <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-brand-soft shadow-lg sm:h-32 sm:w-32">
                       <img
+                        loading="lazy"
+                        decoding="async"
                         className="image-softened h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                         src={doc.img}
                         alt={doc.name}

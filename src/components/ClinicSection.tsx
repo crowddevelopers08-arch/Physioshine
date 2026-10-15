@@ -51,8 +51,10 @@ export default function ClinicSection() {
             <div data-reveal-item className="relative lg:hidden">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
+                  loading="lazy"
+                  decoding="async"
                   className="image-softened h-72 w-full object-cover"
-                  src="/DSC04208.JPG"
+                  src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056494/DSC04208.webp"
                   alt="Physio Shine Clinic"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-brand-deeper/90 via-brand-deep/50 to-transparent p-6 pt-12">
@@ -93,8 +95,10 @@ export default function ClinicSection() {
           <div data-reveal-item className="relative order-1 hidden lg:block lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
+                loading="lazy"
+                decoding="async"
                 className="image-softened h-72 w-full object-cover sm:h-96 lg:h-[29rem] xl:h-[31rem]"
-                src="/DSC04208.JPG"
+                src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056494/DSC04208.webp"
                 alt="Physio Shine Clinic"
               />
               {/* Quote overlay */}

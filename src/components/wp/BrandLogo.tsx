@@ -20,7 +20,7 @@ export default function BrandLogo({
 
   const image = (
     <Image
-      src="/trans-phylogo.png"
+      src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056500/trans-phylogo.png"
       alt="Physio Shine"
       width={824}
       height={303}

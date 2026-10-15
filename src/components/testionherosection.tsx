@@ -96,7 +96,7 @@ export default function TestingHeroSection() {
             <div className="flex flex-wrap justify-center gap-1.5 pt-1 sm:hidden lg:justify-start">
               <div className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 backdrop-blur-sm">
                 <img
-                  src="/google-g.svg"
+                  src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/google-g.svg"
                   alt="Google"
                   className="h-3.5 w-3.5 shrink-0"
                 />

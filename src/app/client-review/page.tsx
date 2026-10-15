@@ -19,7 +19,7 @@ const Review = () => {
           <div className="mb-4 flex justify-center sm:mb-6 lg:mb-8">
             <div className="flex items-center justify-center overflow-hidden rounded-2xl bg-brand-soft px-5 py-3 ring-1 ring-primary-fixed-dim sm:px-7 sm:py-4">
               <Image
-                src="/trans-phylogo.png"
+                src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056500/trans-phylogo.png"
                 alt="Physio Shine"
                 width={220}
                 height={81}

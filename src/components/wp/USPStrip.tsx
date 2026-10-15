@@ -62,7 +62,7 @@ export default function USPStrip() {
             className="flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center backdrop-blur-sm sm:flex-row sm:gap-4 sm:px-5 sm:text-left"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/20">
-              <img src="/google-g.svg" alt="Google" className="h-5 w-5" />
+              <img src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/google-g.svg" alt="Google" className="h-5 w-5" />
             </div>
             <div>
               <p className="text-2xl font-black font-headline text-white leading-none">
@@ -80,7 +80,7 @@ export default function USPStrip() {
             className="flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center backdrop-blur-sm sm:flex-row sm:gap-4 sm:px-5 sm:text-left"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary-fixed/20">
-              <img src="/google-g.svg" alt="Google" className="h-5 w-5" />
+              <img src="https://res.cloudinary.com/dpjheqgn/image/upload/v1792056495/google-g.svg" alt="Google" className="h-5 w-5" />
             </div>
             <div>
               <div className="flex items-center justify-center gap-2 leading-none sm:justify-start">
