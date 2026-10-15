@@ -33,7 +33,7 @@ export default function WpTermsOfService() {
             Terms of Service
           </h1>
           <p className="text-sm font-medium text-on-surface-variant">
-            Last updated: January 1, 2024
+            Last updated: October 15, 2026
           </p>
         </div>
 
@@ -103,12 +103,31 @@ export default function WpTermsOfService() {
 
           <section className="space-y-4 rounded-xl border border-outline-variant/10 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
-              4. Cancellations and Rescheduling
+              4. Refunds and Rescheduling
             </h2>
+            <ul className="ml-2 space-y-2 sm:ml-4">
+              {[
+                {
+                  title: "No Refunds:",
+                  text: "All payments made for a consultation slot are strictly non-refundable.",
+                },
+                {
+                  title: "Rescheduling Allowed:",
+                  text: "You can move your appointment to a future date and time based on clinic availability.",
+                },
+              ].map((item) => (
+                <li key={item.title} className="flex items-start gap-3">
+                  <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span>
+                    <strong className="font-semibold text-on-surface">{item.title}</strong>{" "}
+                    {item.text}
+                  </span>
+                </li>
+              ))}
+            </ul>
             <p>
-              We understand plans can change. If you need to cancel or
-              reschedule, we request reasonable advance notice so we can offer
-              the slot to another patient.
+              If you need to reschedule, we request reasonable advance notice so
+              we can offer the slot to another patient.
             </p>
             <p>
               Physio Shine reserves the right to reschedule or cancel
@@ -131,7 +150,8 @@ export default function WpTermsOfService() {
             <ul className="ml-2 space-y-2 sm:ml-4">
               {[
                 "Prices may change from time to time without prior public notice",
-                "Package validity and refund terms, if any, will be explained separately",
+                "Payments made for consultation slots are non-refundable (see Section 4)",
+                "Package validity terms, if any, will be explained separately",
                 "Some services may require advance payment or deposit confirmation",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
